@@ -15,8 +15,10 @@
 !------------------------------------------------------------
 program circle_area
 
+    !deactivate implicit typing
     implicit none
 
+    !define variables
     real radio, area
         
     !Request radius value to the user
@@ -36,8 +38,10 @@ contains
     !Subroutine to calculate area
     subroutine calculate_area(radio, area)
 
+        !deactivate implicit typing
         implicit none
 
+        !define variables
         real, intent(in) :: radio !Input (raio)
         real, intent(out) :: area !Output (área)
 
