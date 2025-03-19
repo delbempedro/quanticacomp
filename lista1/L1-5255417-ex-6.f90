@@ -26,27 +26,31 @@ program exponential_taylor_series
     N = [1,2,3,4,5,6,7,9,10**1,10**2,10**3,10**4,10**5,10**6]
     x = [0.1,1.0,10.0,100.0,1000.0]
 
-    do i=1,14
+    open(unit=1, file='exponential_taylor_series.txt', status='replace')
+
+    do i=1,5
 
         !initialize variables
         exponential_of_minus_x = 0.0
         exponential_of_x = 0.0
 
-        write(*,*) 'N:', N(i)
+        write(1,*) 'x:', x(i)
 
-        do j=1,5
+        do j=1,14
             !compute series
-            call compute_series(exponential_of_minus_x, exponential_of_x, N(i), x(j))
+            call compute_series(exponential_of_minus_x, exponential_of_x, N(j), x(i))
 
             !compute exponential of -x
             exponential_of_x = 1/exponential_of_x
 
             !print result
-            write(*,*) 'x:', x(j), exponential_of_minus_x, exponential_of_x, exp(-x(j))
+            write(1,*) 'N:', N(j), exponential_of_minus_x, exponential_of_x, exp(-x(i))
 
         end do
 
     end do
+
+    close(1)
 
 contains
 
