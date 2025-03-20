@@ -4,4 +4,4 @@
 \contentsline {section}{\numberline {3}Exerc\'icio 3}{5}{section.3}%
 \contentsline {section}{\numberline {4}Exerc\'icio 4}{6}{section.4}%
 \contentsline {section}{\numberline {5}Exerc\'icio 5}{8}{section.5}%
-\contentsline {section}{\numberline {6}Exerc\'icio 6}{10}{section.6}%
+\contentsline {section}{\numberline {6}Exerc\'icio 6}{11}{section.6}%

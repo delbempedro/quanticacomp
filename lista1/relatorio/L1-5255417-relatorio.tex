@@ -84,7 +84,7 @@ Tarefa: Calcular a \'area de um c\'irculo. Op\c{c}\~oes: entrada e sa\'ida usand
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-1.f90}
 
-Descri\c{c}\~ao:
+Descri\c{c}\~ao: O c\'odigo - por meio de uma mensagem no terminal - pede ao usuario o raio do c\'irculo, calcula a \'area do mesmo em uma subrotina, e imprime o resultado no terimal.
 
 \section{Exerc\'icio 2}
 
@@ -103,7 +103,7 @@ Tarefa: Achar a precis\~ao  do computador, i.e., o maior n\'umero positivo  tal 
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-3.f90}
 
-Descri\c{c}\~ao:
+Descri\c{c}\~ao: O c\'odigo inicia vari\'aveis de precis\~ao simples e dupla, e divide-as por 2 - sucessivamente até que a soma da mesma com 1 permane\c{c}a igual a 1. Al\'em disso utiliza-se uma vari\'avel auxiliar para armazenar o valor da precis\~ao - sem que o mesmo se perca quando o valor for menor que a precis\~ao da m\'aquina.
 
 \section{Exerc\'icio 4}
 
@@ -111,13 +111,21 @@ Tarefa: Calcular
 
 \begin{equation} e^{-x} = 1 - x + x^2/2! - x^3/3! + ... \end{equation}
 
-para x = 0.1, 1, 10, 100 e 1000 com um erro menor do que $10^{-8}$. Problema:
-quando truncar a s\'erie? \'E preciso calcular o fatorial explicitamente? Comparar o valor obtido usando a s\'erie com o resultado exato.
+para x = 0.1, 1, 10, 100 e 1000 com um erro menor do que $10^{-8}$. Problema: quando truncar a s\'erie? \'E preciso calcular o fatorial explicitamente? Comparar o valor obtido usando a s\'erie com o resultado exato.
 
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-4.f90}
 
-Descri\c{c}\~ao:
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/results-ex4.png}
+    \caption{Valores de $e^{-x}$ para x = 0.1, 1, 10, 100 e 1000.}
+\end{figure}
+
+Descri\c{c}\~ao: O c\'odigo faz um loop onde, em cada itera\c{c}\~ao, calcula o valor da s\'erie para um valor de x diferente. Na subrotina "compute-exponencial" calcula-se a s\'erie definindo o pr\'oximo termo como a multiplica\c{c}\~ao do termo anterior por -x/n, pois - deste modo - n\~ao se faz necess\'ario calcular o fatorial explicitamente. Ademais, interrompe-se a soma quando o termo atual for menor que $10^{-8}$ garantindo a precis\~ao desejada, uma vez que cada termo da s\'erie \'e menor - em m\'odulo - que o anterior.
+
+Por fim, percebe-se que o resultado eperado foi obtido para todos os casos testados - com exe\c{c}\~ao dos casos onde o resultado \'e menor que a precis\~ao.
 
 \section{Exerc\'icio 5}
 
@@ -130,7 +138,16 @@ e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormula
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-5.f90}
 
-Descri\c{c}\~ao:
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/results-ex5.png}
+    \caption{Valores de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando precis\~ao simples.}
+\end{figure}
+
+Descri\c{c}\~ao: O c\'odigo executa um loop que calcula o valor de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas - ao chamar a subrotina "compute-sigma" que, por sua vez, inicia um loop onde soma os termos de cada s\'erie. Al\'em disso, a segunda soma \'e calculada com os termo separados que s\~ao somados ap\'os o fim do loop.
+
+Por fim, nota-se que a primeira s\'erie demora mais para convergir do que a demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
 
 \section{Exerc\'icio 6}
 
@@ -143,6 +160,39 @@ em fun\c{c}\~ao de N, para diferentes valores de x. Sugest\~ao: fa\c{c}a um gr\'
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-6.f90}
 
-Descri\c{c}\~ao:
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/grafico_x_0.100000001.png}
+    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 0.100000001.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/grafico_x_1.0.png}
+    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/grafico_x_10.0.png}
+    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 10.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/grafico_x_100.0.png}
+    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 100.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/grafico_x_1000.0.png}
+    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1000.}
+\end{figure}
+
+Descri\c{c}\~ao: O c\'odigo inicia um loop onde - para cada valor de - inicia um subloop para cada valor de N que ent\~ao inicia uma subrotina que computa as s\'eries computando os termos por uma multiplica\c{c}\~ao do termo anterior.
+
+Por fim, percebe-se - claramente - que calcular a s\'erie de $e^x$ e fazer 1/$e^x$ \'e mais preciso do que calcular a s\'erie, diretamente, de $1/e^x$.
 
 \end{document}
