@@ -1,5 +1,5 @@
 !------------------------------------------------------------
-! File: L1-5255417-ex-5.f90
+! File: L1-5255417-ex-6.f90
 !
 ! Description:
 !   Computes taylor series for exponential of -x with function of N
