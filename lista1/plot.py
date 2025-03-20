@@ -95,7 +95,7 @@ def plot_data(data):
         plt.figure(figsize=(8, 5))
         plt.plot(N, series_e_minus_x, 'o-', label=r'Serie $e^{-x}$')
         plt.plot(N, series_e_x_inverse, 's-', label=r'1 / Serie $e^x$')
-        plt.plot(N, fortran_value, 'd-', label='Função Fortran')
+        plt.plot(N, fortran_value, 'd-', label='Fortran function')
         
         plt.xscale('log')
         plt.xlabel('N')
