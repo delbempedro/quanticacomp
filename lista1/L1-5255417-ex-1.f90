@@ -43,7 +43,7 @@ contains
 
         !define variables
         real, intent(in) :: radio !Input (raio)
-        real, intent(out) :: area !Output (área)
+        real, intent(out) :: area !Output (area)
 
         !Calculate area
         area = 4*atan(1.)*radio**2
