@@ -19,33 +19,33 @@ program circle_area
     implicit none
 
     !define variables
-    real radio, area
+    real radius, area
         
     !request radius value to the user
     write(*,*) 'Insert radius value:'
 
     !read user input
-    read(*,*) radio
+    read(*,*) radius
 
     !call calculate_area
-    call calculate_area(radio, area)
+    call calculate_area(radius, area)
 
     !print result
     write(*,*) 'Area of the circle is:', area
 
 contains
 
-    subroutine calculate_area(radio, area)
+    subroutine calculate_area(radius, area)
 
         !deactivate implicit typing
         implicit none
 
         !define variables
-        real, intent(in) :: radio
+        real, intent(in) :: radius
         real, intent(out) :: area
 
         !calculate area (4*atan(1) = pi)
-        area = 4*atan(1.)*radio**2
+        area = 4*atan(1.)*radius**2
 
     end subroutine calculate_area
 
