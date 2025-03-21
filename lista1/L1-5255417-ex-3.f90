@@ -32,20 +32,28 @@ program computer_precision
 
     !find machine precision
     do while (sum4+real4 /= sum4) !while sum4+real4 is not equal to sum4
-        !divide real4 by 2
+
+        !define aux4 to save the value before exceeding machine precision
         real4 = aux4
+
+        !divide real4 by 2 and save the value in aux4
         aux4 = real4*0.5
+
     end do
     
     !find machine precision
     do while (sum8+real8 /= sum8) !while sum4+real4 is not equal to sum4
-        !divide real4 by 2
+        
+        !define aux8 to save the value before exceeding machine precision
         real8 = aux8
+
+        !divide real4 by 2 and save the value in aux8
         aux8 = real8*0.5d0
+        
     end do
 
     !print results
-    write(*,*) "Machine precision for real4 is:", real4
-    write(*,*) "Machine precision for real8 is:", real8
+    write(*,*) "Machine precision for simple precision is:", real4
+    write(*,*) "Machine precision for double precision is:", real8
 
 end program computer_precision
