@@ -44,7 +44,7 @@ contains
         real, intent(in) :: radio
         real, intent(out) :: area
 
-        !calculate area
+        !calculate area (4*atan(1) = pi)
         area = 4*atan(1.)*radio**2
 
     end subroutine calculate_area
