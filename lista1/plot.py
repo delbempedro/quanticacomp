@@ -5,7 +5,9 @@ Description:
   Plot the data from the Fortran program for each x value.
 
 Dependencies:
-- None
+- Numpy
+- Matplotlib
+- OS
 
 Since:
   - 03/2025
@@ -117,8 +119,12 @@ def plot_data(data, output_folder="images"):
         # Close the plot
         plt.close()
 
-# Read the table
-data = read_table('exponential_taylor_series.txt')
+def main():
+    # Read the table
+    data = read_table('exponential_taylor_series.txt')
 
-# Plot the data and save the images in "images" folder
-plot_data(data)
+    # Plot the data and save the images in "images" folder
+    plot_data(data)
+
+if __name__ == '__main__':
+    main()
