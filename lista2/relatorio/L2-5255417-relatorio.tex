@@ -82,18 +82,27 @@ Professor: Attilio Cucchieri\\
 
     \subsection{Exerc\'icio 1}
 
-        Tarefa: Calcular a \'area de um c\'irculo. Op\c{c}\~oes: entrada e sa\'ida usando teclado e monitor; entrada e sa\'ida usando arquivos; calcular a  \'area em uma subrotina.
+        Tarefa: Demonstrar que no m\'etodo de Newton-Raphson
+        \begin{equation}
+            x_{k+1} = x_{k} + \frac{f(x_{k})}{f'(x_{k})}
+        \end{equation}
+        a converg\^encia \'e quadr\'atica.
 
         C\'odigo Escrito:
         \lstinputlisting[language=Fortran]{../L2-5255417-ex-1.f90}
 
         Resultados:
-
-        A \'area para o raio = 1 correponde ao valor de $\pi$, de acordo com o esperado. Dobrando o valor do raio espera-se, então, que o valor da \'area quadruplique e isto foi o que se obteve.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/grafic-ex-1.png}
+            \caption{f(x) ao decorrer das itera\c{c}\~oes}
+        \end{figure}
+       
+        Percebe-se que o m\'etodo Newton-Raphson converge quadraticamente.
 
     \subsection{Exerc\'icio 2}
 
-        Tarefa: Testar overflow e underflow em precis\~ao simples e dupla.
+        Tarefa: Achar as ra\'zes das equa\c{c}\~oes $f(x) = x^2 - 5 = 0$ e $f(x) = 5x^3 - 5x - 24 = 0$ usando os m\'etodos de Newton-Raphson e da secante para diferentes chutes iniciais e diferentes condi\c{c}\~oes de converg\^encia.
 
         C\'odigo Escrito:
         \lstinputlisting[language=Fortran]{../L2-5255417-ex-2.f90}
