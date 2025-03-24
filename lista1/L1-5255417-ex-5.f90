@@ -71,20 +71,18 @@ contains
             sum2b = sum2b + (2.0*x)/(2.0*x+1)
             sum3 = sum3 + 1/(2.0*x*(2.0*x+1))
 
+        end do!
+
+        !update sum1
+        do i=N,2*N
+
+            !update x
+            x = i
+
+            !compute sums
+            sum1 = sum1 + (-1)**(x)*x/(x+1)
+
         end do
-
-        !!! first serie is actually 1 to 2N?  !!!
-
-        !!update sum1
-        !do i=N,2*N
-
-            !!update x
-            !x = i
-
-            !!compute sums
-            !sum1 = sum1 + (-1)**(x)*x/(x+1)
-
-        !end do
 
         !update sum2
         sum2 = -sum2a + sum2b
