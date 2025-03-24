@@ -79,137 +79,137 @@ Professor: Attilio Cucchieri\\
 %#########################################################################
 \section{Exerc\'icio 1}
 
-Tarefa: Calcular a \'area de um c\'irculo. Op\c{c}\~oes: entrada e sa\'ida usando teclado e monitor; entrada e sa\'ida usando arquivos; calcular a  \'area em uma subrotina.
+    Tarefa: Calcular a \'area de um c\'irculo. Op\c{c}\~oes: entrada e sa\'ida usando teclado e monitor; entrada e sa\'ida usando arquivos; calcular a  \'area em uma subrotina.
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-1.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-1.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/results-ex1.png}
-    \caption{Valores de \'area para os raio de 1, 2, 4 e 8.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/results-ex1.png}
+        \caption{Valores de \'area para os raio de 1, 2, 4 e 8.}
+    \end{figure}
 
-A \'area para o raio = 1 correponde ao valor de $\pi$, de acordo com o esperado. Dobrando o valor do raio espera-se, então, que o valor da \'area quadruplique e isto foi o que se obteve.
+    A \'area para o raio = 1 correponde ao valor de $\pi$, de acordo com o esperado. Dobrando o valor do raio espera-se, então, que o valor da \'area quadruplique e isto foi o que se obteve.
 
 \section{Exerc\'icio 2}
 
-Tarefa: Testar overflow e underflow em precis\~ao simples e dupla.
+    Tarefa: Testar overflow e underflow em precis\~ao simples e dupla.
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-2.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-2.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/results-ex2.png}
-    \caption{Valores de overflow e underflow para precis\~ao simples e dupla.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/results-ex2.png}
+        \caption{Valores de overflow e underflow para precis\~ao simples e dupla.}
+    \end{figure}
 
-Nota-se que os valores obtidos s\~ao coerentes com o esperado.
+    Nota-se que os valores obtidos s\~ao coerentes com o esperado.
 
 \section{Exerc\'icio 3}
 
-Tarefa: Achar a precis\~ao  do computador, i.e., o maior n\'umero positivo  tal que
-1 + $\epsilon$ = 1, usando precis\~ao simples e dupla.
+    Tarefa: Achar a precis\~ao  do computador, i.e., o maior n\'umero positivo  tal que
+    1 + $\epsilon$ = 1, usando precis\~ao simples e dupla.
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-3.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-3.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/results-ex3.png}
-    \caption{Valores de $\epsilon$ para precis\~ao para precis\~ao simples e dupla.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/results-ex3.png}
+        \caption{Valores de $\epsilon$ para precis\~ao para precis\~ao simples e dupla.}
+    \end{figure}
 
-Nota-se que os valores obtidos correspondem aos valores esperados.
+    Nota-se que os valores obtidos correspondem aos valores esperados.
 
 \section{Exerc\'icio 4}
 
-Tarefa: Calcular
+    Tarefa: Calcular
 
-\begin{equation} e^{-x} = 1 - x + x^2/2! - x^3/3! + ... \end{equation}
+    \begin{equation} e^{-x} = 1 - x + x^2/2! - x^3/3! + ... \end{equation}
 
-para x = 0.1, 1, 10, 100 e 1000 com um erro menor do que $10^{-8}$. Problema: quando truncar a s\'erie? \'E preciso calcular o fatorial explicitamente? Comparar o valor obtido usando a s\'erie com o resultado exato.
+    para x = 0.1, 1, 10, 100 e 1000 com um erro menor do que $10^{-8}$. Problema: quando truncar a s\'erie? \'E preciso calcular o fatorial explicitamente? Comparar o valor obtido usando a s\'erie com o resultado exato.
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-4.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-4.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/results-ex4.png}
-    \caption{Valores de $e^{-x}$ para x = 0.1, 1, 10, 100 e 1000.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/results-ex4.png}
+        \caption{Valores de $e^{-x}$ para x = 0.1, 1, 10, 100 e 1000.}
+    \end{figure}
 
-Descri\c{c}\~ao: O c\'odigo faz um loop onde, em cada itera\c{c}\~ao, calcula o valor da s\'erie para um valor de x diferente. Na subrotina "compute-exponencial" calcula-se a s\'erie definindo o pr\'oximo termo como a multiplica\c{c}\~ao do termo anterior por -x/n, pois - deste modo - n\~ao se faz necess\'ario calcular o fatorial explicitamente. Ademais, interrompe-se a soma quando o termo atual for menor que $10^{-8}$ garantindo a precis\~ao desejada, uma vez que cada termo da s\'erie \'e menor - em m\'odulo - que o anterior.
+    Descri\c{c}\~ao: O c\'odigo faz um loop onde, em cada itera\c{c}\~ao, calcula o valor da s\'erie para um valor de x diferente. Na subrotina "compute-exponencial" calcula-se a s\'erie definindo o pr\'oximo termo como a multiplica\c{c}\~ao do termo anterior por -x/n, pois - deste modo - n\~ao se faz necess\'ario calcular o fatorial explicitamente. Ademais, interrompe-se a soma quando o termo atual for menor que $10^{-8}$ garantindo a precis\~ao desejada, uma vez que cada termo da s\'erie \'e menor - em m\'odulo - que o anterior.
 
-Por fim, percebe-se que o resultado eperado foi obtido para todos os casos testados - com exe\c{c}\~ao dos casos onde o resultado \'e menor que a precis\~ao.
+    Por fim, percebe-se que o resultado eperado foi obtido para todos os casos testados - com exe\c{c}\~ao dos casos onde o resultado \'e menor que a precis\~ao.
 
 \section{Exerc\'icio 5}
 
-Tarefa: Considerar a somat\'oria
+    Tarefa: Considerar a somat\'oria
 
-\begin{equation} \Sigma (N) = \sum_{n=1}^{2N} (-1)^n\frac{n}{n+1} = - \sum_{n=1}^N \frac{2n-1}{2n} + \sum_{n=1}^N \frac{2n}{2n+1} = \sum_{n=1}^N \frac{1}{2n(2n+1)} \end{equation}
+    \begin{equation} \Sigma (N) = \sum_{n=1}^{2N} (-1)^n\frac{n}{n+1} = - \sum_{n=1}^N \frac{2n-1}{2n} + \sum_{n=1}^N \frac{2n}{2n+1} = \sum_{n=1}^N \frac{1}{2n(2n+1)} \end{equation}
 
-e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas acima. Comparar os resultados usando precis \~ao simples.
+    e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas acima. Comparar os resultados usando precis \~ao simples.
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-5.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-5.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/results-ex5.png}
-    \caption{Valores de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando precis\~ao simples.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/results-ex5.png}
+        \caption{Valores de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando precis\~ao simples.}
+    \end{figure}
 
-Nota-se que a primeira s\'erie demora \'e mais inst\'avel do que as demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
+    Nota-se que a primeira s\'erie demora \'e mais inst\'avel do que as demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
 
 \section{Exerc\'icio 6}
 
-Tarefa: Estudar numericamente o erro da aproxima\c{c}\~ao
+    Tarefa: Estudar numericamente o erro da aproxima\c{c}\~ao
 
-\begin{equation} e^{-x} \approx \sum_{n=0}^N \frac{(-x)^n}{n!} \end{equation}
+    \begin{equation} e^{-x} \approx \sum_{n=0}^N \frac{(-x)^n}{n!} \end{equation}
 
-em fun\c{c}\~ao de N, para diferentes valores de x. Sugest\~ao: fa\c{c}a um gr\'afico do erro em fun\c{c}\~ao de N. O que acontece quando $e^{-x}$  \'e calculado usando a s\'erie $e^x = \sum_{n=0}^{N} \frac{x^n}{n!}$ e, depois, calculando 1/$e^x$?
+    em fun\c{c}\~ao de N, para diferentes valores de x. Sugest\~ao: fa\c{c}a um gr\'afico do erro em fun\c{c}\~ao de N. O que acontece quando $e^{-x}$  \'e calculado usando a s\'erie $e^x = \sum_{n=0}^{N} \frac{x^n}{n!}$ e, depois, calculando 1/$e^x$?
 
-C\'odigo Escrito:
-\lstinputlisting[language=Fortran]{../L1-5255417-ex-6.f90}
+    C\'odigo Escrito:
+    \lstinputlisting[language=Fortran]{../L1-5255417-ex-6.f90}
 
-Resultados:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/grafico_x_0.100000001.png}
-    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 0.100000001.}
-\end{figure}
+    Resultados:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/grafico_x_0.100000001.png}
+        \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 0.100000001.}
+    \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/grafico_x_1.0.png}
-    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1.}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/grafico_x_1.0.png}
+        \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1.}
+    \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/grafico_x_10.0.png}
-    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 10.}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/grafico_x_10.0.png}
+        \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 10.}
+    \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/grafico_x_100.0.png}
-    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 100.}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/grafico_x_100.0.png}
+        \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 100.}
+    \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../images/grafico_x_1000.0.png}
-    \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1000.}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{../images/grafico_x_1000.0.png}
+        \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1000.}
+    \end{figure}
 
-Percebe-se - claramente - que calcular a s\'erie de $e^x$ e fazer 1/$e^x$ o resultado \'e mais preciso do que calcular a s\'erie, diretamente, de $e^{-x}$. Al\'em disso, \'e not\'orio que ao calcular a s\'erie de $e^{-x}$  diretamente para valores de N muito grande o resultado apresenta uma diverg\^encia muito grande do resultado real o que se deve ao fato de que os termos somados se tornam muito pequenos ao ponto de serem menores que o Machine Precision.
+    Percebe-se - claramente - que calcular a s\'erie de $e^x$ e fazer 1/$e^x$ o resultado \'e mais preciso do que calcular a s\'erie, diretamente, de $e^{-x}$. Al\'em disso, \'e not\'orio que ao calcular a s\'erie de $e^{-x}$  diretamente para valores de N muito grande o resultado apresenta uma diverg\^encia muito grande do resultado real o que se deve ao fato de que os termos somados se tornam muito pequenos ao ponto de serem menores que o Machine Precision.
 
 \end{document}
