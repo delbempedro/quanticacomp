@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  20 MAR 2025 17:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  24 MAR 2025 05:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -533,72 +533,94 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 85.
  (../L1-5255417-ex-1.f90
 
-[2]) (../L1-5255417-ex-2.f90
+[2])
+<../images/results-ex1.png, id=103, 353.06906pt x 295.1025pt>
+File: ../images/results-ex1.png Graphic file (type png)
+<use ../images/results-ex1.png>
+Package pdftex.def Info: ../images/results-ex1.png  used on input line 90.
+(pdftex.def)             Requested size: 341.43437pt x 285.38pt.
+ (../L1-5255417-ex-2.f90
 
-[3]
+[3 <../images/results-ex1.png>]
 
-[4]) (../L1-5255417-ex-3.f90
+[4]
 
-[5]) (../L1-5255417-ex-4.f90
+[5])
+<../images/results-ex2.png, id=243, 353.06906pt x 76.03406pt>
+File: ../images/results-ex2.png Graphic file (type png)
+<use ../images/results-ex2.png>
+Package pdftex.def Info: ../images/results-ex2.png  used on input line 106.
+(pdftex.def)             Requested size: 341.43437pt x 73.529pt.
+ (../L1-5255417-ex-3.f90
 
-[6]
+[6 <../images/results-ex2.png>])
+<../images/results-ex3.png, id=281, 426.09187pt x 52.69687pt>
+File: ../images/results-ex3.png Graphic file (type png)
+<use ../images/results-ex3.png>
+Package pdftex.def Info: ../images/results-ex3.png  used on input line 123.
+(pdftex.def)             Requested size: 341.43437pt x 42.2291pt.
 
-[7])
-<../images/results-ex4.png, id=362, 697.10437pt x 218.31563pt>
+
+[7] (../L1-5255417-ex-4.f90
+
+[8 <../images/results-ex3.png>]
+
+[9])
+<../images/results-ex4.png, id=438, 697.10437pt x 218.31563pt>
 File: ../images/results-ex4.png Graphic file (type png)
 <use ../images/results-ex4.png>
-Package pdftex.def Info: ../images/results-ex4.png  used on input line 122.
+Package pdftex.def Info: ../images/results-ex4.png  used on input line 143.
 (pdftex.def)             Requested size: 341.43437pt x 106.92894pt.
  (../L1-5255417-ex-5.f90
 
-[8 <../images/results-ex4.png>]
+[10 <../images/results-ex4.png>]
 
-[9])
-<../images/results-ex5.png, id=445, 358.33875pt x 204.765pt>
+[11])
+<../images/results-ex5.png, id=520, 358.33875pt x 203.25937pt>
 File: ../images/results-ex5.png Graphic file (type png)
 <use ../images/results-ex5.png>
-Package pdftex.def Info: ../images/results-ex5.png  used on input line 144.
-(pdftex.def)             Requested size: 341.43437pt x 195.11615pt.
+Package pdftex.def Info: ../images/results-ex5.png  used on input line 165.
+(pdftex.def)             Requested size: 341.43437pt x 193.68147pt.
 
 
-[10 <../images/results-ex5.png>] (../L1-5255417-ex-6.f90
+[12 <../images/results-ex5.png>] (../L1-5255417-ex-6.f90
 
-[11]
+[13]
 
-[12])
-<../images/grafico_x_0.100000001.png, id=581, 578.16pt x 361.35pt>
+[14])
+<../images/grafico_x_0.100000001.png, id=662, 578.16pt x 361.35pt>
 File: ../images/grafico_x_0.100000001.png Graphic file (type png)
 <use ../images/grafico_x_0.100000001.png>
-Package pdftex.def Info: ../images/grafico_x_0.100000001.png  used on input line 166.
+Package pdftex.def Info: ../images/grafico_x_0.100000001.png  used on input line 185.
 (pdftex.def)             Requested size: 341.43437pt x 213.39314pt.
-<../images/grafico_x_1.0.png, id=582, 578.16pt x 361.35pt>
+<../images/grafico_x_1.0.png, id=663, 578.16pt x 361.35pt>
 File: ../images/grafico_x_1.0.png Graphic file (type png)
 <use ../images/grafico_x_1.0.png>
-Package pdftex.def Info: ../images/grafico_x_1.0.png  used on input line 172.
+Package pdftex.def Info: ../images/grafico_x_1.0.png  used on input line 191.
 (pdftex.def)             Requested size: 341.43437pt x 213.39314pt.
-<../images/grafico_x_10.0.png, id=583, 578.16pt x 361.35pt>
+<../images/grafico_x_10.0.png, id=664, 578.16pt x 361.35pt>
 File: ../images/grafico_x_10.0.png Graphic file (type png)
 <use ../images/grafico_x_10.0.png>
-Package pdftex.def Info: ../images/grafico_x_10.0.png  used on input line 178.
+Package pdftex.def Info: ../images/grafico_x_10.0.png  used on input line 197.
 (pdftex.def)             Requested size: 341.43437pt x 213.39314pt.
 
 
-[13 <../images/grafico_x_0.100000001.png> <../images/grafico_x_1.0.png>]
-<../images/grafico_x_100.0.png, id=602, 578.16pt x 361.35pt>
+[15 <../images/grafico_x_0.100000001.png> <../images/grafico_x_1.0.png>]
+<../images/grafico_x_100.0.png, id=676, 578.16pt x 361.35pt>
 File: ../images/grafico_x_100.0.png Graphic file (type png)
 <use ../images/grafico_x_100.0.png>
-Package pdftex.def Info: ../images/grafico_x_100.0.png  used on input line 184.
+Package pdftex.def Info: ../images/grafico_x_100.0.png  used on input line 203.
 (pdftex.def)             Requested size: 341.43437pt x 213.39314pt.
-<../images/grafico_x_1000.0.png, id=603, 578.16pt x 361.35pt>
+<../images/grafico_x_1000.0.png, id=677, 578.16pt x 361.35pt>
 File: ../images/grafico_x_1000.0.png Graphic file (type png)
 <use ../images/grafico_x_1000.0.png>
-Package pdftex.def Info: ../images/grafico_x_1000.0.png  used on input line 190.
+Package pdftex.def Info: ../images/grafico_x_1000.0.png  used on input line 209.
 (pdftex.def)             Requested size: 341.43437pt x 213.39314pt.
 
 
-[14 <../images/grafico_x_10.0.png> <../images/grafico_x_100.0.png>]
+[16 <../images/grafico_x_10.0.png> <../images/grafico_x_100.0.png>]
 
-[15 <../images/grafico_x_1000.0.png>] (./L1-5255417-relatorio.aux)
+[17 <../images/grafico_x_1000.0.png>] (./L1-5255417-relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -607,18 +629,18 @@ Package rerunfilecheck Info: File `L1-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: DFD3F7076657B3397CCD23EA199C9AF5;624.
  ) 
 Here is how much of TeX's memory you used:
- 15540 strings out of 473579
- 251847 string characters out of 5705100
- 1152891 words of memory out of 5000000
- 37741 multiletter control sequences out of 15000+600000
+ 15620 strings out of 473579
+ 253434 string characters out of 5705100
+ 1189891 words of memory out of 5000000
+ 37760 multiletter control sequences out of 15000+600000
  563633 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,640b,2366s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on L1-5255417-relatorio.pdf (16 pages, 353903 bytes).
+Output written on L1-5255417-relatorio.pdf (18 pages, 408912 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
- 713 compressed objects within 8 object streams
- 508 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 861 PDF objects out of 1000 (max. 8388607)
+ 789 compressed objects within 8 object streams
+ 569 named destinations out of 1000 (max. 500000)
+ 99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

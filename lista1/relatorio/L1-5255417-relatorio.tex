@@ -84,7 +84,14 @@ Tarefa: Calcular a \'area de um c\'irculo. Op\c{c}\~oes: entrada e sa\'ida usand
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-1.f90}
 
-Descri\c{c}\~ao: O c\'odigo - por meio de uma mensagem no terminal - pede ao usuario o raio do c\'irculo, calcula a \'area do mesmo em uma subrotina, e imprime o resultado no terimal.
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/results-ex1.png}
+    \caption{Valores de \'area para os raio de 1, 2, 4 e 8.}
+\end{figure}
+
+A \'area para o raio = 1 correponde ao valor de $\pi$, de acordo com o esperado. Dobrando o valor do raio espera-se, então, que o valor da \'area quadruplique e isto foi o que se obteve.
 
 \section{Exerc\'icio 2}
 
@@ -93,7 +100,14 @@ Tarefa: Testar overflow e underflow em precis\~ao simples e dupla.
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-2.f90}
 
-Descri\c{c}\~ao:
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/results-ex2.png}
+    \caption{Valores de overflow e underflow para precis\~ao simples e dupla.}
+\end{figure}
+
+Nota-se que os valores obtidos s\~ao coerentes com o esperado.
 
 \section{Exerc\'icio 3}
 
@@ -103,7 +117,14 @@ Tarefa: Achar a precis\~ao  do computador, i.e., o maior n\'umero positivo  tal 
 C\'odigo Escrito:
 \lstinputlisting[language=Fortran]{../L1-5255417-ex-3.f90}
 
-Descri\c{c}\~ao: O c\'odigo inicia vari\'aveis de precis\~ao simples e dupla, e divide-as por 2 - sucessivamente até que a soma da mesma com 1 permane\c{c}a igual a 1. Al\'em disso utiliza-se uma vari\'avel auxiliar para armazenar o valor da precis\~ao - sem que o mesmo se perca quando o valor for menor que a precis\~ao da m\'aquina.
+Resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../images/results-ex3.png}
+    \caption{Valores de $\epsilon$ para precis\~ao para precis\~ao simples e dupla.}
+\end{figure}
+
+Nota-se que os valores obtidos correspondem aos valores esperados.
 
 \section{Exerc\'icio 4}
 
@@ -145,9 +166,7 @@ Resultados:
     \caption{Valores de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando precis\~ao simples.}
 \end{figure}
 
-Descri\c{c}\~ao: O c\'odigo executa um loop que calcula o valor de $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas - ao chamar a subrotina "compute-sigma" que, por sua vez, inicia um loop onde soma os termos de cada s\'erie. Al\'em disso, a segunda soma \'e calculada com os termo separados que s\~ao somados ap\'os o fim do loop.
-
-Por fim, nota-se que a primeira s\'erie demora mais para convergir do que a demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
+Nota-se que a primeira s\'erie demora \'e mais inst\'avel do que as demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
 
 \section{Exerc\'icio 6}
 
@@ -191,8 +210,6 @@ Resultados:
     \caption{Gr\'afico do erro em fun\c{c}\~ao de N para x = 1000.}
 \end{figure}
 
-Descri\c{c}\~ao: O c\'odigo inicia um loop onde - para cada valor de - inicia um subloop para cada valor de N que ent\~ao inicia uma subrotina que computa as s\'eries computando os termos por uma multiplica\c{c}\~ao do termo anterior.
-
-Por fim, percebe-se - claramente - que calcular a s\'erie de $e^x$ e fazer 1/$e^x$ \'e mais preciso do que calcular a s\'erie, diretamente, de $1/e^x$.
+Percebe-se - claramente - que calcular a s\'erie de $e^x$ e fazer 1/$e^x$ o resultado \'e mais preciso do que calcular a s\'erie, diretamente, de $e^{-x}$. Al\'em disso, \'e not\'orio que ao calcular a s\'erie de $e^{-x}$  diretamente para valores de N muito grande o resultado apresenta uma diverg\^encia muito grande do resultado real o que se deve ao fato de que os termos somados se tornam muito pequenos ao ponto de serem menores que o Machine Precision.
 
 \end{document}
