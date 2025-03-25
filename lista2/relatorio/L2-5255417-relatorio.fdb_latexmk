@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742852135.5423 "/home/pedro/Documentos/GitHub/quanticacomp/lista2/relatorio/L2-5255417-relatorio.tex" "L2-5255417-relatorio.pdf" "L2-5255417-relatorio" 1742852139.81221 0
+["pdflatex"] 1742927792.14351 "/home/pedro/Documentos/GitHub/quanticacomp/lista2/relatorio/L2-5255417-relatorio.tex" "L2-5255417-relatorio.pdf" "L2-5255417-relatorio" 1742927796.01973 0
   "../L2-5255417-ex-1.f90" 1742850877.1781 1927 31caf411e334d881a6677d5665e8c869 ""
-  "../L2-5255417-ex-2.f90" 1742852129.90678 2851 8649448f8951cd7105c4c4542c92cc08 ""
+  "../L2-5255417-ex-2.f90" 1742927791.24453 4017 dbf9f78c1d0a8b91b210119aa00cc1ea ""
   "../L2-5255417-ex-3.f90" 1742806939.71571 280 373972147f320086a79b64fc3151a542 ""
   "../L2-5255417-ex-4.f90" 1742806955.5127 280 f1319137442d83c4ea1a2ece75a9a303 ""
   "../L2-5255417-ex-5.f90" 1742806968.8787 280 030e5514ad780a4f2e5ea0cd47ad5755 ""
@@ -106,10 +106,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "L2-5255417-relatorio.aux" 1742852139.45279 2018 64470b1b9d70c1cec3bbe0f2afa19e8d "pdflatex"
-  "L2-5255417-relatorio.out" 1742852139.45579 916 3c4aee1b43de47809dd85118321632c7 "pdflatex"
+  "L2-5255417-relatorio.aux" 1742927795.69952 2018 8da46c26ec84ac7ddc0e9fe68d1ad413 "pdflatex"
+  "L2-5255417-relatorio.out" 1742927795.70252 916 3c4aee1b43de47809dd85118321632c7 "pdflatex"
   "L2-5255417-relatorio.tex" 1742851583.95961 5962 2d4605f9be2f4b09bee4c230eda7c08d ""
-  "L2-5255417-relatorio.toc" 1742852139.45679 584 6abcdbdfd166acc2b94a8fa168496505 "pdflatex"
+  "L2-5255417-relatorio.toc" 1742927795.70352 584 4941eebec73c36ab2455521b00fa33ed "pdflatex"
   (generated)
   "L2-5255417-relatorio.aux"
   "L2-5255417-relatorio.log"
