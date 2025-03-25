@@ -20,7 +20,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-def plot_from_file(filename, output_folder="images"):
+def plot_from_file(filename, output_folder="images", grafic_file_name="output.txt", grafic_title="", xlabel="x", ylabel="y"):
     """
     Reads a file and creates a simple line plot of the data
     
@@ -56,11 +56,11 @@ def plot_from_file(filename, output_folder="images"):
     #Set the labels
     plt.xlabel('Iterations')
     plt.ylabel('f(x)')
-    plt.title('Convergence of Newton-Raphson')
+    plt.title(grafic_title)
     plt.grid()
     
     #Save the plot in the specified folder
-    file_name = os.path.join(output_folder, f"grafic-ex-1.png")
+    file_name = os.path.join(output_folder, grafic_file_name)
     plt.savefig(file_name)
 
     #Close the plot
@@ -77,8 +77,14 @@ def main():
     -------
     None
     """
+    print("Insert data file name:")
+    data_file_name = str(input())
+    print("Insert grafic file name:")
+    grafic_file_name = str(input())
+    print("Insert grafic title:")
+    grafic_title = str(input())
 
-    plot_from_file('output.txt')
+    plot_from_file(data_file_name, grafic_file_name=grafic_file_name, grafic_title=grafic_title)
 
 if __name__ == '__main__':
     main()
