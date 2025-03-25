@@ -45,24 +45,55 @@ program find_roots
     df_x_k = df(x_k,f_x)
     iteration = 1
 
+    !open first output file
     open(unit=1, file='output1.txt', action='write')
 
+    !print header
+    write(1,*) 'Newton-Raphson Method'
+    write(1,*) 'Initial guess: ', x_k
+    write(1,*) 'f(x) = ',f_x(5),f_x(4),f_x(3),f_x(2),f_x(1)
+
+    !print first iteration
+    write(1,*) iteration, f(x_kplus1,f_x)
+
+    !update f_x and df_x
     f_x_k = f(x_k,f_x)
     df_x_k = df(x_k,f_x)
+
+    !update x_kplus1
     x_kplus1 = x_k - f_x_k/df_x_k
+
+    !update iteration
     iteration = iteration + 1
+
+    !print second iteration
     write(1,*) iteration, f(x_kplus1,f_x)
 
     !Newton-Raphson method
     do while (abs(x_kplus1 - x_k) > 1e-6)
+
+        !update x_k
         x_k = x_kplus1
+
+        !update f_x and df_x
         f_x_k = f(x_k,f_x)
         df_x_k = df(x_k,f_x)
+
+        !update x_kplus1
         x_kplus1 = x_k - f_x_k/df_x_k
+
+        !update iteration
         iteration = iteration + 1
+
+        !print iteration
         write(1,*) iteration, f(x_kplus1,f_x)
+        
     end do
 
+    !print root
+    write(*,*) 'Root:', x_kplus1
+
+    !close first output file
     close(1)
 
     !reinitialize variables
@@ -73,26 +104,57 @@ program find_roots
     f_x_k = f(x_k,f_x)
     iteration = 1
 
+    !open second output file
     open(unit=2, file='output2.txt', action='write')
 
+    !print header
+    write(2,*) 'Secant Method'
+    write(2,*) 'Initial guess: ', x_k
+    write(2,*) 'f(x) = ',f_x(5),f_x(4),f_x(3),f_x(2),f_x(1)
+
+    !print first iteration
+    write(2,*) iteration, f(x_kplus1,f_x)
+
+    !update f_x_k and f_x_k-1
     f_x_kminus1 = f(x_kminus1,f_x)
     f_x_k = f(x_k,f_x)
-    x_kminus1 = x_k
+
+    !update x_kplus1 and x_kminus1
     x_kplus1 = x_k - f_x_k*(x_k - x_kminus1)/(f_x_k - f_x_kminus1)
+    x_kminus1 = x_k
+
+    !update iteration
     iteration = iteration + 1
+
+    !print second iteration
     write(2,*) iteration, f(x_kplus1,f_x)
 
     !Secant method
     do while (abs(x_kplus1 - x_k) > 1e-6)
+
+        !update x_k
         x_k = x_kplus1
+
+        !update f_x_k and f_x_k-1
         f_x_kminus1 = f(x_kminus1,f_x)
         f_x_k = f(x_k,f_x)
-        x_kminus1 = x_k
+
+        !update x_kplus1 and x_kminus1
         x_kplus1 = x_k - f_x_k*(x_k - x_kminus1)/(f_x_k - f_x_kminus1)
+        x_kminus1 = x_k
+
+        !update iteration
         iteration = iteration + 1
+
+        !print iteration
         write(2,*) iteration, f(x_kplus1,f_x)
+
     end do
 
+    !print root
+    write(*,*) 'Root:', x_kplus1
+
+    !close second output file
     close(2)
 
 contains
