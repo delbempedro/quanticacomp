@@ -44,7 +44,7 @@ program newton_raphson
     open(unit=1, file='output.txt', action='write')
 
     !print firstiteration
-    write(1,*) iteration, f(x_k,f_x)
+    write(1,*) iteration, f(x_k,f_x), x_k
 
     !update f_x_k and df_x_k
     f_x_k = f(x_k,f_x)
@@ -57,7 +57,7 @@ program newton_raphson
     iteration = iteration + 1
 
     !print second iteration
-    write(1,*) iteration, f(x_kplus1,f_x)
+    write(1,*) iteration, f(x_kplus1,f_x), x_kplus1
 
     !Newton-Raphson method
     do while (abs(x_kplus1 - x_k) > 1e-6)
@@ -76,7 +76,7 @@ program newton_raphson
         iteration = iteration + 1
 
         !print iteration
-        write(1,*) iteration, f(x_kplus1,f_x)
+        write(1,*) iteration, f(x_kplus1,f_x), x_kplus1
 
     end do
 
