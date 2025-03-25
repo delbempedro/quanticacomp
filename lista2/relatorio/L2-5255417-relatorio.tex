@@ -88,23 +88,62 @@ Professor: Attilio Cucchieri\\
         \end{equation}
         a converg\^encia \'e quadr\'atica.
 
-        C\'odigo Escrito:
-        \lstinputlisting[language=Fortran]{../L2-5255417-ex-1.f90}
+        Expandimos f(x) em torno de $x_{n} - r$ - onde r \'e a raiz de f(x) - e obtemos:
+        \begin{equation}
+            f(x_{n}) = f(r) + f'(r)(x_{n} - r) + \frac{1}{2} f''(r)(x_{n}  - r)^2 + O(x_{n} - r)^3
+        \end{equation}
+        E como f(r) = 0, obtemos:
+        \begin{equation}
+            f(x_{n}) = f'(r)(x_{n} - r) + \frac{1}{2} f''(r)(x_{n}  - r)^2 + O(x_{n} - r)^3
+        \end{equation}
+        Expande-se, também, $f'(x_{n})$ e obtemos:
+        \begin{equation}
+            f'(x_{n}) = f'(r) + f''(x_{n} - r)(x_{n} - r) + O(x{n} - r)^2
+        \end{equation}
+        Substituindo em $x_{n+1} = x_{n} + \frac{f(x_{n})}{f'(x_{n})}$ obtemos:
+        \begin{equation}
+            x_{n+1} = x_{n} - \frac{f'(r)(x_{n} - r) + \frac{1}{2} f''(r)(x_{n}  - r)^2}{f'(r) + f''(x_{n} - r)(x_{n} - r)}
+        \end{equation}
+        Subtraindo r de ambos os lados:
+        \begin{equation}
+            x_{n+1} - r = x_{n} - r - \frac{f'(r)(x_{n} - r) + \frac{1}{2} f''(r)(x_{n}  - r)^2}{f'(r) + f''(x_{n} - r)(x_{n} - r)}
+        \end{equation}
+        Colocando o termo $x_{n} - r$ em evid\^encia:
+        \begin{equation}
+            x_{n+1} - r = (x_{n} - r)\bigg[1 - \frac{f'(r) + \frac{1}{2} f''(r)(x_{n}  - r)}{f'(r) + f''(x_{n} - r)(x_{n} - r)}\bigg]
+        \end{equation}
+        Para $x_{n} - r$ pequeno, f''(r)$(x_{n} - r)$ \'e disprez\'ivel e assim o desprezamos no denominador - obtendo:
+        \begin{equation}
+            x_{n+1} - r = (x_{n} - r)\bigg[1 - \frac{f'(r) + \frac{1}{2} f''(r)(x_{n}  - r)}{f'(r)}\bigg]
+        \end{equation}
+        Isolando $x_{n} - r$:
+        \begin{equation}
+            x_{n+1} - r = -(x_{n} - r)^2\bigg[\frac{\frac{1}{2} f''(r)}{f'(r)}\bigg]
+        \end{equation}
+        Rearranjando:
+        \begin{equation}
+            r - x_{n+1} = (r - x_{n})^2\bigg[\frac{\frac{1}{2} f''(r)}{f'(r)}\bigg]
+        \end{equation}
+        Como $r - x_{n}$ \'e o erro cometido na n-\'essima itera\c{c}\~ao e $r - x_{n+1}$ \'e o erro cometido na n+1-\'essima itera\c{c}\~ao, temos que o erro da itera\c{c}\~ao n+1 \'e proporcional ao quadrado do erro da itera\c{c}\~ao n e portanto a converg\^encia \'e quadratica.
 
-        Resultados:
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.8\textwidth]{../images/results-ex-1.png}
-            \caption{Teste feito para gerar o gr\'afico}
-        \end{figure}
 
-        \begin{figure}[H]
-            \centering
-            \includegraphics[width=0.8\textwidth]{../images/grafic-ex-1.png}
-            \caption{f(x) ao decorrer das itera\c{c}\~oes}
-        \end{figure}
+%        C\'odigo Escrito:
+%        \lstinputlisting[language=Fortran]{../L2-5255417-ex-1.f90}
+
+%        Resultados:
+%        \begin{figure}
+%            \centering
+%            \includegraphics[width=0.8\textwidth]{../images/results-ex-1.png}
+%         \caption{Teste feito para gerar o gr\'afico}
+%        \end{figure}
+
+%        \begin{figure}[H]
+%            \centering
+%            \includegraphics[width=0.8\textwidth]{../images/grafic-ex-1.png}
+%            \caption{f(x) ao decorrer das itera\c{c}\~oes}
+%        \end{figure}
        
-        Testando para o caso $f(x) = 3x^2 - 10 = 0$ percebe-se - pelo gr\'afico obtido -  que o m\'etodo Newton-Raphson converge quadraticamente.
+%        Testando para o caso $f(x) = 3x^2 - 10 = 0$ percebe-se  que o m\'etodo Newton-Raphson converge quadraticamente.
 
     \subsection{Exerc\'icio 2}
 
@@ -248,6 +287,7 @@ Professor: Attilio Cucchieri\\
             \end{figure}
 
             Percebe-se que ambos os m\'etodos foram suficientes para encontrar as raizes da fun\c{c}\~ao. Contudo o m\'etodo de Newton-Raphson foi mais eficiente em encontrar em menos itera\c{c}\~oes as raizes da fun\c{c}\~ao.
+            Apesar da maior efi\^encia do m\'etodo de Newton-Raphson, o m\'etodo da secante \'e \'util para casos onde a derivada da fun\c{c}\~ao \'e complicada de se calcular - ou at\'e mesmo n\~ao existe derivada.
 
 \section{Eigenvalues of the wave equation}
 
