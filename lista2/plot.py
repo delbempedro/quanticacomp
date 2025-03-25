@@ -16,8 +16,8 @@ Authors:
   - Pedro C. Delbem <pedrodelbem@usp.br>
 """
 
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np # type: ignore
+import matplotlib.pyplot as plt # type: ignore
 import os
 
 def plot_from_file(filename, output_folder="images", grafic_file_name="output.txt", grafic_title="", xlabel="x", ylabel="y"):

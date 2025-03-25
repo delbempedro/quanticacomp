@@ -1,5 +1,23 @@
-import numpy as np
-import matplotlib.pyplot as plt
+"""
+File: plot-with-header.py
+
+Description:
+  Plot the data from the Fortran program which has a header for each i interation.
+
+Dependencies:
+- Numpy
+- Matplotlib
+- OS
+
+Since:
+  - 03/2025
+
+Authors:
+  - Pedro C. Delbem <pedrodelbem@usp.br>
+"""
+
+import numpy as np # type: ignore
+import matplotlib.pyplot as plt # type: ignore
 import os
 
 def parse_coefficients(coefficients_str):
