@@ -40,24 +40,50 @@ program newton_raphson
     df_x_k = df(x_k,f_x)
     iteration = 1
 
+    !open output file
     open(unit=1, file='output.txt', action='write')
 
+    !print firstiteration
+    write(1,*) iteration, f(x_k,f_x)
+
+    !update f_x_k and df_x_k
     f_x_k = f(x_k,f_x)
     df_x_k = df(x_k,f_x)
+
+    !update x_kplus1
     x_kplus1 = x_k - f_x_k/df_x_k
+
+    !update iteration
     iteration = iteration + 1
+
+    !print second iteration
     write(1,*) iteration, f(x_kplus1,f_x)
 
     !Newton-Raphson method
     do while (abs(x_kplus1 - x_k) > 1e-6)
+
+        !update x_k
         x_k = x_kplus1
+
+        !update f_x_k and df_x_k
         f_x_k = f(x_k,f_x)
         df_x_k = df(x_k,f_x)
+
+        !update x_kplus1
         x_kplus1 = x_k - f_x_k/df_x_k
+
+        !update iteration
         iteration = iteration + 1
+
+        !print iteration
         write(1,*) iteration, f(x_kplus1,f_x)
+
     end do
 
+    !print root
+    write(*,*) 'Root:', x_kplus1
+
+    !close output file
     close(1)
 
 contains
