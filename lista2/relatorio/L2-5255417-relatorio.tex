@@ -293,15 +293,34 @@ Professor: Attilio Cucchieri\\
 
     \subsection{Exerc\'icio 1}
 
-        Tarefa: Achar a precis\~ao  do computador, i.e., o maior n\'umero positivo  tal que
-        1 + $\epsilon$ = 1, usando precis\~ao simples e dupla.
+        Tarefa: Escreva a transforma\c{c}\~ao que permitem escrever a equa\c{c}\~ao de Schr\"odinger para os
+        autoestados de uma part\'icula em um po\c{c}o infinito na forma
+        \begin{equation}
+            \frac{d^2}{dx^2}\psi(x) = -k^2\psi(x) \quad \text{com} \quad \psi(0) = 0 \text{ e } \psi(\infty) = 0
+        \end{equation}
 
-        C\'odigo Escrito:
-        \lstinputlisting[language=Fortran]{../L2-5255417-ex-3.f90}
+        Seja a equação de Schr\"odinger:
+        \begin{equation}
+                \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)\right)\psi(x) = E\psi(x)
+        \end{equation}
+        Para o caso do po\c{c}o infinito a equa\c{c}\~ao pode ser escrita como:
+        \begin{equation}
+                -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\psi(x) = E\psi(x) \quad \text{com} \quad 0 \leq x \leq L 
+        \end{equation}
+        Para tornar adimensional, fazemos a transforma\c{c}\~ao $x \longrightarrow x/L$:
+        \begin{equation}
+                -\frac{\hbar^2}{2mL^2}\frac{d^2}{dx^2}\psi(x) = E\psi(x) \quad \text{com} \quad 0 \leq x \leq 1
+        \end{equation}
+        Rearranjando:
+        \begin{equation}
+            \frac{d^2}{dx^2}\psi(x) = -\frac{2mEL^2}{\hbar^2}\psi(x) \quad \text{com} \quad 0 \leq x \leq 1
+        \end{equation}
+        Note que $\frac{2mEL^2}{\hbar^2}$ \'e adimensional - como desejado. Ent\~ao, definimos $k^2 = \frac{2mEL^2}{\hbar^2}$ - obtendo:
+        \begin{equation}
+            \frac{d^2}{dx^2}\psi(x) = -k^2\psi(x) \quad \text{com} \quad \psi(0) = 0 \text{ e } \psi(\infty) = 0
+        \end{equation}
+        que \'e a equa\c{c}\~ao adimensional desejada.
 
-        Resultados:
-
-        Nota-se que os valores obtidos correspondem aos valores esperados.
 
     \subsection{Exerc\'icio 2}
 

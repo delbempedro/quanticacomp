@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  25 MAR 2025 18:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  26 MAR 2025 07:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -681,9 +681,9 @@ Package pdftex.def Info: ../images/grafic-ex-2.2-secant-method-20.png  used on i
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
 
 
-[14 <../images/results-ex-2.2-20.png> <../images/grafic-ex-2.2-newton-raphson-method-20.png>] (../L2-5255417-ex-3.f90
+[14 <../images/results-ex-2.2-20.png> <../images/grafic-ex-2.2-newton-raphson-method-20.png>]
 
-[15 <../images/grafic-ex-2.2-secant-method-20.png>]) (../L2-5255417-ex-4.f90)
+[15 <../images/grafic-ex-2.2-secant-method-20.png>] (../L2-5255417-ex-4.f90)
 
 [16] (../L2-5255417-ex-5.f90)
 
@@ -696,18 +696,18 @@ Package rerunfilecheck Info: File `L2-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 236F8DE84CB911EEA25168E0E818CB5E;1421.
  ) 
 Here is how much of TeX's memory you used:
- 15353 strings out of 473579
- 252133 string characters out of 5705100
+ 15337 strings out of 473579
+ 251832 string characters out of 5705100
  1133891 words of memory out of 5000000
- 37783 multiletter control sequences out of 15000+600000
+ 37780 multiletter control sequences out of 15000+600000
  563633 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,648b,2366s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on L2-5255417-relatorio.pdf (18 pages, 564025 bytes).
+Output written on L2-5255417-relatorio.pdf (18 pages, 569042 bytes).
 PDF statistics:
- 551 PDF objects out of 1000 (max. 8388607)
- 464 compressed objects within 5 object streams
- 285 named destinations out of 1000 (max. 500000)
+ 539 PDF objects out of 1000 (max. 8388607)
+ 452 compressed objects within 5 object streams
+ 275 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
