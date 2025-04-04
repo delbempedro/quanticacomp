@@ -291,7 +291,7 @@ Professor: Attilio Cucchieri\\
 
 \section{Eigenvalues of the wave equation}
 
-    \subsection{Exerc\'icio 1}
+    \subsection{Exerc\'icio 3}
 
         Tarefa: Escreva a transforma\c{c}\~ao que permitem escrever a equa\c{c}\~ao de Schr\"odinger para os
         autoestados de uma part\'icula em um po\c{c}o infinito na forma
@@ -322,36 +322,27 @@ Professor: Attilio Cucchieri\\
         que \'e a equa\c{c}\~ao adimensional desejada.
 
 
-    \subsection{Exerc\'icio 2}
+    \subsection{Exerc\'icio 4}
 
-        Tarefa: Calcular
-
-        \begin{equation} e^{-x} = 1 - x + x^2/2! - x^3/3! + ... \end{equation}
-
-        para x = 0.1, 1, 10, 100 e 1000 com um erro menor do que $10^{-8}$. Problema: quando truncar a s\'erie? \'E preciso calcular o fatorial explicitamente? Comparar o valor obtido usando a s\'erie com o resultado exato.
+        Tarefa: Escreva um c\'odigo para calcular os primeiros tr\^es n\'iveis de energia para o po\c{c}o de potencial inﬁnito, usando o shooting method e as condi\c{c}\~oes de contorno $\psi(0) = 0$ e
+        $\psi '(0) 6 \neq  0$. Compare o resultado com a solu\c{c}\~ao exata.
 
         C\'odigo Escrito:
         \lstinputlisting[language=Fortran]{../L2-5255417-ex-4.f90}
 
         Resultados:
 
-        Descri\c{c}\~ao: O c\'odigo faz um loop onde, em cada itera\c{c}\~ao, calcula o valor da s\'erie para um valor de x diferente. Na subrotina "compute-exponencial" calcula-se a s\'erie definindo o pr\'oximo termo como a multiplica\c{c}\~ao do termo anterior por -x/n, pois - deste modo - n\~ao se faz necess\'ario calcular o fatorial explicitamente. Ademais, interrompe-se a soma quando o termo atual for menor que $10^{-8}$ garantindo a precis\~ao desejada, uma vez que cada termo da s\'erie \'e menor - em m\'odulo - que o anterior.
+    
 
-        Por fim, percebe-se que o resultado eperado foi obtido para todos os casos testados - com exe\c{c}\~ao dos casos onde o resultado \'e menor que a precis\~ao.
+    \subsection{Exerc\'icio 5}
 
-    \subsection{Exerc\'icio 3}
-
-        Tarefa: Considerar a somat\'oria
-
-        \begin{equation} \Sigma (N) = \sum_{n=1}^{2N} (-1)^n\frac{n}{n+1} = - \sum_{n=1}^N \frac{2n-1}{2n} + \sum_{n=1}^N \frac{2n}{2n+1} = \sum_{n=1}^N \frac{1}{2n(2n+1)} \end{equation}
-
-        e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas acima. Comparar os resultados usando precis \~ao simples.
+        Tarefa: Escreva um c\'odigo para calcular os primeiros tr\^es n\'iveis de energia para o po\c{c}o de potencial inﬁnito, usando o m\'etodo da secante e as condi\c{c}\~oes de contorno $\psi(0) = 0$ e
+        $\psi '(0) 6 \neq  0$. Compare o resultado com a solu\c{c}\~ao exata e com o resultado do exerc\'icio 4.
 
         C\'odigo Escrito:
         \lstinputlisting[language=Fortran]{../L2-5255417-ex-5.f90}
 
         Resultados:
-
-        Nota-se que a primeira s\'erie demora \'e mais inst\'avel do que as demais. Al\'em disso, a terceira s\'erie se mostra mais est\'avel que a segunda - sendo ent\~ao a melhor vers\~ao.
+        
 
 \end{document}
