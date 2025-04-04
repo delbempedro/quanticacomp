@@ -21,11 +21,14 @@ program Runge_Kutta
     !declare parameters
     integer, parameter :: n = 100
     real, parameter :: lambda = -4.0*(2.0*atan(1.0))**2.0
-    real, parameter :: h = 0.1
 
     !declare variables
     integer :: i
-    real y(0:n), v(0:n), k1, k2, k3, k4, l1, l2, l3, l4
+    real y(0:n), v(0:n), k1, k2, k3, k4, l1, l2, l3, l4, h
+
+    !define h
+    write(*,*) "Insert h:"
+    read(*,*) h
 
     !initialize y and v
     y(0) = 1.0
