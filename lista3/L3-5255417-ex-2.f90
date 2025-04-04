@@ -30,9 +30,15 @@ program Runge_Kutta
     !initialize y and v
     y(0) = 1.0
     v(0) = 0.0
+
+    !open file for writing results
+    open(1, file='results.txt', status='replace')
     
     !compute Runge-Kutta method
     do i = 0, n-1
+
+        !print current step
+        write(1,*) i, y(i), v(i)
 
         !compute coefficients
         k1 = v(i)
@@ -50,12 +56,10 @@ program Runge_Kutta
 
     end do
 
-    !print results
-    open(1, file='results.txt', status='replace')
-    write(1,*) 'i', 'y(i)', 'v(i)'
-    do i = 0, n
-        write(1,*) i, y(i), v(i)
-    end do
+    !print last step
+    write(1,*) n, y(n), v(n)
+
+    !close file
     close(1)
 
 end program Runge_Kutta

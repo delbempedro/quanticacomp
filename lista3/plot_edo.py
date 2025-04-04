@@ -2,7 +2,7 @@
 File: plot.py
 
 Description:
-  Plot the data from the Fortran program for each i interation.
+  Plot the data from the Fortran program which solve the EDO for each i interation.
 
 Dependencies:
 - Numpy
