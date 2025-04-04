@@ -1,5 +1,5 @@
 !------------------------------------------------------------
-! File: L2-5255417-ex-3.f90
+! File: L3-5255417-ex-2.f90
 !
 ! Description:
 !   Solve second order differential equation using Runge-Kutta method
