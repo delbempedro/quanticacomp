@@ -188,6 +188,11 @@ Professor: Attilio Cucchieri\\
         C\'odigo Escrito:
         \lstinputlisting[language=Fortran]{../L3-5255417-ex-2.f90}
 
+        O c\'odigo foi compilado com o comando:
+        \begin{verbatim}
+            gfortran L3-5255417-ex-2.f90 -o L3-5255417-ex-2.exe
+        \end{verbatim}
+
         Resultados:
         \begin{figure}[H]
             \centering
@@ -205,10 +210,22 @@ Professor: Attilio Cucchieri\\
         \begin{equation*}
             \frac{d^{2}y(x)}{dx^{2}} = -4\pi^{2}y(x)
         \end{equation*}
-        com as condi\c{c}\~oes iniciais $y(x=0) = 0$ e $y'(x=0) = 0$ usando o algoritimo de Numerov. Explique como foram escolhidos os valores iniciais $y_{0}$ e $y_{1}$. Compare o resultado com a solu\c{c}\~ao obtida no exerc\'icio anterior.
+        com as condi\c{c}\~oes iniciais $y(0) = 1$ e $y'(0) = 0$ usando o algoritimo de Numerov. Explique como foram escolhidos os valores iniciais $y_{0}$ e $y_{1}$. Compare o resultado com a solu\c{c}\~ao obtida no exerc\'icio anterior.
 
         C\'odigo Escrito:
-        %\lstinputlisting[language=Fortran]{../L3-5255417-ex-3.f90}
+        \lstinputlisting[language=Fortran]{../L3-5255417-ex-3.f90}
+
+        O c\'odigo foi compilado com o comando:
+        \begin{verbatim}
+            gfortran L3-5255417-ex-3.f90 -o L3-5255417-ex-3.exe
+        \end{verbatim}
+
+        Resultados:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-3.png}
+            \caption{Gr\'aficos de $y(x)$}
+        \end{figure}
 
         
 \end{document}

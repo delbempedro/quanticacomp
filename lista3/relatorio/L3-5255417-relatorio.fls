@@ -200,6 +200,14 @@ INPUT ../images/results-ex-2.png
 INPUT ../images/results-ex-2.png
 INPUT ../images/results-ex-2.png
 INPUT ../images/results-ex-2.png
+INPUT ../L3-5255417-ex-3.f90
+INPUT ../L3-5255417-ex-3.f90
+INPUT ../L3-5255417-ex-3.f90
+INPUT ../images/results-ex-3.png
+INPUT ../images/results-ex-3.png
+INPUT ../images/results-ex-3.png
+INPUT ../images/results-ex-3.png
+INPUT ../images/results-ex-3.png
 INPUT L3-5255417-relatorio.aux
 INPUT ./L3-5255417-relatorio.out
 INPUT ./L3-5255417-relatorio.out
@@ -214,3 +222,4 @@ INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fon
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
+INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
