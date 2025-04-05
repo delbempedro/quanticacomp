@@ -19,7 +19,7 @@ program shooting_method
     implicit none
 
     !define variables
-    real deltax, deltak, phi_deltax, dphi_0, k, phi_xminus1, phi_x, phi_xplus1
+    real deltax, deltak, phi_deltax, dphi_0, k, phi_xminus1, phi_x, phi_xplus1, x
     integer i, number_of_iterations
 
     !define constants
@@ -28,12 +28,15 @@ program shooting_method
     !define phi(0)
     phi_0 = 0.0
 
+    !initialize x
+    x = 0.0
+
+    write(*,*) "Insert the number of iterations:"
+    read(*,*) number_of_iterations
+
     write(*,*) "Insert k:"
     read(*,*) k
 
-    write(*,*) "Insert deltax:"
-    read(*,*) deltax
-    
     write(*,*) "Insert deltak:"
     read(*,*) deltak
 
@@ -44,30 +47,25 @@ program shooting_method
         read(*,*) phi_deltax
     end do
 
-    write(*,*) "Insert dphi_0 (non zero):"
-    read(*,*) dphi_0
-    do while (dphi_0 == 0.0)
-        write(*,*) "dphi_0 cannot be zero, input again"
-        read(*,*) dphi_0
-    end do
+    !define deltax
+    deltax = 1.0/number_of_iterations
+    write(*,*) "deltax: ", deltax
 
-    !define number of iterations
-    number_of_iterations = int(1.0/deltax)
-
-    !update phi
-    phi_xminus1 = phi_0
-    phi_x = phi_deltax
-    phi_xplus1 = 2.0*phi_x - phi_xminus1 - k**2*deltax**2*phi_x
-
-    !do first try
-    !call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations)
+    !initialize phi
+    phi_x = 1.0
     
     !update k until phi(1) >= deltak
-    do while (phi_xplus1 >= deltak)
+    do while (phi_x >= deltak)
+
+        !do the first iteration
+        phi_xminus1 = phi_0
+        phi_x = phi_deltax
+        phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+        x = deltax
 
         !update phi
-        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations)
-        write(*,*) "phi(1) = ", phi_xplus1
+        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations, x)
+
         !update k
         k = k + deltak
 
@@ -75,57 +73,69 @@ program shooting_method
 
     write(*,*) "First energy level: ", k
 
+    !update k
     k = k + 2.0*deltak
-    phi_xminus1 = phi_0
-    phi_x = phi_deltax
-    phi_xplus1 = 2.0*phi_x - phi_xminus1 - k**2*deltax**2*phi_x
 
     !second level    
-    do while (phi_xplus1 >= deltak) !update k until phi(1) >= deltak
+    do while (phi_x >= deltak) !update k until phi(1) >= deltak
+
+        !do the first iteration
+        phi_xminus1 = phi_0
+        phi_x = phi_deltax
+        phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+        x = deltax
+
+        !update phi
+        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations, x)
 
         !update k
         k = k + deltak
-
-        !update phi
-        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations)
 
     end do
 
     write(*,*) "Second energy level: ", k
 
+    !update k
     k = k + 2.0*deltak
-    phi_xminus1 = phi_0
-    phi_x = phi_deltax
-    phi_xplus1 = 2.0*phi_x - phi_xminus1 - k**2*deltax**2*phi_x
 
     !third level
-    do while (phi_xplus1 >= deltak) !update k until phi(1) >= deltak
+    do while (phi_x >= deltak) !update k until phi(1) >= deltak
+
+        !do the first iteration
+        phi_xminus1 = phi_0
+        phi_x = phi_deltax
+        phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+        x = deltax
+
+        !update phi
+        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations, x)
 
         !update k
         k = k + deltak
-
-        !update phi
-        call update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations)
 
     end do
 
     write(*,*) "Third energy level: ", k
 
+    write(*,*) deltax*number_of_iterations
+
 contains
 
-    subroutine update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations)
+    subroutine update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations, x)
 
         !deactivate implicit typing
         implicit none
 
         !define variables
-        real, intent(inout) :: phi_xminus1, phi_x, phi_xplus1, k, deltax
+        real, intent(inout) :: phi_xminus1, phi_x, phi_xplus1, k, deltax, x
         integer, intent(in) :: number_of_iterations
 
-        do i = 1, number_of_iterations
+        do i = 2, number_of_iterations
             phi_xminus1 = phi_x
             phi_x = phi_xplus1
-            phi_xplus1 = 2.0*phi_x - phi_xminus1 - k**2*deltax**2*phi_x
+            phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+            x = x + deltax
+            write(*,*) "x: ", x, "i", i
         end do
 
     end subroutine update_phi

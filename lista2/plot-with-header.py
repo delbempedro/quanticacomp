@@ -16,124 +16,148 @@ Authors:
   - Pedro C. Delbem <pedrodelbem@usp.br>
 """
 
+#Import necessary libraries
 import numpy as np # type: ignore
 import matplotlib.pyplot as plt # type: ignore
 import os
+import re
 
-def parse_coefficients(coefficients_str):
+def extract_data(filename):
     """
-    Parses the coefficient string and formats it as a LaTeX-formatted polynomial equation.
-    """
-    coeffs = list(map(float, coefficients_str.split()))
-    terms = []
-    degree = len(coeffs) - 1
-    
-    for i, coeff in enumerate(coeffs):
-        if coeff != 0:
-            exponent = degree - i
-            coeff_str = f"{int(coeff)}" if coeff.is_integer() else f"{coeff:.2f}"
-            
-            if coeff == 1 and exponent != 0:
-                coeff_str = ""
-            elif coeff == -1 and exponent != 0:
-                coeff_str = "-"
-            
-            if exponent > 1:
-                term = f"{coeff_str}x^{{{exponent}}}"
-            elif exponent == 1:
-                term = f"{coeff_str}x"
-            else:
-                term = f"{coeff_str}"
-            
-            terms.append(term)
-    
-    formatted_equation = " + ".join(terms)
-    formatted_equation = formatted_equation.replace("+ -", "- ")  # Correcting signs
-    
-    return f"${formatted_equation}$"
+    Extract the relevant data from the given file.
 
-def plot_from_file(filename, output_folder="images"):
+    The file is expected to be as produced by the Fortran program,
+    with a header containing the method name, the initial guess,
+    the pre-initial guess (if any), the function expression and
+    the data points.
+
+    Returns a tuple containing the method name, the function expression,
+    the initial guess, the pre-initial guess (or None if not present)
+    and an array of shape (n, 2) containing the iteration number
+    and the absolute value of the function value at that iteration.
+
+    Parameters:
+    - filename: str, the name of the file to read.
+
+    Returns:
+    - method: str, the method name.
+    - fx_expr: str, the function expression.
+    - initial_guess: float, the initial guess.
+    - pre_initial_guess: float or None, the pre-initial guess (if any).
+    - data: ndarray of shape (n, 2) containing the iteration number and
+      the absolute value of the function value at that iteration.
     """
-    Reads a file and creates a simple line plot of the data, ignoring the header.
+    #Read the file and extract the relevant data
+    with open(filename, 'r') as f:
+        lines = f.readlines()
     
-    Parameters
-    ----------
-    filename : str
-        The name of the file to read
-    output_folder : str
-        The folder where the plot image will be saved
-    
-    Returns
-    -------
-    None
-    """
-    # Create the output folder if it does not exist
-    os.makedirs(output_folder, exist_ok=True)
-    
-    # Read the file and extract numerical data
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-    
-    # Extract header information
-    method_name = lines[0].strip()
+    #Extract the method name, initial guess, pre-initial guess (if any),
+    method = lines[0].strip()
     initial_guess = float(lines[1].split(':')[1].strip())
-    initial_guess_str = f"{int(initial_guess)}" if initial_guess.is_integer() else f"{initial_guess:.2f}"
-    coefficients = lines[2].split('=')[1].strip()
-    formatted_equation = parse_coefficients(coefficients)
-    
-    # Generate graph title
-    grafic_title = f"{method_name} f(x) = {formatted_equation} Initial Guess = {initial_guess_str}"
-    grafic_file_name = f"grafic-ex-2.2-{method_name.lower().replace(' ', '-')}-{initial_guess_str.replace('.', '')}.png"
-    
-    # Skip header and extract numerical values
+    pre_initial_guess = None
+    if 'Pre-initial guess' in lines[2]:
+        pre_initial_guess = float(lines[2].split(':')[1].strip())
+        fx_expr = lines[3].split('=')[1].strip()
+        data_start = 4
+    else:
+        fx_expr = lines[2].split('=')[1].strip()
+        data_start = 3
+
+    #Extract the data points
     data = []
-    for line in lines[3:]:  # Ignoring the first three lines
-        parts = line.split()
-        if len(parts) == 2:
-            try:
-                data.append([int(parts[0]), float(parts[1])])
-            except ValueError:
-                continue
+    for line in lines[data_start:]:
+        match = re.match(r'^\s*(\d+)\s+([-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)', line)
+        if match:
+            data.append((int(match.group(1)), float(match.group(2))))
     
-    # Convert data to numpy array
-    data = np.array(data)
-    x = data[:, 0]
-    y = data[:, 1]
-    
-    # Create the plot
-    plt.figure(figsize=(8, 6))
-    plt.plot(x, y, marker='o', linestyle='-', color='b', label='f(x) values')
-    
-    # Set the labels and title
-    plt.xlabel("Iterations")
-    plt.ylabel("f(x)")
-    plt.title(grafic_title, fontsize=12)
-    plt.grid()
-    
-    # Save the plot in the specified folder
-    file_name = os.path.join(output_folder, grafic_file_name)
-    plt.savefig(file_name)
-    
-    # Close the plot
+    #Convert the data to a numpy array
+    return method, fx_expr, initial_guess, pre_initial_guess, np.array(data)
+
+def plot_convergence(file1, file2, output_folder="images"):
+    """
+    Plot the convergence of two numerical methods from data files.
+
+    This function reads convergence data from two files, which are expected
+    to be formatted with headers and data points as produced by a Fortran program.
+    It plots the convergence of each method on a log scale, comparing the 
+    absolute values of the function values at each iteration.
+
+    Parameters:
+    - file1: str, the filename containing data for the first method.
+    - file2: str, the filename containing data for the second method.
+    - output_folder: str, optional, the folder where the plot image will be saved.
+                     Defaults to 'images'.
+
+    Raises:
+    - ValueError: if the function expressions from the two files do not match.
+
+    The plot is saved to the specified output folder, with a filename generated
+    based on the function expression and initial guesses.
+    """
+    #Create the output folder if it does not exist
+    os.makedirs(output_folder, exist_ok=True)
+
+    #Extract data from the files
+    m1, f1_expr, g1, p1, d1 = extract_data(file1)
+    m2, f2_expr, g2, p2, d2 = extract_data(file2)
+
+    #Check if the function expressions are the same
+    if f1_expr != f2_expr:
+        raise ValueError("Both files must refer to the same function.")
+
+    #Check if the methods are the same
+    x1, y1 = d1[:, 0], np.abs(d1[:, 1])
+    x2, y2 = d2[:, 0], np.abs(d2[:, 1])
+
+    #Check if the methods are the same
+    plt.figure(figsize=(10, 6))
+    plt.yscale("log")
+
+    #Set the title and labels
+    label1 = f"{m1} | Initial: {g1}" + (f" | Pre: {p1}" if p1 is not None else "")
+    label2 = f"{m2} | Initial: {g2}" + (f" | Pre: {p2}" if p2 is not None else "")
+    title = f"Convergence for f(x) = {f1_expr}\n{label1} & {label2}"
+
+    #Plot the data
+    plt.plot(x1, y1, 'o-', label=label1)
+    plt.plot(x2, y2, 'x--', label=label2)
+
+    #Set the labels and title
+    plt.xscale("linear")
+    plt.yscale("log")
+    plt.xlabel("Iteration")
+    plt.ylabel("|f(x)| (log scale)")
+    plt.title(title)
+    plt.grid(True, which="both", linestyle="--", linewidth=0.5)
+    plt.legend()
+
+    #Generate filename
+    f_expr_sanitized = f1_expr.replace(" ", "").replace("^", "")
+    g_str1 = str(g1).replace(".", "_")
+    p_str1 = str(p1).replace(".", "_") if p1 is not None else "none"
+    g_str2 = str(g2).replace(".", "_")
+    p_str2 = str(p2).replace(".", "_") if p2 is not None else "none"
+
+    #Create the filename
+    filename = f"convergence-{f_expr_sanitized}-g{g_str1}-p{p_str1}_g{g_str2}-p{p_str2}.png"
+    filepath = os.path.join(output_folder, filename)
+
+    #Save the plot
+    plt.tight_layout()
+    plt.savefig(filepath)
     plt.close()
+    print(f"Saved plot: {filepath}")
 
 def main():
     """
-    Main function to execute the plotting of data from a specified file.
-    
-    Returns
-    -------
-    None
+    Main function to execute the script.
+
+    Plots the convergence of Newton-Raphson and Secant methods for two functions
+    and saves the plots to the output folder.
     """
-    print("Insert first data file name:")
-    data_file_name = str(input().strip())
+    plot_convergence("newtonraphson1.txt", "secant1.txt")
+    plot_convergence("newtonraphson2.txt", "secant2.txt")
 
-    plot_from_file(data_file_name)
-
-    print("Insert second data file name:")
-    data_file_name = str(input().strip())
-    
-    plot_from_file(data_file_name)
-
-if __name__ == '__main__':
+#Main function to execute the script
+if __name__ == "__main__":
     main()

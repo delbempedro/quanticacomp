@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  4 APR 2025 18:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  5 APR 2025 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -539,7 +539,11 @@ Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on in
 
 [4]
 
-[5])
+[5]
+
+[6]
+
+[7])
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 143.
@@ -552,64 +556,66 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 143.
 
-<../images/results-ex-2-5.png, id=263, 351.56343pt x 202.50656pt>
+<../images/results-ex-2-5.png, id=388, 351.56343pt x 202.50656pt>
 File: ../images/results-ex-2-5.png Graphic file (type png)
 <use ../images/results-ex-2-5.png>
 Package pdftex.def Info: ../images/results-ex-2-5.png  used on input line 148.
 (pdftex.def)             Requested size: 341.43437pt x 196.66904pt.
-<../images/grafic-ex-2-newton-raphson-method-5.png, id=265, 578.16pt x 433.62pt>
+
+
+[8]
+<../images/grafic-ex-2-newton-raphson-method-5.png, id=420, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-newton-raphson-method-5.png Graphic file (type png)
 <use ../images/grafic-ex-2-newton-raphson-method-5.png>
 Package pdftex.def Info: ../images/grafic-ex-2-newton-raphson-method-5.png  used on input line 156.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-
-
-[6 <../images/results-ex-2-5.png>]
-<../images/grafic-ex-2-secant-method-5.png, id=289, 578.16pt x 433.62pt>
+<../images/grafic-ex-2-secant-method-5.png, id=421, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-secant-method-5.png Graphic file (type png)
 <use ../images/grafic-ex-2-secant-method-5.png>
 Package pdftex.def Info: ../images/grafic-ex-2-secant-method-5.png  used on input line 162.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-<../images/results-ex-2-10.png, id=290, 355.3275pt x 205.5178pt>
+
+
+[9 <../images/results-ex-2-5.png> <../images/grafic-ex-2-newton-raphson-method-5.png>]
+<../images/results-ex-2-10.png, id=430, 355.3275pt x 205.5178pt>
 File: ../images/results-ex-2-10.png Graphic file (type png)
 <use ../images/results-ex-2-10.png>
 Package pdftex.def Info: ../images/results-ex-2-10.png  used on input line 169.
 (pdftex.def)             Requested size: 341.43437pt x 197.48927pt.
-
-
-[7 <../images/grafic-ex-2-newton-raphson-method-5.png> <../images/grafic-ex-2-secant-method-5.png>]
-<../images/grafic-ex-2-newton-raphson-method-10.png, id=299, 578.16pt x 433.62pt>
+<../images/grafic-ex-2-newton-raphson-method-10.png, id=431, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-newton-raphson-method-10.png Graphic file (type png)
 <use ../images/grafic-ex-2-newton-raphson-method-10.png>
 Package pdftex.def Info: ../images/grafic-ex-2-newton-raphson-method-10.png  used on input line 177.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-<../images/grafic-ex-2-secant-method-10.png, id=300, 578.16pt x 433.62pt>
+
+
+[10 <../images/grafic-ex-2-secant-method-5.png> <../images/results-ex-2-10.png>]
+<../images/grafic-ex-2-secant-method-10.png, id=440, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-secant-method-10.png Graphic file (type png)
 <use ../images/grafic-ex-2-secant-method-10.png>
 Package pdftex.def Info: ../images/grafic-ex-2-secant-method-10.png  used on input line 183.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-
-
-[8 <../images/results-ex-2-10.png> <../images/grafic-ex-2-newton-raphson-method-10.png>]
-<../images/results-ex-2-20.png, id=309, 355.3275pt x 205.5178pt>
+<../images/results-ex-2-20.png, id=441, 355.3275pt x 205.5178pt>
 File: ../images/results-ex-2-20.png Graphic file (type png)
 <use ../images/results-ex-2-20.png>
 Package pdftex.def Info: ../images/results-ex-2-20.png  used on input line 190.
 (pdftex.def)             Requested size: 341.43437pt x 197.48927pt.
-<../images/grafic-ex-2-newton-raphson-method-20.png, id=310, 578.16pt x 433.62pt>
+
+
+[11 <../images/grafic-ex-2-newton-raphson-method-10.png> <../images/grafic-ex-2-secant-method-10.png>]
+<../images/grafic-ex-2-newton-raphson-method-20.png, id=450, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-newton-raphson-method-20.png Graphic file (type png)
 <use ../images/grafic-ex-2-newton-raphson-method-20.png>
 Package pdftex.def Info: ../images/grafic-ex-2-newton-raphson-method-20.png  used on input line 198.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-
-
-[9 <../images/grafic-ex-2-secant-method-10.png> <../images/results-ex-2-20.png>]
-<../images/grafic-ex-2-secant-method-20.png, id=319, 578.16pt x 433.62pt>
+<../images/grafic-ex-2-secant-method-20.png, id=451, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2-secant-method-20.png Graphic file (type png)
 <use ../images/grafic-ex-2-secant-method-20.png>
 Package pdftex.def Info: ../images/grafic-ex-2-secant-method-20.png  used on input line 204.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
 
+
+[12 <../images/results-ex-2-20.png> <../images/grafic-ex-2-newton-raphson-method-20.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 210.
@@ -622,76 +628,76 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 210.
 
-<../images/results-ex-2.2-5.png, id=320, 355.3275pt x 202.50656pt>
+<../images/results-ex-2.2-5.png, id=461, 355.3275pt x 202.50656pt>
 File: ../images/results-ex-2.2-5.png Graphic file (type png)
 <use ../images/results-ex-2.2-5.png>
 Package pdftex.def Info: ../images/results-ex-2.2-5.png  used on input line 215.
 (pdftex.def)             Requested size: 341.43437pt x 194.59564pt.
 
 
-[10 <../images/grafic-ex-2-newton-raphson-method-20.png> <../images/grafic-ex-2-secant-method-20.png>]
-<../images/grafic-ex-2.2-newton-raphson-method-5.png, id=329, 578.16pt x 433.62pt>
+[13 <../images/grafic-ex-2-secant-method-20.png> <../images/results-ex-2.2-5.png>]
+<../images/grafic-ex-2.2-newton-raphson-method-5.png, id=471, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-newton-raphson-method-5.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-newton-raphson-method-5.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-newton-raphson-method-5.png  used on input line 223.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-<../images/grafic-ex-2.2-secant-method-5.png, id=330, 578.16pt x 433.62pt>
+<../images/grafic-ex-2.2-secant-method-5.png, id=472, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-secant-method-5.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-secant-method-5.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-secant-method-5.png  used on input line 229.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-
-
-[11 <../images/results-ex-2.2-5.png> <../images/grafic-ex-2.2-newton-raphson-method-5.png>]
-<../images/results-ex-2.2-10.png, id=339, 355.3275pt x 202.50656pt>
+<../images/results-ex-2.2-10.png, id=473, 355.3275pt x 202.50656pt>
 File: ../images/results-ex-2.2-10.png Graphic file (type png)
 <use ../images/results-ex-2.2-10.png>
 Package pdftex.def Info: ../images/results-ex-2.2-10.png  used on input line 236.
 (pdftex.def)             Requested size: 341.43437pt x 194.59564pt.
-<../images/grafic-ex-2.2-newton-raphson-method-10.png, id=340, 578.16pt x 433.62pt>
+
+
+[14 <../images/grafic-ex-2.2-newton-raphson-method-5.png> <../images/grafic-ex-2.2-secant-method-5.png>]
+<../images/grafic-ex-2.2-newton-raphson-method-10.png, id=482, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-newton-raphson-method-10.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-newton-raphson-method-10.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-newton-raphson-method-10.png  used on input line 244.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-
-
-[12 <../images/grafic-ex-2.2-secant-method-5.png> <../images/results-ex-2.2-10.png>]
-<../images/grafic-ex-2.2-secant-method-10.png, id=350, 578.16pt x 433.62pt>
+<../images/grafic-ex-2.2-secant-method-10.png, id=483, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-secant-method-10.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-secant-method-10.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-secant-method-10.png  used on input line 250.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-<../images/results-ex-2.2-20.png, id=351, 355.3275pt x 202.50656pt>
+
+
+[15 <../images/results-ex-2.2-10.png> <../images/grafic-ex-2.2-newton-raphson-method-10.png>]
+<../images/results-ex-2.2-20.png, id=492, 355.3275pt x 202.50656pt>
 File: ../images/results-ex-2.2-20.png Graphic file (type png)
 <use ../images/results-ex-2.2-20.png>
 Package pdftex.def Info: ../images/results-ex-2.2-20.png  used on input line 257.
 (pdftex.def)             Requested size: 341.43437pt x 194.59564pt.
-
-
-[13 <../images/grafic-ex-2.2-newton-raphson-method-10.png> <../images/grafic-ex-2.2-secant-method-10.png>]
-<../images/grafic-ex-2.2-newton-raphson-method-20.png, id=360, 578.16pt x 433.62pt>
+<../images/grafic-ex-2.2-newton-raphson-method-20.png, id=493, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-newton-raphson-method-20.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-newton-raphson-method-20.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-newton-raphson-method-20.png  used on input line 265.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
-<../images/grafic-ex-2.2-secant-method-20.png, id=361, 578.16pt x 433.62pt>
+
+
+[16 <../images/grafic-ex-2.2-secant-method-10.png> <../images/results-ex-2.2-20.png>]
+<../images/grafic-ex-2.2-secant-method-20.png, id=502, 578.16pt x 433.62pt>
 File: ../images/grafic-ex-2.2-secant-method-20.png Graphic file (type png)
 <use ../images/grafic-ex-2.2-secant-method-20.png>
 Package pdftex.def Info: ../images/grafic-ex-2.2-secant-method-20.png  used on input line 271.
 (pdftex.def)             Requested size: 341.43437pt x 256.07178pt.
 
 
-[14 <../images/results-ex-2.2-20.png> <../images/grafic-ex-2.2-newton-raphson-method-20.png>]
+[17 <../images/grafic-ex-2.2-newton-raphson-method-20.png> <../images/grafic-ex-2.2-secant-method-20.png>] (../L2-5255417-ex-4.f90
 
-[15 <../images/grafic-ex-2.2-secant-method-20.png>] (../L2-5255417-ex-4.f90
+[18]
 
-[16]
+[19]
 
-[17]
+[20])
 
-[18]) (../L2-5255417-ex-5.f90)
+[21] (../L2-5255417-ex-5.f90)
 
-[19] (./L2-5255417-relatorio.aux)
+[22] (./L2-5255417-relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -700,18 +706,18 @@ Package rerunfilecheck Info: File `L2-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 14D1C773CBE570AA6BD4C68B826F6C77;1421.
  ) 
 Here is how much of TeX's memory you used:
- 15473 strings out of 473579
- 253927 string characters out of 5705100
- 1133891 words of memory out of 5000000
- 37788 multiletter control sequences out of 15000+600000
+ 15603 strings out of 473579
+ 255979 string characters out of 5705100
+ 1138891 words of memory out of 5000000
+ 37790 multiletter control sequences out of 15000+600000
  563633 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,510b,2366s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on L2-5255417-relatorio.pdf (20 pages, 581684 bytes).
+Output written on L2-5255417-relatorio.pdf (23 pages, 589709 bytes).
 PDF statistics:
- 707 PDF objects out of 1000 (max. 8388607)
- 614 compressed objects within 7 object streams
- 403 named destinations out of 1000 (max. 500000)
+ 870 PDF objects out of 1000 (max. 8388607)
+ 773 compressed objects within 8 object streams
+ 531 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
