@@ -1,8 +1,8 @@
 """
-File: plot.py
+File: plot_edo.py
 
 Description:
-  Plot the data from the Fortran program which solve the EDO for each i interation.
+  Plot the data from the Fortran program which solves the EDO for each i iteration.
 
 Dependencies:
 - Numpy
@@ -16,56 +16,85 @@ Authors:
   - Pedro C. Delbem <pedrodelbem@usp.br>
 """
 
-import numpy as np # type: ignore
-import matplotlib.pyplot as plt # type: ignore
+import numpy as np  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
 import os
 
-def main(filename="results.txt", output_folder="images"):
+def plot_edo(filename="results.txt", output_folder="images", outputfilename="output.png"):
     """
-    Main function to execute the plotting of data from a specified file.
-
-    This function uses `np.loadtxt` to read data from the specified file
-    and generate a corresponding plot.
+    Plot the data from the Fortran program which solves the EDO for each i iteration.
 
     Parameters
     ----------
     filename : str
-        The name of the file to read. Default is "results.txt".
+        The name of the file containing the data to be plotted. Default is "results.txt".
     output_folder : str
-        The folder where the plot image will be saved. Default is "images".
+        The folder where the image will be saved. Default is "images".
+    outputfilename : str
+        The name of the file to be saved. Default is "output.png".
+
+    Notes
+    -----
+    The first line of the file is skipped, assuming it is a header.
+    The file must have at least two columns, where the first column is the iteration number and the second column is the value of y at that iteration.
+    If there are more than two columns, the third column is assumed to be the second derivative of y.
+    """
+
+    #Create the output folder if it does not exist
+    os.makedirs(output_folder, exist_ok=True)
+
+    #Read the data from the file, skipping the first line (header)
+    data = np.loadtxt(filename, skiprows=1)
+
+    #Detect number of columns
+    num_cols = data.shape[1]
+
+    i = data[:, 0]
+    y = data[:, 1]
+
+    #Plot
+    plt.figure(figsize=(10, 6))
+    plt.plot(i, y, label="y(i)", color='blue', marker='o')
+
+    #If there are more than 2 columns, plot the second derivative
+    if num_cols >= 3:
+        v = data[:, 2]
+        plt.plot(i, v, label="y'(i)", color='red', marker='x')
+
+    plt.xlabel("i")
+    plt.ylabel("Values")
+    plt.title("EDO solution: y(i)" + (" and y'(i)" if num_cols >= 3 else ""))
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+
+    #Save the plot in the specified folder
+    file_name = os.path.join(output_folder, outputfilename)
+    plt.savefig(file_name)
+
+    #Close the plot
+    plt.close()
+
+def main():
+    """
+    Main function to execute the plotting of EDO data.
+
+    This function prompts the user to input the desired output file name
+    for the plot and calls `plot_edo` to read data from 'results.txt',
+    generate the plot, and save it in the 'images' folder with the specified
+    file name.
 
     Returns
     -------
     None
     """
 
-    #Create the output folder if it does not exist
-    os.makedirs(output_folder, exist_ok=True)
+    #Prompt the user for the output file name
+    print("Enter the output file:")
+    outputfilename = input()
 
-    #ead the data from the file, skipping the first line (header)
-    data = np.loadtxt(filename, skiprows=1)
-
-    # Colunas: i, y(i), v(i)
-    i = data[:, 0]
-    y = data[:, 1]
-    v = data[:, 2]
-
-    # Plot
-    plt.figure(figsize=(10, 6))
-    plt.plot(i, y, label="y(i)", color='blue', marker='o')
-    plt.plot(i, v, label="y'(i)", color='red', marker='x')
-    plt.xlabel("i")
-    plt.ylabel("Values")
-    plt.title("EDO solution: y(i) e y'(i)")
-    plt.legend()
-    plt.grid(True)
-    plt.tight_layout()
-    #Save the plot in the specified folder
-    file_name = os.path.join("images", "results-ex-2.png")
-    plt.savefig(file_name)
-
-    #Close the plot
-    plt.close()
+    #Plot the EDO data
+    plot_edo("results.txt", "images", outputfilename=outputfilename)
 
 if __name__ == '__main__':
     main()

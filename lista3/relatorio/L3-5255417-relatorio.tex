@@ -196,12 +196,27 @@ Professor: Attilio Cucchieri\\
         Resultados:
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{../images/results-ex-2.png}
-            \caption{Gr\'aficos de $y(x)$ e $y'(x)$}
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-2-2.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.01}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-2-4.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.05}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-2-1.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.1}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-2-3.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.5}
         \end{figure}
 
-        Nota-se claramente que y(x) = cos(2$\pi$x) e y'(x) = -2$\pi$sen(2$\pi$x), o que confirma a solu\c{c}\~ao da equa\c{c}\~ao diferencial.
-        
+        Nota-se que para os valores de h = 0.1, h = 0.01 e h = 0.05, o resultado obtido s\~ao fun\c{c}\~oes cossenoidais que oscilam de -1 a 1 o que corresponde ao comportamento esperado para a solu\c{c}\~ao da equa\c{c}\~ao diferencial dada. Al\'em disso, as derivadas s\~ao fun\c{c}\~oes senoidais que oscilam de -2$\pi$ a 2$\pi$ o que tamb\'em corresponde ao resultado esperado. Para o valor de h = 0.5, o resultado obtido n\~ao \'e satisfat\'orio, pois a fun\c{c}\~ao n\~ao \'e cossenoidal e a derivada n\~ao \'e senoidal, o que indica que o valor de h = 0.5 \'e muito grande para o algoritmo de Runge-Kutta.
+
 \section{The Numerov Algorithm}
 
     \subsection{Exerc\'icio 3}
@@ -223,9 +238,26 @@ Professor: Attilio Cucchieri\\
         Resultados:
         \begin{figure}[H]
             \centering
-            \includegraphics[width=0.8\textwidth]{../images/results-ex-3.png}
-            \caption{Gr\'aficos de $y(x)$}
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-3-2.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.01}
         \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-3-4.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.05}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-3-1.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.1}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/results-ex-3-3.png}
+            \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.5}
+        \end{figure}
+        
 
+        Nota-se que para os valores de h = 0.1, h = 0.01 e h = 0.05, o resultado obtido s\~ao fun\c{c}\~oes cossenoidais que oscilam de -1 a 1 o que corresponde ao comportamento esperado para a solu\c{c}\~ao da equa\c{c}\~ao diferencial. Para o valor de h = 0.5, o resultado obtido n\~ao \'e satisfat\'orio, pois a fun\c{c}\~ao n\~ao \'e cossenoidal, o que indica que o valor de h = 0.5 \'e muito grande para o algoritmo de Numerov.
         
 \end{document}
