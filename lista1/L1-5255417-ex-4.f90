@@ -83,8 +83,7 @@ contains
             index = index + 1.0
 
         end do
-
-        write(*,*) next_term, old_term, e_x
+        
 
     end subroutine compute_exponential
 

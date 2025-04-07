@@ -20,7 +20,7 @@ program exponential_taylor_series
 
     !define variables
     integer N(14), i, j
-    real exponential_of_minus_x, exponential_of_x, x(5)
+    real*16 exponential_of_minus_x, exponential_of_x, x(5)
 
     !initialize variables
     N = [1,2,3,4,5,6,7,9,10**1,10**2,10**3,10**4,10**5,10**6]
@@ -30,13 +30,14 @@ program exponential_taylor_series
 
     do i=1,5
 
-        !initialize variables
-        exponential_of_minus_x = 0.0
-        exponential_of_x = 0.0
-
         write(1,*) 'x:', x(i)
 
         do j=1,14
+
+            !initialize variables
+            exponential_of_minus_x = 1.0
+            exponential_of_x = 1.0
+
             !compute series
             call compute_series(exponential_of_minus_x, exponential_of_x, N(j), x(i))
 
@@ -44,7 +45,7 @@ program exponential_taylor_series
             exponential_of_x = 1/exponential_of_x
 
             !print result
-            write(1,*) 'N:', N(j), exponential_of_minus_x, exponential_of_x, exp(-x(i))
+            write(1,*) 'N:', N(j), abs(exponential_of_minus_x-exp(-x(i))), abs(exponential_of_x - exp(-x(i)))
 
         end do
 
@@ -62,10 +63,10 @@ contains
         !define variables
         integer i
         integer, intent(in) :: N
-        real j, next_term_minus_x, next_term_x
-        real, intent(in) :: x
-        real, intent(inout) :: exponential_of_minus_x
-        real, intent(inout) :: exponential_of_x
+        real*16 j, next_term_minus_x, next_term_x
+        real*16, intent(in) :: x
+        real*16, intent(inout) :: exponential_of_minus_x
+        real*16, intent(inout) :: exponential_of_x
 
         !initialize next terms
         next_term_minus_x = 1.0
