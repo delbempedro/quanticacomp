@@ -19,17 +19,14 @@ program shooting_method
     implicit none
 
     !define variables
-    real deltax, deltak, phi_deltax, dphi_0, k, phi_xminus1, phi_x, phi_xplus1, x
+    real*8 deltax, deltak, phi_deltax, dphi_0, k, phi_xminus1, phi_x, phi_xplus1, x
     integer i, number_of_iterations
 
     !define constants
-    real phi_0
-
-    !define phi(0)
-    phi_0 = 0.0
+    real*8, parameter :: phi_0 = 0.0d0
 
     !initialize x
-    x = 0.0
+    x = 0.0d0
 
     write(*,*) "Insert the number of iterations:"
     read(*,*) number_of_iterations
@@ -48,19 +45,19 @@ program shooting_method
     end do
 
     !define deltax
-    deltax = 1.0/number_of_iterations
-    write(*,*) "deltax: ", deltax
-
-    !initialize phi
-    phi_x = 1.0
+    deltax = 1.0d0/number_of_iterations
+    
+    !initialize phi_x and phi_xplus1
+    phi_x = 1.0d0
+    phi_xplus1 = 2.0d0
     
     !update k until phi(1) >= deltak
-    do while (phi_x >= deltak)
+    do while (phi_x*phi_xplus1 > 0.0d0)
 
         !do the first iteration
         phi_xminus1 = phi_0
         phi_x = phi_deltax
-        phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+        phi_xplus1 = 2.0d0*phi_x - phi_xminus1 - (k**2.0d0)*(deltax**2.0d0)*phi_x
         x = deltax
 
         !update phi
@@ -76,8 +73,12 @@ program shooting_method
     !update k
     k = k + 2.0*deltak
 
+    !initialize phi_x and phi_xplus1
+    phi_x = 1.0d0
+    phi_xplus1 = 2.0d0
+
     !second level    
-    do while (phi_x >= deltak) !update k until phi(1) >= deltak
+    do while (phi_x*phi_xplus1 > 0.0d0) !update k until phi(1) >= deltak
 
         !do the first iteration
         phi_xminus1 = phi_0
@@ -98,8 +99,13 @@ program shooting_method
     !update k
     k = k + 2.0*deltak
 
+    !initialize phi_x and phi_xplus1
+    phi_x = 1.0d0
+    phi_xplus1 = 2.0d0
+
     !third level
-    do while (phi_x >= deltak) !update k until phi(1) >= deltak
+    do while (phi_x*phi_xplus1 > 0.0d0) !update k until phi(1) >= deltak
+    
 
         !do the first iteration
         phi_xminus1 = phi_0
@@ -117,8 +123,6 @@ program shooting_method
 
     write(*,*) "Third energy level: ", k
 
-    write(*,*) deltax*number_of_iterations
-
 contains
 
     subroutine update_phi(phi_xminus1, phi_x, phi_xplus1, k, deltax, number_of_iterations, x)
@@ -127,15 +131,14 @@ contains
         implicit none
 
         !define variables
-        real, intent(inout) :: phi_xminus1, phi_x, phi_xplus1, k, deltax, x
+        real*8, intent(inout) :: phi_xminus1, phi_x, phi_xplus1, k, deltax, x
         integer, intent(in) :: number_of_iterations
 
         do i = 2, number_of_iterations
             phi_xminus1 = phi_x
             phi_x = phi_xplus1
-            phi_xplus1 = 2.0*phi_x - phi_xminus1 - (k**2.0)*(deltax**2.0)*phi_x
+            phi_xplus1 = 2.0d0*phi_x - phi_xminus1 - (k**2.0d0)*(deltax**2.0d0)*phi_x
             x = x + deltax
-            write(*,*) "x: ", x, "i", i
         end do
 
     end subroutine update_phi
