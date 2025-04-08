@@ -78,9 +78,9 @@ program shooting_method
     end do
     
     !print the energy levels
-    write(*,*) "First energy level: ", energy_values(1), sqrt(energy_values(1))
-    write(*,*) "Second energy level: ", energy_values(2), sqrt(energy_values(2))
-    write(*,*) "Third energy level: ", energy_values(3), sqrt(energy_values(3))
+    write(*,*) "First energy level: ", energy_values(1)
+    write(*,*) "Second energy level: ", energy_values(2)
+    write(*,*) "Third energy level: ", energy_values(3)
 
 contains
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  8 APR 2025 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  8 APR 2025 17:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -569,10 +569,59 @@ Package pdftex.def Info: ../images/convergence-initial-500-preinitial-1000.png  
 
 
 [5 <../images/convergence-initial-500-preinitial-100.png> <../images/convergence-initial-500-preinitial-1000.png>]
+<../images/results-ex4-1.png, id=105, 353.06906pt x 346.29375pt>
+File: ../images/results-ex4-1.png Graphic file (type png)
+<use ../images/results-ex4-1.png>
+Package pdftex.def Info: ../images/results-ex4-1.png  used on input line 232.
+(pdftex.def)             Requested size: 176.53409pt x 173.14644pt.
+<../images/results-ex4-2.png, id=106, 350.81062pt x 343.2825pt>
+File: ../images/results-ex4-2.png Graphic file (type png)
+<use ../images/results-ex4-2.png>
+Package pdftex.def Info: ../images/results-ex4-2.png  used on input line 237.
+(pdftex.def)             Requested size: 175.40488pt x 171.64082pt.
+
 
 [6]
+<../images/results-ex4-3.png, id=119, 350.81062pt x 343.2825pt>
+File: ../images/results-ex4-3.png Graphic file (type png)
+<use ../images/results-ex4-3.png>
+Package pdftex.def Info: ../images/results-ex4-3.png  used on input line 242.
+(pdftex.def)             Requested size: 175.40488pt x 171.64082pt.
+<../images/results-ex4-4.png, id=120, 356.0803pt x 342.5297pt>
+File: ../images/results-ex4-4.png Graphic file (type png)
+<use ../images/results-ex4-4.png>
+Package pdftex.def Info: ../images/results-ex4-4.png  used on input line 247.
+(pdftex.def)             Requested size: 178.03972pt x 171.26442pt.
+<../images/results-ex4-5.png, id=121, 352.31625pt x 344.78813pt>
+File: ../images/results-ex4-5.png Graphic file (type png)
+<use ../images/results-ex4-5.png>
+Package pdftex.def Info: ../images/results-ex4-5.png  used on input line 252.
+(pdftex.def)             Requested size: 176.15768pt x 172.39363pt.
 
-[7] (./L2-5255417-relatorio.aux)
+
+[7 <../images/results-ex4-1.png> <../images/results-ex4-2.png> <../images/results-ex4-3.png>]
+<../images/results-ex4-6.png, id=132, 350.81062pt x 343.2825pt>
+File: ../images/results-ex4-6.png Graphic file (type png)
+<use ../images/results-ex4-6.png>
+Package pdftex.def Info: ../images/results-ex4-6.png  used on input line 257.
+(pdftex.def)             Requested size: 175.40488pt x 171.64082pt.
+<../images/results-ex4-7.png, id=133, 350.81062pt x 170.88844pt>
+File: ../images/results-ex4-7.png Graphic file (type png)
+<use ../images/results-ex4-7.png>
+Package pdftex.def Info: ../images/results-ex4-7.png  used on input line 262.
+(pdftex.def)             Requested size: 175.40488pt x 85.444pt.
+
+
+[8 <../images/results-ex4-4.png> <../images/results-ex4-5.png> <../images/results-ex4-6.png>]
+Overfull \hbox (27.37851pt too wide) in paragraph at lines 269--270
+[]\OT1/cmr/m/n/12 Para bons va-lo-res de k, $\OML/cmm/m/it/12 ^^N$\OT1/cmr/m/n/12 k, $\OML/cmm/m/it/12 ^^Nx$ \OT1/cmr/m/n/12 e $\OML/cmm/m/it/12 ^^^$\OT1/cmr/m/n/12 ($\OML/cmm/m/it/12 ^^N$\OT1/cmr/m/n/12 k) os re-sul-ta-dos fo-ram: $\OML/cmm/m/it/12 k[]$ \OT1/cmr/m/n/12 = 9.9224999999998538,
+ []
+
+
+
+[9 <../images/results-ex4-7.png>]
+
+[10] (./L2-5255417-relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -581,18 +630,18 @@ Package rerunfilecheck Info: File `L2-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 19846F3622FDF652212CA9E6ABD5F37C;916.
  ) 
 Here is how much of TeX's memory you used:
- 14445 strings out of 473579
- 238855 string characters out of 5705100
+ 14506 strings out of 473579
+ 240671 string characters out of 5705100
  842891 words of memory out of 5000000
- 37139 multiletter control sequences out of 15000+600000
+ 37189 multiletter control sequences out of 15000+600000
  563465 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,442b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,647b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on L2-5255417-relatorio.pdf (8 pages, 471260 bytes).
+Output written on L2-5255417-relatorio.pdf (11 pages, 658833 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 87 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
