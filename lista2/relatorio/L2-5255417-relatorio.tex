@@ -229,37 +229,37 @@ Professor: Attilio Cucchieri\\
         Resultados:
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-1.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-1.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-2.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-2.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-3.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-3.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-4.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-4.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-5.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-5.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-6.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-6.png}
             \caption{}
         \end{figure}
         \begin{figure}[H]    
             \centering
-            \includegraphics[scale=0.5]{../images/results-ex4-7.png}
+            \includegraphics[scale=0.8]{../images/results-ex4-7.png}
             \caption{}
         \end{figure}
 
@@ -268,13 +268,13 @@ Professor: Attilio Cucchieri\\
     
     Para bons valores de k, $\delta$k, $\delta x$ e $\phi$($\delta$k) os resultados foram: $k^{2}_{1}$ = 9.9224999999998538, $k^{2}_{2}$ = 39.564099999998874 e $k^{2}_{3}$ = 88.924899999997052.
     
-    Da defini\c{c}\~ao de k, $E = \frac{\hbar^2k^2}{2mL^2}$. Logo - tomando m como a massa de um el\'etron e L = 1 -, para os resultados obtidos temos: $E_{1} \approx 1.66 10^{-34}$eV, $E_{2} \approx 6.64 10^{-34}$eV e $E_{3} \approx 1.49 10^{-33}$eV.
+    Da defini\c{c}\~ao de k, $E = \frac{\hbar^2k^2}{2mL^2}$. Logo - tomando m como a massa de um el\'etron e L = 1 -, para os resultados obtidos temos: $E_{1} \approx 1.66 \times 10^{-34}$eV, $E_{2} \approx 6.64 \times 10^{-34}$eV e $E_{3} \approx 1.49 \times 10^{-33}$eV.
     
     Analiticamente, dada \'{a}s condi\c{c}\~oes de contorno, os n\'iveis de energia s\~ao dados por:
     \begin{equation}
         E_{n} = \frac{\hbar^2(n \pi)^2}{2mL^2}
     \end{equation}
-    Para n = 1, 2 e 3 obtemos os seguintes resultados: $E_{1} \approx 1.66 10^{-34}$eV, $E_{2} \approx 6.62 10^{-34}$eV e $E_{3} \approx 1.49 10^{-33}$eV.
+    Para n = 1, 2 e 3 obtemos os seguintes resultados: $E_{1} \approx 1.66 \times 10^{-34}$eV, $E_{2} \approx 6.62 \times 10^{-34}$eV e $E_{3} \approx 1.49 \times 10^{-33}$eV.
 
     Portanto os resultados est\~ao pr\'oximos \'{a} solu\c{c}\~ao anal\'itica e as diferen\c{c}as podem ser atribu\'idas a erros num\'ericos.
 
@@ -292,6 +292,35 @@ Professor: Attilio Cucchieri\\
         \end{verbatim}
 
         Resultados:
+        \begin{figure}[H]    
+            \centering
+            \includegraphics[scale=0.8]{../images/results-ex5-1.png}
+            \caption{}
+        \end{figure}
+        \begin{figure}[H]    
+            \centering
+            \includegraphics[scale=0.8]{../images/results-ex5-2.png}
+            \caption{}
+        \end{figure}
+        \begin{figure}[H]    
+            \centering
+            \includegraphics[scale=0.8]{../images/results-ex5-3.png}
+            \caption{}
+        \end{figure}
+        \begin{figure}[H]    
+            \centering
+            \includegraphics[scale=0.8]{../images/results-ex5-4.png}
+            \caption{}
+        \end{figure}
+
+        Percebe-se que os resultados s\~ao extremamentes robustos \'{a}s escolhas de $\delta$x, k, $k_{anterior}$ e $\phi$($\delta$k). Dos testes feitos, apenas ao escolher $\delta$x = 0.1 o c\'odigo falhou, mas para as demais varia\c{c}\~oes o c\'odigo retornou bons valores de $k^{2}_{1}$, $k^{2}_{2}$ e $k^{2}_{3}$. Sendo o melhor destes valores $k^{2}_{1}$ = 9.8676306951251433, $k^{2}_{2}$ = 39.470521806736791 e $k^{2}_{3}$ = 88.808670413955070 que resultam na seguintes energias:
+        \begin{itemize}
+            \item $E_{1} \approx 1.66 \times 10^{-34}$eV
+            \item $E_{2} \approx 6.62 \times 10^{-34}$eV
+            \item $E_{3} \approx 1.49 \times 10^{-33}$eV
+        \end{itemize}
+        que s\~ao resultados muito mais precisos que os obtidos no exerc\'icio 4. Portanto, conclui-se que o m\'etodo da secante \'e mais eficiente que o shooting method para este problema.
+        
         
 
 \end{document}
