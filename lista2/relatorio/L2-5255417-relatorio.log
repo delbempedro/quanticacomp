@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  5 APR 2025 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  8 APR 2025 16:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -529,70 +529,50 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 l.78 	\newpage
                [1]
 
-[2] (/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 134.
- (../L2-5255417-ex-2.f90
-
-[3]
-
-[4]
-
-[5]
-
-[6]
-
-[7])
-<../images/convergence-initial-20-preinitial-10.png, id=378, 722.7pt x 433.62pt>
+[2]
+<../images/convergence-initial-20-preinitial-10.png, id=73, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-20-preinitial-10.png Graphic file (type png)
 <use ../images/convergence-initial-20-preinitial-10.png>
 Package pdftex.def Info: ../images/convergence-initial-20-preinitial-10.png  used on input line 145.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/convergence-initial-20-preinitial-50.png, id=380, 722.7pt x 433.62pt>
+<../images/convergence-initial-20-preinitial-50.png, id=75, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-20-preinitial-50.png Graphic file (type png)
 <use ../images/convergence-initial-20-preinitial-50.png>
 Package pdftex.def Info: ../images/convergence-initial-20-preinitial-50.png  used on input line 151.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-
-
-[8 <../images/convergence-initial-20-preinitial-10.png>]
-<../images/convergence-initial-100-preinitial-20.png, id=413, 722.7pt x 433.62pt>
+<../images/convergence-initial-100-preinitial-20.png, id=76, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-100-preinitial-20.png Graphic file (type png)
 <use ../images/convergence-initial-100-preinitial-20.png>
 Package pdftex.def Info: ../images/convergence-initial-100-preinitial-20.png  used on input line 157.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/convergence-initial-100-preinitial-200.png, id=414, 722.7pt x 433.62pt>
+
+
+[3 <../images/convergence-initial-20-preinitial-10.png> <../images/convergence-initial-20-preinitial-50.png>]
+<../images/convergence-initial-100-preinitial-200.png, id=86, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-100-preinitial-200.png Graphic file (type png)
 <use ../images/convergence-initial-100-preinitial-200.png>
 Package pdftex.def Info: ../images/convergence-initial-100-preinitial-200.png  used on input line 164.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-
-
-[9 <../images/convergence-initial-20-preinitial-50.png> <../images/convergence-initial-100-preinitial-20.png>]
-<../images/convergence-initial-500-preinitial-100.png, id=423, 722.7pt x 433.62pt>
+<../images/convergence-initial-500-preinitial-100.png, id=87, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-500-preinitial-100.png Graphic file (type png)
 <use ../images/convergence-initial-500-preinitial-100.png>
 Package pdftex.def Info: ../images/convergence-initial-500-preinitial-100.png  used on input line 170.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/convergence-initial-500-preinitial-1000.png, id=424, 722.7pt x 433.62pt>
+
+
+[4 <../images/convergence-initial-100-preinitial-20.png> <../images/convergence-initial-100-preinitial-200.png>]
+<../images/convergence-initial-500-preinitial-1000.png, id=96, 722.7pt x 433.62pt>
 File: ../images/convergence-initial-500-preinitial-1000.png Graphic file (type png)
 <use ../images/convergence-initial-500-preinitial-1000.png>
 Package pdftex.def Info: ../images/convergence-initial-500-preinitial-1000.png  used on input line 176.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
 
 
-[10 <../images/convergence-initial-100-preinitial-200.png> <../images/convergence-initial-500-preinitial-100.png>]
+[5 <../images/convergence-initial-500-preinitial-100.png> <../images/convergence-initial-500-preinitial-1000.png>]
 
-[11 <../images/convergence-initial-500-preinitial-1000.png>] (../L2-5255417-ex-4.f90
+[6]
 
-[12]
-
-[13])
-
-[14] (../L2-5255417-ex-5.f90)
-
-[15] (./L2-5255417-relatorio.aux)
+[7] (./L2-5255417-relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -601,18 +581,18 @@ Package rerunfilecheck Info: File `L2-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 19846F3622FDF652212CA9E6ABD5F37C;916.
  ) 
 Here is how much of TeX's memory you used:
- 15495 strings out of 473579
- 252054 string characters out of 5705100
- 1121891 words of memory out of 5000000
- 37703 multiletter control sequences out of 15000+600000
- 563633 words of font info for 56 fonts, out of 8000000 for 9000
+ 14445 strings out of 473579
+ 238855 string characters out of 5705100
+ 842891 words of memory out of 5000000
+ 37139 multiletter control sequences out of 15000+600000
+ 563465 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,442b,2366s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on L2-5255417-relatorio.pdf (16 pages, 524884 bytes).
+ 75i,6n,79p,442b,470s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on L2-5255417-relatorio.pdf (8 pages, 471260 bytes).
 PDF statistics:
- 791 PDF objects out of 1000 (max. 8388607)
- 725 compressed objects within 8 object streams
- 510 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  87 words of extra memory for PDF output out of 10000 (max. 10000000)
 

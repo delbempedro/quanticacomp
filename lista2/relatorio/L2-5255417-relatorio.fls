@@ -187,14 +187,7 @@ INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fon
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT L2-5255417-relatorio.toc
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT ../L2-5255417-ex-2.f90
-INPUT ../L2-5255417-ex-2.f90
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt12.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt10.tfm
-INPUT ../L2-5255417-ex-2.f90
 INPUT ../images/convergence-initial-20-preinitial-10.png
 INPUT ../images/convergence-initial-20-preinitial-10.png
 INPUT ../images/convergence-initial-20-preinitial-10.png
@@ -225,12 +218,6 @@ INPUT ../images/convergence-initial-500-preinitial-1000.png
 INPUT ../images/convergence-initial-500-preinitial-1000.png
 INPUT ../images/convergence-initial-500-preinitial-1000.png
 INPUT ../images/convergence-initial-500-preinitial-1000.png
-INPUT ../L2-5255417-ex-4.f90
-INPUT ../L2-5255417-ex-4.f90
-INPUT ../L2-5255417-ex-4.f90
-INPUT ../L2-5255417-ex-5.f90
-INPUT ../L2-5255417-ex-5.f90
-INPUT ../L2-5255417-ex-5.f90
 INPUT L2-5255417-relatorio.aux
 INPUT ./L2-5255417-relatorio.out
 INPUT ./L2-5255417-relatorio.out
@@ -246,5 +233,4 @@ INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fon
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb

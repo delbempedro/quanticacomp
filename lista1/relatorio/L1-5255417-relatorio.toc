@@ -1,7 +1,7 @@
 \babel@toc {brazilian}{}\relax 
 \contentsline {section}{\numberline {1}Exerc\'icio 1}{2}{section.1}%
-\contentsline {section}{\numberline {2}Exerc\'icio 2}{3}{section.2}%
-\contentsline {section}{\numberline {3}Exerc\'icio 3}{7}{section.3}%
-\contentsline {section}{\numberline {4}Exerc\'icio 4}{8}{section.4}%
-\contentsline {section}{\numberline {5}Exerc\'icio 5}{11}{section.5}%
-\contentsline {section}{\numberline {6}Exerc\'icio 6}{13}{section.6}%
+\contentsline {section}{\numberline {2}Exerc\'icio 2}{2}{section.2}%
+\contentsline {section}{\numberline {3}Exerc\'icio 3}{3}{section.3}%
+\contentsline {section}{\numberline {4}Exerc\'icio 4}{3}{section.4}%
+\contentsline {section}{\numberline {5}Exerc\'icio 5}{4}{section.5}%
+\contentsline {section}{\numberline {6}Exerc\'icio 6}{5}{section.6}%

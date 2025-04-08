@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  5 APR 2025 10:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  8 APR 2025 16:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -536,71 +536,61 @@ Overfull \hbox (12.7792pt too wide) detected at line 133
 
 
 
-[3] (/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 189.
- (../L3-5255417-ex-2.f90
-
-[4])
-<../images/results-ex-2-2.png, id=92, 722.7pt x 433.62pt>
+[3]
+<../images/results-ex-2-2.png, id=55, 722.7pt x 433.62pt>
 File: ../images/results-ex-2-2.png Graphic file (type png)
 <use ../images/results-ex-2-2.png>
 Package pdftex.def Info: ../images/results-ex-2-2.png  used on input line 199.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/results-ex-2-4.png, id=94, 722.7pt x 433.62pt>
+<../images/results-ex-2-4.png, id=57, 722.7pt x 433.62pt>
 File: ../images/results-ex-2-4.png Graphic file (type png)
 <use ../images/results-ex-2-4.png>
 Package pdftex.def Info: ../images/results-ex-2-4.png  used on input line 204.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-
-
-[5]
-<../images/results-ex-2-1.png, id=139, 722.7pt x 433.62pt>
+<../images/results-ex-2-1.png, id=58, 722.7pt x 433.62pt>
 File: ../images/results-ex-2-1.png Graphic file (type png)
 <use ../images/results-ex-2-1.png>
 Package pdftex.def Info: ../images/results-ex-2-1.png  used on input line 209.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/results-ex-2-3.png, id=140, 722.7pt x 433.62pt>
+
+
+[4 <../images/results-ex-2-2.png>]
+<../images/results-ex-2-3.png, id=67, 722.7pt x 433.62pt>
 File: ../images/results-ex-2-3.png Graphic file (type png)
 <use ../images/results-ex-2-3.png>
 Package pdftex.def Info: ../images/results-ex-2-3.png  used on input line 214.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
 
 
-[6 <../images/results-ex-2-2.png> <../images/results-ex-2-4.png>]
-
-[7 <../images/results-ex-2-1.png> <../images/results-ex-2-3.png>] (../L3-5255417-ex-3.f90
-
-[8])
-<../images/results-ex-3-2.png, id=201, 722.7pt x 433.62pt>
+[5 <../images/results-ex-2-4.png> <../images/results-ex-2-1.png>]
+<../images/results-ex-3-2.png, id=76, 722.7pt x 433.62pt>
 File: ../images/results-ex-3-2.png Graphic file (type png)
 <use ../images/results-ex-3-2.png>
 Package pdftex.def Info: ../images/results-ex-3-2.png  used on input line 241.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/results-ex-3-4.png, id=202, 722.7pt x 433.62pt>
+<../images/results-ex-3-4.png, id=77, 722.7pt x 433.62pt>
 File: ../images/results-ex-3-4.png Graphic file (type png)
 <use ../images/results-ex-3-4.png>
 Package pdftex.def Info: ../images/results-ex-3-4.png  used on input line 246.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-<../images/results-ex-3-1.png, id=203, 722.7pt x 433.62pt>
+
+
+[6 <../images/results-ex-2-3.png>]
+<../images/results-ex-3-1.png, id=85, 722.7pt x 433.62pt>
 File: ../images/results-ex-3-1.png Graphic file (type png)
 <use ../images/results-ex-3-1.png>
 Package pdftex.def Info: ../images/results-ex-3-1.png  used on input line 251.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
-
-
-[9 <../images/results-ex-3-2.png>]
-<../images/results-ex-3-3.png, id=229, 722.7pt x 433.62pt>
+<../images/results-ex-3-3.png, id=86, 722.7pt x 433.62pt>
 File: ../images/results-ex-3-3.png Graphic file (type png)
 <use ../images/results-ex-3-3.png>
 Package pdftex.def Info: ../images/results-ex-3-3.png  used on input line 256.
 (pdftex.def)             Requested size: 341.43437pt x 204.86006pt.
 
 
-[10 <../images/results-ex-3-4.png> <../images/results-ex-3-1.png>]
+[7 <../images/results-ex-3-2.png> <../images/results-ex-3-4.png>]
 
-[11 <../images/results-ex-3-3.png>] (./L3-5255417-relatorio.aux)
+[8 <../images/results-ex-3-1.png> <../images/results-ex-3-3.png>] (./L3-5255417-relatorio.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-10-09>
@@ -609,18 +599,18 @@ Package rerunfilecheck Info: File `L3-5255417-relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 8DBC220ABAEEF118D6A6A3D31084783F;649.
  ) 
 Here is how much of TeX's memory you used:
- 15129 strings out of 473579
- 245645 string characters out of 5705100
- 1071891 words of memory out of 5000000
- 37697 multiletter control sequences out of 15000+600000
- 563633 words of font info for 56 fonts, out of 8000000 for 9000
+ 14442 strings out of 473579
+ 238184 string characters out of 5705100
+ 839891 words of memory out of 5000000
+ 37151 multiletter control sequences out of 15000+600000
+ 563465 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,718b,2366s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on L3-5255417-relatorio.pdf (12 pages, 564007 bytes).
+ 75i,10n,79p,718b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on L3-5255417-relatorio.pdf (9 pages, 532899 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 153 named destinations out of 1000 (max. 500000)
+ 158 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

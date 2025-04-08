@@ -187,14 +187,7 @@ INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fon
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT L3-5255417-relatorio.toc
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/listings/lstlang1.sty
-INPUT ../L3-5255417-ex-2.f90
-INPUT ../L3-5255417-ex-2.f90
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt12.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt10.tfm
-INPUT ../L3-5255417-ex-2.f90
 INPUT ../images/results-ex-2-2.png
 INPUT ../images/results-ex-2-2.png
 INPUT ../images/results-ex-2-2.png
@@ -215,9 +208,6 @@ INPUT ../images/results-ex-2-3.png
 INPUT ../images/results-ex-2-3.png
 INPUT ../images/results-ex-2-3.png
 INPUT ../images/results-ex-2-3.png
-INPUT ../L3-5255417-ex-3.f90
-INPUT ../L3-5255417-ex-3.f90
-INPUT ../L3-5255417-ex-3.f90
 INPUT ../images/results-ex-3-2.png
 INPUT ../images/results-ex-3-2.png
 INPUT ../images/results-ex-3-2.png
@@ -251,5 +241,4 @@ INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fon
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb

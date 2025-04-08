@@ -1,7 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1743859480.98273 "/home/pedro/Documentos/GitHub/quanticacomp/lista3/relatorio/L3-5255417-relatorio.tex" "L3-5255417-relatorio.pdf" "L3-5255417-relatorio" 1743859488.37059 0
-  "../L3-5255417-ex-2.f90" 1743801455.71086 1473 483284c1cd5ede4d5c43f7ae02cc26c3 ""
-  "../L3-5255417-ex-3.f90" 1743801413.64598 1200 a0cb6be11e0fa021986bbdd4696c21a6 ""
+["pdflatex"] 1744140253.97777 "/home/pedro/Documentos/GitHub/quanticacomp/lista3/relatorio/L3-5255417-relatorio.tex" "L3-5255417-relatorio.pdf" "L3-5255417-relatorio" 1744140262.56225 0
   "../images/results-ex-2-1.png" 1743803729.96043 69264 225409ff22566c3b067798f92d37ed05 ""
   "../images/results-ex-2-2.png" 1743803757.32438 42584 c03706a270e46817104fc09ee6ed3533 ""
   "../images/results-ex-2-3.png" 1743803779.14434 63873 e13de13ba5d73f7b3a47c8cacd7ff2ab ""
@@ -10,7 +8,7 @@
   "../images/results-ex-3-2.png" 1743803678.10254 30352 82611c6055159e16e44f8472a2780023 ""
   "../images/results-ex-3-3.png" 1743803581.76475 74193 51beb05c34c54c11578c0b1ba4b0f4ea ""
   "../images/results-ex-3-4.png" 1743803616.11367 44338 5f8ddef030b401a9794525e2bac4fc08 ""
-  "/home/pedro/Documentos/GitHub/quanticacomp/lista3/relatorio/L3-5255417-relatorio.tex" 1743859472.37097 10257 63d7df4529c31887048808a925fcc6ca ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/lista3/relatorio/L3-5255417-relatorio.tex" 1744140242.97842 10261 dc0fa9562759757182f0e18fbbdff5a0 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -29,7 +27,6 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmsy10.tfm" 1 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmsy6.tfm" 1 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmsy8.tfm" 1 1120 8b7d695260f3cff42e636090a8002094 ""
-  "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt10.tfm" 1 768 1321e9409b4137d6fb428ac9dc956269 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt12.tfm" 1 772 9a936b7f5e2ff0557fce0f62822f0bbf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1 32080 340ef9bf63678554ee606688e7b5339d ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1 30251 6afa5cb1d0204815a708a080681d4674 ""
@@ -41,7 +38,6 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
-  "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb" 1 24252 1e4e051947e12dfb50fee0b7f4e26e3a ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/context/base/mkii/supp-pdf.mkii" 1 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/generic/atbegshi/atbegshi.sty" 1 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -111,10 +107,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "L3-5255417-relatorio.aux" 1743859488.06995 2480 c1519249f0427f1bfacd5cdac22524a7 "pdflatex"
-  "L3-5255417-relatorio.out" 1743859488.07395 649 8dbc220abaeef118d6a6a3d31084783f "pdflatex"
-  "L3-5255417-relatorio.tex" 1743859472.37097 10257 63d7df4529c31887048808a925fcc6ca ""
-  "L3-5255417-relatorio.toc" 1743859488.07495 421 eb68ab33d50b9e5dd4fb936f0170e888 "pdflatex"
+  "L3-5255417-relatorio.aux" 1744140261.9394 2188 6451039a27c158e4bd600c711489d46f "pdflatex"
+  "L3-5255417-relatorio.out" 1744140261.9444 649 8dbc220abaeef118d6a6a3d31084783f "pdflatex"
+  "L3-5255417-relatorio.tex" 1744140242.97842 10261 dc0fa9562759757182f0e18fbbdff5a0 ""
+  "L3-5255417-relatorio.toc" 1744140261.9454 421 7ef53a01bb4ee0ced086466e1b482441 "pdflatex"
   (generated)
   "L3-5255417-relatorio.aux"
   "L3-5255417-relatorio.log"

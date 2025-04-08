@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1}Finding roots}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Exerc\'icio 1}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Exerc\'icio 2}{3}{subsection.1.2}%
-\contentsline {section}{\numberline {2}Eigenvalues of the wave equation}{11}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Exerc\'icio 3}{11}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Exerc\'icio 4}{12}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Exerc\'icio 5}{15}{subsection.2.3}%
+\contentsline {section}{\numberline {2}Eigenvalues of the wave equation}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Exerc\'icio 3}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Exerc\'icio 4}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Exerc\'icio 5}{7}{subsection.2.3}%
