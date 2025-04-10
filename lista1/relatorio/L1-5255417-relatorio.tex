@@ -164,7 +164,9 @@ Professor: Attilio Cucchieri\\
         \caption{Valores de $e^{-x}$ para x = 0.1, 1, 10, 100 e 1000.}
     \end{figure}
 
-    Por fim, percebe-se que o resultado esperado foi obtido para x = 0.1, 1 e 10. Para x = 100 e 1000 o resultado obtido diverge do esperado, o que se deve ao fato de que os termos o resultado apresenta uma diverg\^encia muito grande do resultado real o que se deve ao fato de que os termos somados alternam sinal e como seus valores absolutos se tornam muito grandes, o erro de arredondamento se torna muito grande - causando esta grande diferen\c{c}a para o valor reals.
+    Uma alternativa para truncar a s\'erie e ter uma precis\~ao de $10^{-8}$ - por parte - \'e trunc\'a-la quando a diferen\c{c}a entre dois termos sucessivos for menor que $10^{-8} \times e^{-x}$, onde $e^{-x}$ \'e o valor atual da somat\'oria. Assim garante-se a precis\~ao desejada.
+
+    Por fim, percebe-se que o resultado esperado foi obtido para x = 0.1, 1 e 10. Para x = 100 e 1000 o resultado obtido diverge do esperado, o que se deve ao fato de que os termos o resultado apresenta uma diverg\^encia muito grande do resultado real o que se deve ao fato de que os termos somados alternam sinal e como seus valores absolutos se tornam muito grandes, o erro de arredondamento se torna muito grande - causando esta grande diferen\c{c}a para o valor real.
 
 \section{Exerc\'icio 5}
 
@@ -172,7 +174,7 @@ Professor: Attilio Cucchieri\\
 
     \begin{equation} \Sigma (N) = \sum_{n=1}^{2N} (-1)^n\frac{n}{n+1} = - \sum_{n=1}^N \frac{2n-1}{2n} + \sum_{n=1}^N \frac{2n}{2n+1} = \sum_{n=1}^N \frac{1}{2n(2n+1)} \end{equation}
 
-    e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas acima. Comparar os resultados usando precis \~ao simples.
+    e calcular $\Sigma (N)$ para N = 1, 2, . . . , $10^6$ usando as tr\^es f\'ormulas acima. Comparar os resultados usando precis\~ao simples.
 
     %C\'odigo Escrito:
     %\lstinputlisting[language=Fortran]{../L1-5255417-ex-5.f90}
@@ -206,6 +208,8 @@ Professor: Attilio Cucchieri\\
     \begin{verbatim}
         gfortran L1-5255417-ex-6.f90 -o L1-5255417-ex-6.exe
     \end{verbatim}
+
+    Os resultados do c\'odigo foram salvos em \texttt{exponential\_taylor\_series.txt}.
 
     Resultados:
     \begin{figure}[H]
