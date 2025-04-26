@@ -1,0 +1,161 @@
+\documentclass[12pt, a4paper]{article} %determina o tamanho da fonte, o tipo de papel e o tipo de documento.
+
+\setlength{\parindent}{1.0 cm} %tamanho do espaço para começar o parágrafo.
+\setlength{\parskip}{0.5cm} %tamanho do espaço entre os parágrafos.
+
+%Aqui ficam os pacotes utilizados para formatação do documento de modo geral:
+
+\usepackage[utf8]{inputenc} 
+\usepackage{indentfirst} %Coloca espaços nos inícios de parágrafos automaticamente. 
+\usepackage[brazilian]{babel} %
+\usepackage{amsmath}
+\usepackage[hmargin=3cm, vmargin=2.5cm, bmargin=2.5cm]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx} %para poder inserir imagens
+\usepackage{subfig}
+\usepackage{booktabs} 
+\usepackage{hyperref} %para poder adicionar links e hiperlinks
+\usepackage{float} %para poder posicionar as imagens
+
+
+\usepackage{listings} %para poder incluir códigos
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morecomment={l}[!],
+    language=[77]Fortran,
+}
+\lstset{style=mystyle}
+
+\begin{document} %começa alguma coisa,neste caso, o documento, sempre importante lembrar de colocar o \end{} para não dar erro 
+	
+	\begin{titlepage}
+		\begin{center}
+\Huge{Universidade de São Paulo}\\
+\large{Instituto de Física de São Carlos}\\
+\vspace{20pt}
+\vspace{200pt}
+\textbf{Lista 3}\\
+\vspace{8cm}
+		\end{center}
+
+\begin{flushleft}
+\begin{tabbing}
+Pedro Calligaris Delbem 5255417\\
+\end{tabbing}
+\vspace{0.5cm}
+Professor: Attilio Cucchieri\\		
+		\end{flushleft}
+	
+		\begin{center}
+			\vspace{\fill}
+	Abril de 2025	
+		\end{center}
+	\end{titlepage}
+
+%####################################################################### SUMÁRIO
+	\tableofcontents 
+	\thispagestyle{empty}
+	\newpage
+%#########################################################################
+
+\section{The Numerov Algorithm}
+
+    \subsection{Exerc\'icio 1}
+
+        Tarefa: Reolver a equa\c{c}\~ao de Poisson para $\hat{\phi}(r)$ definido por $\frac{\hat{\phi}(r)}{r} := \phi(r)$ onde $\phi(r)$ \'e o potencial eletrost\'atico e a densidade de carga \'e $\rho(r) = \frac{e^{-r}}{8 \pi}$, considerando simetria esf\'erica.
+        
+        Deve-se resolver das seguintes maneiras:
+        \begin{itemize} 
+            \item Pelo algoritmo de Numerov
+            \begin{itemize}
+                \item Escolhendo $\hat{\phi}(0)$ e $\hat{\phi}(\delta r)$, para $r \approx 0$
+                \item Escolhendo $\hat{\phi}(0)$ e $\hat{\phi}(\delta r)$, r muito grande (o equivalente num\'erico a $r \to \infty$)
+            \end{itemize}
+            \item Analiticamente
+        \end{itemize}
+
+        Primeiro deve-se manipular a equa\c{c}\~ao de Poisson de modo a obter uma equa\c{c}\~ao para $\hat{\phi}(r)$
+
+        A equa\c{c}\~ao de Poisson \'e:
+        \begin{equation*}
+            \nabla^{2} \phi(r) = -4\pi \rho(r)
+        \end{equation*}
+
+        Sabemos que $\nabla^{2}$ em coordenadas esf\'ericas \'e:
+        \begin{equation*}
+            \nabla^{2} = \frac{1}{r^{2}} \left( \frac{\partial}{\partial r} \left( r^{2} \frac{\partial}{\partial r} \right) + \frac{1}{\sin \theta}\frac{\partial}{\partial \theta} \left( \sin \theta \frac{\partial}{\partial \theta} \right) + \frac{1}{r \sin^{2} \theta} \frac{\partial^{2}}{\partial \phi^{2}} \right)
+        \end{equation*}
+
+        Pela simetria radial reduzimos  para:
+
+        \begin{equation*}
+            \nabla^{2} = \frac{1}{r^{2}} \frac{\partial}{\partial r} \left( r^{2} \frac{\partial}{\partial r} \right)
+        \end{equation*}
+
+        Substituimos $\frac{\hat{\phi}(r)}{r} := \phi(r)$:
+
+        \begin{equation*}
+            \nabla^{2} \phi(r) = \frac{1}{r^{2}} \frac{\partial}{\partial r} \left( r^{2} \frac{\partial}{\partial r} \left( \frac{\hat{\phi}(r)}{r} \right) \right)
+        \end{equation*}
+
+        Aplicando as derivadas:
+
+        \begin{equation*}
+            \nabla^{2} \phi(r) = \frac{1}{r}\frac{\partial^{2}}{\partial r^{2}} \hat{\phi}(r)
+        \end{equation*}
+
+        Substituindo na equa\c{c}\~ao de Poisson:
+
+        \begin{equation*}
+            \frac{1}{r} \frac{d^{2} \hat{\phi}(r)}{dr^{2}} = -4\pi \rho(r) = -\frac{e^{-r}}{2}
+        \end{equation*}
+
+        Assim, obtemos:
+
+        \begin{equation*}
+            \frac{d^{2} \hat{\phi}(r)}{dr^{2}} = -\frac{re^{-r}}{2}
+        \end{equation*}
+
+
+
+        \subsubsection{Resolu\c{c}\~ao Anal\'itica}
+
+            Integrando a equa\c{c}\~ao, com rela\c{c}\~ao ao r duas vezes, obtemos:
+
+            \begin{equation*}
+                \hat{\phi}(r) = e^{-r}\left(1 + \frac{r}{2}\right) + C_{1}r + C_{2}
+            \end{equation*}
+
+            Toma-se $\hat{\phi}(0)$ = -1 e $\hat{\phi}(\infty)$ = 0, obtemos:
+
+            \begin{equation*}
+                C_{1} = 0 \quad \text{e} \quad C_{2} = 0
+            \end{equation*}
+            
+            E deste modo a solu\c{c}\~ao anal\'itica \'e:
+
+            \begin{equation*}
+                \hat{\phi}(r) = e^{-r}\left(1 + \frac{r}{2}\right)
+            \end{equation*}
+
+\end{document}
