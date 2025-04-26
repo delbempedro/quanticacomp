@@ -136,7 +136,24 @@ Professor: Attilio Cucchieri\\
             \frac{d^{2} \hat{\phi}(r)}{dr^{2}} = -\frac{re^{-r}}{2}
         \end{equation*}
 
-
+        As escolhas para $\hat{\phi}(r)$ para r $\approx$ 0 e $r \to \infty$ s\~ao arbitr\'arias, e portanto toma-se $\hat{\phi}(0)$ = -1 e $\hat{\phi}(\infty)$ = 0, baseando-se nos fatos - primeiro de que a segunda derivada \'e negativa e segundo de que a densidade de carga tende a zero quando r tende ao infinito.
+        J\'a para o primeiro passo do algoritmo de Numerov crescente, temos que expandir $\hat{\phi}(r)$ em torno de r = 0:
+        \begin{equation*}
+            \hat{\phi}(r) = \hat{\phi}(0) + \hat{\phi}'(0)r + O(r^{2})
+        \end{equation*}
+        Mas como $\hat{\phi}(0)$ = -1, e para r $\approx$ 0, $\hat{\phi}'(0) = -4\pi \rho(0)\delta r$ = -$\frac{\delta r}{2}$, temos que:
+        \begin{equation*}
+            \hat{\phi}(r) = -1 - \frac{r}{2} + O(r^{2})
+        \end{equation*}
+        Assim, para o primeiro passo do algoritmo de Numerov, temos que:
+        \begin{equation*}
+            \hat{\phi}(\delta r) = -1 - \frac{\delta r}{2}
+        \end{equation*}
+        E para o algoritmo decrescente, temos que expandir em torno de r muito grande (=: R) o que pela mesma l\'ogica nos dar\'a:
+        \begin{equation*}
+            \hat{\phi}(R - \delta r) = 0
+        \end{equation*}
+        Uma vez que $\hat{\phi}'(R - \delta r)$ = $-4\pi \rho(R - \delta r)\delta r \approx$  0.
 
         \subsubsection{Resolu\c{c}\~ao Anal\'itica}
 
@@ -146,7 +163,7 @@ Professor: Attilio Cucchieri\\
                 \hat{\phi}(r) = e^{-r}\left(1 + \frac{r}{2}\right) + C_{1}r + C_{2}
             \end{equation*}
 
-            Toma-se $\hat{\phi}(0)$ = -1 e $\hat{\phi}(\infty)$ = 0, obtemos:
+            As escolhas para $\hat{\phi}(r)$ para r $\approx$ 0 e $r \to \infty$ s\~ao arbitr\'arias, mas devem ser escolhidas em conson\^ancia com as escolhas para as solu\c{c}\~oes num\'ericas. Assim, toma-se $\hat{\phi}(0)$ = -1 e $\hat{\phi}(\infty)$ = 0 e obtemos:
 
             \begin{equation*}
                 C_{1} = 0 \quad \text{e} \quad C_{2} = 0
@@ -157,5 +174,108 @@ Professor: Attilio Cucchieri\\
             \begin{equation*}
                 \hat{\phi}(r) = e^{-r}\left(1 + \frac{r}{2}\right)
             \end{equation*}
+
+        Resultados:
+
+        Plotando os resultados obtidos pelos algoritmos de Numerov crescente, decrescente e pela solu\c{c}\~ao anal\'itica, obtemos os seguintes resultados - para v\'arios valores de $\delta r$:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-0.5.png}
+            \caption{Resultados para $\delta r = 0.5$}
+            \label{fig:all-plots-0.5}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-0.1.png}
+            \caption{Resultados para $\delta r = 0.1$}
+            \label{fig:all-plots-0.1}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-0.01.png}
+            \caption{Resultados para $\delta r = 0.01$}
+            \label{fig:all-plots-0.01}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-0.001.png}
+            \caption{Resultados para $\delta r = 0.001$}
+            \label{fig:all-plots-0.001}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-0.0001.png}
+            \caption{Resultados para $\delta r = 0.0001$}
+            \label{fig:all-plots-0.0001}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.7]{../images/all-plots-1e-05.png}
+            \caption{Resultados para $\delta r = 0.00001$}
+            \label{fig:all-plots-0.00001}
+        \end{figure}
+
+        Analisando os gr\'aficos podemos ver que o m\'etodo de Numerov crescente converge mais rapidamente, ou seja, para valores maiores de $\delta r$ o algoritmo crescente se aproxima mais rapidamente da solu\c{c}\~ao anal\'itica. O mesmo n\~ao pode ser dito do algoritmo decrescente, que parece convergir apenas para valores muito pequenos de $\delta r$.
+
+\section{The Matching Method}
+
+        Considerar-se-a o potencial de Lennard-Jones, dado por:
+
+        \begin{equation*}
+            V(r) = 4E_{0} \left[ \left( \frac{a}{r} \right)^{12} - \left( \frac{a}{r} \right)^{6} \right]
+        \end{equation*}
+
+        que claramente satifaz V(r) $\to$ 0 quando r $\to \infty$ e V(r) $\to$ $+ \infty$ quando r $\to 0$. Ent\~ao, para estado ligado (E \textless  0) a solu\c{c}\~ao da equa\c{c}\~ao de Schr\"odinger com este potencial deve ser nula em r = 0 e r $\to \infty$. Assim, podemos resolv\^ela pelo m\'etodo de Numerov e pelo Matching Method.
+
+        \subsection{Exerc\'icio 2}
+
+        Tarefa: Encontrar analiticamente o ponto, $r_{0}$, de m\'inimo do potencial.
+
+        Para simplificar a equa\c{c}\~ao, podemos definir $x = \frac{a}{r}$, assim temos que:
+        \begin{equation*}
+            V(x) = 4E_{0} \left[ x^{-12} - x^{-6} \right]
+        \end{equation*}
+
+        Para encontrar o ponto de m\'inimo do potencial, devemos derivar a equa\c{c}\~ao do potencial e igualar a zero:
+        \begin{equation*}
+            \frac{dV(x)}{dx} = 0
+        \end{equation*}
+        Derivando a equa\c{c}\~ao do potencial, obtemos:
+        \begin{equation*}
+            \frac{dV(x)}{dx} = 4E_{0} \left[ -12{x}^{-13} + 6{x}^{-7} \right]
+        \end{equation*}
+        Igualando a zero, obtemos:
+        \begin{equation*}
+            0 = -12{x}^{-13} + 6{x}^{-7}
+        \end{equation*}
+        Assim, temos que:
+        \begin{equation*}
+            2{x}^{-6} = 1
+        \end{equation*}
+        Por fim, isolando x, obtemos:
+        \begin{equation*}
+            x_{0} = 2^{1/6}
+        \end{equation*}
+        Devemos verificar se este ponto \'e realmente um m\'inimo, para isso devemos derivar a equa\c{c}\~ao do potencial novamente e verificar se o resultado \'e positivo:
+        \begin{equation*}
+            \frac{d^{2}V(x)}{dx^{2}} = 4E_{0} \left[ 156{x}^{-14} - 42{x}^{-8} \right]
+        \end{equation*}
+        Calculando a segunda derivada no ponto $x_{0}$, obtemos:
+        \begin{equation*}
+            \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{1/6})^{-14} - 42(2^{1/6})^{-8} \right]
+        \end{equation*}
+        Assim, temos que:
+        \begin{equation*}
+            \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{-14/6}) - 42(2^{-8/6}) \right]
+        \end{equation*}
+        Que \'e aproximadamente:
+        \begin{equation*}
+            \frac{d^{2}V(x_{0})}{dx^{2}} \approx 57.14E_{0}
+        \end{equation*}
+        Como $E_{0}$ \'e positivo, temos que:
+        \begin{equation*}
+            \frac{d^{2}V(x_{0})}{dx^{2}} > 0
+        \end{equation*}
+        Portanto, o ponto $x_{0}$ \'e realmente um m\'inimo do potencial.
 
 \end{document}

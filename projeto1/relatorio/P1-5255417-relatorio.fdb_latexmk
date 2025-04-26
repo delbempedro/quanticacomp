@@ -1,6 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1745687417.7099 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1745687420.69809 0
-  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1745687416.1771 5678 f8379058b19d0365eacb7d6d6f291699 ""
+["pdflatex"] 1745702278.91931 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1745702288.28204 0
+  "../images/all-plots-0.0001.png" 1745692536.00033 82087 68c0c0487c2dda262da008573199ddd6 ""
+  "../images/all-plots-0.001.png" 1745692562.53533 94786 b1530d3fc01af2a57aeb91793d80d336 ""
+  "../images/all-plots-0.01.png" 1745692616.46831 118094 4fb5fb06ff88a7db312fcb479bcb87ef ""
+  "../images/all-plots-0.1.png" 1745692639.11329 153372 9f658a45b6e41418be0fb8b027eacd8d ""
+  "../images/all-plots-0.5.png" 1745692702.64425 101908 9e8ea3cb301622204ffac134de92b925 ""
+  "../images/all-plots-1e-05.png" 1745692429.1374 77708 a48ee173e0bf48006886c924db0161c2 ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1745702278.40343 11880 a366be9f3d9570a5dc4f0d7afe17fd92 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -63,6 +69,7 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/base/atbegshi-ltx.sty" 1 2963 e56732bbb93cfa019febfd0c7eaf1d21 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/base/atveryend-ltx.sty" 1 2378 05fbb4f2b23b0e142f8cd3440c37e72e ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/base/inputenc.sty" 1 5048 7ebf0f2edf1ef6783e8fe2201a95d0e8 ""
+  "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/base/omlcmr.fd" 1 2470 ec0f30a4dee212b06d8724b94d7d4f9a ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/base/size12.clo" 1 8449 30d84ec2eac77409e31fe51403c1ed64 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/booktabs/booktabs.sty" 1 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/caption/caption.sty" 1 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
@@ -101,10 +108,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "P1-5255417-relatorio.aux" 1745687420.26509 685 3486752f1768d035aa48f13a7b31a2b9 "pdflatex"
-  "P1-5255417-relatorio.out" 1745687420.26809 446 0144cd54d6de4a992ffd02b437debd93 "pdflatex"
-  "P1-5255417-relatorio.tex" 1745687416.1771 5678 f8379058b19d0365eacb7d6d6f291699 ""
-  "P1-5255417-relatorio.toc" 1745687420.26909 292 10be422ecc686f42c66ca791b07e3fae "pdflatex"
+  "P1-5255417-relatorio.aux" 1745702287.8504 2467 df2bf33fc18208d4ce4c94163e9b4457 "pdflatex"
+  "P1-5255417-relatorio.out" 1745702287.8534 708 edf01f788eb1587fa103af755e04c413 "pdflatex"
+  "P1-5255417-relatorio.tex" 1745702278.40343 11880 a366be9f3d9570a5dc4f0d7afe17fd92 ""
+  "P1-5255417-relatorio.toc" 1745702287.8554 446 21adb0bd79d94c950edd63734ac7425d "pdflatex"
   (generated)
   "P1-5255417-relatorio.aux"
   "P1-5255417-relatorio.log"
