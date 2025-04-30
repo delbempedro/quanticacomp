@@ -1,12 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1745702278.91931 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1745702288.28204 0
+["pdflatex"] 1745774112.45175 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1745774121.37386 0
   "../images/all-plots-0.0001.png" 1745692536.00033 82087 68c0c0487c2dda262da008573199ddd6 ""
   "../images/all-plots-0.001.png" 1745692562.53533 94786 b1530d3fc01af2a57aeb91793d80d336 ""
   "../images/all-plots-0.01.png" 1745692616.46831 118094 4fb5fb06ff88a7db312fcb479bcb87ef ""
   "../images/all-plots-0.1.png" 1745692639.11329 153372 9f658a45b6e41418be0fb8b027eacd8d ""
   "../images/all-plots-0.5.png" 1745692702.64425 101908 9e8ea3cb301622204ffac134de92b925 ""
   "../images/all-plots-1e-05.png" 1745692429.1374 77708 a48ee173e0bf48006886c924db0161c2 ""
-  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1745702278.40343 11880 a366be9f3d9570a5dc4f0d7afe17fd92 ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1745774111.74325 13614 88141e7a5610ca3ba5548730cd7fb3b3 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -34,6 +34,7 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
@@ -108,10 +109,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "P1-5255417-relatorio.aux" 1745702287.8504 2467 df2bf33fc18208d4ce4c94163e9b4457 "pdflatex"
-  "P1-5255417-relatorio.out" 1745702287.8534 708 edf01f788eb1587fa103af755e04c413 "pdflatex"
-  "P1-5255417-relatorio.tex" 1745702278.40343 11880 a366be9f3d9570a5dc4f0d7afe17fd92 ""
-  "P1-5255417-relatorio.toc" 1745702287.8554 446 21adb0bd79d94c950edd63734ac7425d "pdflatex"
+  "P1-5255417-relatorio.aux" 1745774121.05824 2588 75440d613fc2a91f4225a0826d50a219 "pdflatex"
+  "P1-5255417-relatorio.out" 1745774121.06124 826 ea05bd6ca36cda7369d021a6b89661ed "pdflatex"
+  "P1-5255417-relatorio.tex" 1745774111.74325 13614 88141e7a5610ca3ba5548730cd7fb3b3 ""
+  "P1-5255417-relatorio.toc" 1745774121.06124 525 42f59a7621b06667a12cc04c782f5d68 "pdflatex"
   (generated)
   "P1-5255417-relatorio.aux"
   "P1-5255417-relatorio.log"

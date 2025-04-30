@@ -229,53 +229,81 @@ Professor: Attilio Cucchieri\\
 
         \subsection{Exerc\'icio 2}
 
-        Tarefa: Encontrar analiticamente o ponto, $r_{0}$, de m\'inimo do potencial.
+            Tarefa: Encontrar analiticamente o ponto, $r_{0}$, de m\'inimo do potencial.
 
-        Para simplificar a equa\c{c}\~ao, podemos definir $x = \frac{a}{r}$, assim temos que:
-        \begin{equation*}
-            V(x) = 4E_{0} \left[ x^{-12} - x^{-6} \right]
-        \end{equation*}
+            Para simplificar a equa\c{c}\~ao, podemos definir $x = \frac{a}{r}$, assim temos que:
+            \begin{equation*}
+                V(x) = 4E_{0} \left[ x^{-12} - x^{-6} \right]
+            \end{equation*}
 
-        Para encontrar o ponto de m\'inimo do potencial, devemos derivar a equa\c{c}\~ao do potencial e igualar a zero:
-        \begin{equation*}
-            \frac{dV(x)}{dx} = 0
-        \end{equation*}
-        Derivando a equa\c{c}\~ao do potencial, obtemos:
-        \begin{equation*}
-            \frac{dV(x)}{dx} = 4E_{0} \left[ -12{x}^{-13} + 6{x}^{-7} \right]
-        \end{equation*}
-        Igualando a zero, obtemos:
-        \begin{equation*}
-            0 = -12{x}^{-13} + 6{x}^{-7}
-        \end{equation*}
-        Assim, temos que:
-        \begin{equation*}
-            2{x}^{-6} = 1
-        \end{equation*}
-        Por fim, isolando x, obtemos:
-        \begin{equation*}
-            x_{0} = 2^{1/6}
-        \end{equation*}
-        Devemos verificar se este ponto \'e realmente um m\'inimo, para isso devemos derivar a equa\c{c}\~ao do potencial novamente e verificar se o resultado \'e positivo:
-        \begin{equation*}
-            \frac{d^{2}V(x)}{dx^{2}} = 4E_{0} \left[ 156{x}^{-14} - 42{x}^{-8} \right]
-        \end{equation*}
-        Calculando a segunda derivada no ponto $x_{0}$, obtemos:
-        \begin{equation*}
-            \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{1/6})^{-14} - 42(2^{1/6})^{-8} \right]
-        \end{equation*}
-        Assim, temos que:
-        \begin{equation*}
-            \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{-14/6}) - 42(2^{-8/6}) \right]
-        \end{equation*}
-        Que \'e aproximadamente:
-        \begin{equation*}
-            \frac{d^{2}V(x_{0})}{dx^{2}} \approx 57.14E_{0}
-        \end{equation*}
-        Como $E_{0}$ \'e positivo, temos que:
-        \begin{equation*}
-            \frac{d^{2}V(x_{0})}{dx^{2}} > 0
-        \end{equation*}
-        Portanto, o ponto $x_{0}$ \'e realmente um m\'inimo do potencial.
+            Para encontrar o ponto de m\'inimo do potencial, devemos derivar a equa\c{c}\~ao do potencial e igualar a zero:
+            \begin{equation*}
+                \frac{dV(x)}{dx} = 0
+            \end{equation*}
+            Derivando a equa\c{c}\~ao do potencial, obtemos:
+            \begin{equation*}
+                \frac{dV(x)}{dx} = 4E_{0} \left[ -12{x}^{-13} + 6{x}^{-7} \right]
+            \end{equation*}
+            Igualando a zero, obtemos:
+            \begin{equation*}
+                0 = -12{x}^{-13} + 6{x}^{-7}
+            \end{equation*}
+            Assim, temos que:
+            \begin{equation*}
+                2{x}^{-6} = 1
+            \end{equation*}
+            Por fim, isolando x, obtemos:
+            \begin{equation*}
+                x_{0} = 2^{1/6}
+            \end{equation*}
+            Devemos verificar se este ponto \'e realmente um m\'inimo, para isso devemos derivar a equa\c{c}\~ao do potencial novamente e verificar se o resultado \'e positivo:
+            \begin{equation*}
+                \frac{d^{2}V(x)}{dx^{2}} = 4E_{0} \left[ 156{x}^{-14} - 42{x}^{-8} \right]
+            \end{equation*}
+            Calculando a segunda derivada no ponto $x_{0}$, obtemos:
+            \begin{equation*}
+                \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{1/6})^{-14} - 42(2^{1/6})^{-8} \right]
+            \end{equation*}
+            Assim, temos que:
+            \begin{equation*}
+                \frac{d^{2}V(x_{0})}{dx^{2}} = 4E_{0} \left[ 156(2^{-14/6}) - 42(2^{-8/6}) \right]
+            \end{equation*}
+            Que \'e aproximadamente:
+            \begin{equation*}
+                \frac{d^{2}V(x_{0})}{dx^{2}} \approx 57.14E_{0}
+            \end{equation*}
+            Como $E_{0}$ \'e positivo, temos que:
+            \begin{equation*}
+                \frac{d^{2}V(x_{0})}{dx^{2}} > 0
+            \end{equation*}
+            Portanto, o ponto $x_{0}$ \'e realmente um m\'inimo do potencial.
+        
+        \subsection{Exerc\'icio 3}
 
+            Tarefa: Utilizar o Matching Method para encontrar os autovalores e autoestados da equa\c{c}\~ao de Schr\"oedinger com potencial de Lennard-Jones dado dois valores de $E_{0}$ diferentes.
+
+            A equa\c{c}\~ao de Schr\"odinger \'e dada por:
+            \begin{equation*}
+                -\frac{\hbar^{2}}{2m} \frac{d^{2}\psi(r)}{dr^{2}} + 4E_{0} \left[ \left( \frac{r}{a} \right)^{-12} - \left( \frac{r}{a} \right)^{-6} \right]\psi(r) = E\psi(r)
+            \end{equation*}
+            supondo simetria esf\'erica.
+
+            Faz-se $x = \frac{r}{a}$:
+            \begin{equation*}
+                -\frac{\hbar^{2}}{2ma^2} \frac{d^{2}\psi(x)}{dx^{2}} + 4E_{0} \left[ x^{-12} - x^{-6} \right]\psi(x) = E\psi(x)
+            \end{equation*}
+
+            Note que $\frac{\hbar^{2}}{2ma^2}$ tem dimens\~ao de energia, e portanto define-se $k^2 = \frac{2Ema^2}{\hbar^{2}}$ e $k'^2 = \frac{8E_{0}ma^2}{\hbar^{2}}$. Assim, temos que:
+            \begin{equation*}
+                \frac{d^{2}\psi(x)}{dx^{2}} - k'^2\left[  x^{-12} - x^{-6} \right]\psi(x) = -k^2\psi(x)
+            \end{equation*}
+
+            E por fim, rearranja-se a equa\c{c}\~ao:
+            \begin{equation*}
+                \frac{d^{2}\psi(x)}{dx^{2}} = \left[k'^2\left( x^{-12} - x^{-6} \right) -k^2\right]\psi(x)
+            \end{equation*}
+
+            Para simplificar, adota-se $E_{0_{1}} = \frac{\hbar^{2}}{8ma^2}$ e $E_{0_{2}} = 2\frac{\hbar^{2}}{8ma^2}$ de modo que $k'^2_{1} = 1$ e $k'^2_{2} = 2$.
+
+              
 \end{document}

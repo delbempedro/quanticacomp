@@ -4,3 +4,4 @@
 \contentsline {subsubsection}{\numberline {1.1.1}Resolu\c {c}\~ao Anal\'itica}{3}{subsubsection.1.1.1}%
 \contentsline {section}{\numberline {2}The Matching Method}{7}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Exerc\'icio 2}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Exerc\'icio 3}{9}{subsection.2.2}%

@@ -13,121 +13,167 @@
 ! Authors:
 !   - Pedro C. Delbem <pedrodelbem@usp.br>
 !------------------------------------------------------------
-program Numerov
+program MatchingMethod
 
-    !deactivate implicit typing
     implicit none
 
     !declare variables
-    integer*8 :: i
-    real*8 :: deltar, phi_i_minus_1, phi_i, phi_i_plus_1, r_i_minus_1, r_i, r_i_plus_1
+    integer*8 :: i, j, k, n, number_of_energies
+    real*8 :: deltar, phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1
+    real*8 :: r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1
+    real*8 :: phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1
+    real*8 :: r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1
+    real*8 :: k2, k_line2, deltak2
+    real*8 :: diff_phi, diff_dphi
+    real*8 :: dphi_plus, dphi_minus
 
     !initialize i
     i = 0
 
+    !initialize j
+    write(*,*) "Where is infinity? (Insert j)"
+    read(*,*) j
+
     !define delta r
     write(*,*) "Insert delta r:"
     read(*,*) deltar
-
-    !initialize phi(0) and phi(delta r)
-    phi_i_minus_1 = -1.0d0
-    phi_i = -1.0d0 + deltar/2.0d0
-
-    !open files for writing results
-    open(1, file='results-analytic.txt', status='replace')
-    open(2, file='results-zero-infinity.txt', status='replace')
-    open(3, file='results-infinity-zero.txt', status='replace')
     
-    !compute Numerov method
-    do while (abs(phi_i) > deltar)
-        
-        !compute i
-        i = i + 1
+    !initialize k2
+    write(*,*) "Insert first k2:"
+    read(*,*) k2
 
-        !compute r_i-1, r_i, r_i+1
-        r_i_minus_1 = (i-1)*deltar
-        r_i         = i*deltar
-        r_i_plus_1  = (i+1)*deltar
+    !initialize deltak2
+    write(*,*) "Insert delta k2:"
+    read(*,*) deltak2
 
-        !compute phi(i+1)
-        phi_i_plus_1 = 2.0d0*phi_i - phi_i_minus_1 + (deltar**2.0d0)/12.0d0*( f(r_i_minus_1) + 10.0d0*f(r_i) + f(r_i_plus_1) )
-        phi_i_minus_1 = phi_i
-        phi_i = phi_i_plus_1
+    !ask for the number of energies
+    write(*,*) "Insert the number of energies:"
+    read(*,*) number_of_energies
 
-        !print analytic solution
-        write(1,'(F12.8,1X,F12.8)') r_i, analytic_solution(r_i)
+    do k = 1, 2
 
-        !print zero-infinity solution
-        write(2,'(F12.8,1X,F12.8)') r_i, phi_i
+        !initialize k_line2
+        k_line2 = 1.0d0 * k
+
+        do n = 1, number_of_energies
+
+            !initialize phi+(0) and phi+(delta r)
+            phi_plus_i_minus_1 = 0.0d0
+            phi_plus_i = 0.0d0
+
+            !initialize phi-(0) and phi-(delta r)
+            phi_minus_i_plus_1 = 0.0d0
+            phi_minus_i = 0.0d0
+
+            !initialize diff_phi and diff_dphi
+            diff_phi = 1.0d0
+            diff_dphi = 1.0d0
+
+            !open file for writing results
+            open(k, file='matching-method.txt', status='replace')
+
+            call numerov_step(i, j, deltar, k2, k_line2, &
+                                phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
+                                r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
+                                phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
+                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
+
+            ! Compute differences
+            diff_phi = abs(phi_plus_i - phi_minus_i)
+
+            dphi_plus = (phi_plus_i_plus_1 - phi_plus_i_minus_1) / (2.0d0 * deltar)
+            dphi_minus = (phi_minus_i_plus_1 - phi_minus_i_minus_1) / (2.0d0 * deltar)
+            diff_dphi = abs(dphi_plus - dphi_minus)
+
+            do while (diff_phi > deltar .and. diff_dphi > deltar)
+
+                ! Update k2
+                k2 = k2 + deltak2
+                
+                call numerov_step(i, j, deltar, k2, k_line2, &
+                                phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
+                                r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
+                                phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
+                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
+
+                ! Compute differences
+                diff_phi = abs(phi_plus_i - phi_minus_i)
+
+                dphi_plus = (phi_plus_i_plus_1 - phi_plus_i_minus_1) / (2.0d0 * deltar)
+                dphi_minus = (phi_minus_i_plus_1 - phi_minus_i_minus_1) / (2.0d0 * deltar)
+                diff_dphi = abs(dphi_plus - dphi_minus)
+
+            end do
+
+            ! Write results to file
+            write(k, '(F12.8,1X,F12.8)') k_line2, k2
+
+            close(k)
+
+        end do
 
     end do
 
-    !compute r_i
-    r_i = (i+1)*deltar
-
-    !print analytic last step
-    write(1,'(F12.8,1X,F12.8)') r_i, analytic_solution(r_i)
-
-    !print last step
-    write(2,'(F12.8,1X,F12.8)') r_i, phi_i
-
-    !close file
-    close(1)
-    close(2)
-
-    !initialize phi(infinity) and phi(infinity-delta r)
-    phi_i_plus_1 = 0.0d0
-    phi_i = 0.0d0
-
-    do while (i>0)
-        
-        !compute i
-        i = i - 1
-
-        !compute r_i-1, r_i, r_i+1
-        r_i_minus_1 = (i-1)*deltar
-        r_i         = i*deltar
-        r_i_plus_1  = (i+1)*deltar
-
-        !compute phi(i+1)
-        phi_i_minus_1 = 2.0d0*phi_i - phi_i_plus_1 + (deltar**2.0d0)/12.0d0*( f(r_i_minus_1) + 10.0d0*f(r_i) + f(r_i_plus_1) )
-        phi_i_plus_1 = phi_i
-        phi_i = phi_i_minus_1
-
-        !print infinity-zero solution
-        write(3,'(F12.8,1X,F12.8)') r_i, phi_i
-
-    end do
-
-    !compute r_i
-    r_i = i*deltar
-
-    !print last step
-    write(3,'(F12.8,1X,F12.8)') r_i, phi_i
-
-    !close file
-    close(3)
+    
 
 contains
 
-    real function f(r)
+    real function f(x, k2, k_line2)
+        real*8, intent(in) :: x
+        real*8, intent(in) :: k2, k_line2
 
-        !declare parameters
-        real*8, intent(in) :: r
-
-        !compute function
-        f = -r*exp(-r)/2.0d0
-
+        f = k_line2 * (x**(-12.0d0) - x**(-6.0d0)) - k2
     end function f
 
-    real function analytic_solution(r)
+    subroutine numerov_step(i, j, deltar, k2, k_line2, &
+                            phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
+                            r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
+                            phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
+                            r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
 
-        !declare parameters
-        real*8, intent(in) :: r
+        implicit none
 
-        !compute function
-        analytic_solution = -exp(-r)*(r/2.0d0 + 1.0d0)
+        ! Inputs/Outputs
+        integer*8, intent(inout) :: i, j
+        real*8, intent(in) :: deltar, k2, k_line2
+        real*8, intent(inout) :: phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1
+        real*8, intent(inout) :: r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1
+        real*8, intent(inout) :: phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1
+        real*8, intent(inout) :: r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1
 
-    end function analytic_solution
+        ! Advance i and j
+        i = i + 1
+        j = j - 1
 
-end program Numerov
+        ! Compute positions
+        r_plus_i_minus_1 = (i-1)*deltar
+        r_plus_i = i*deltar
+        r_plus_i_plus_1 = (i+1)*deltar
+
+        r_minus_i_minus_1 = (j-1)*deltar
+        r_minus_i = j*deltar
+        r_minus_i_plus_1 = (j+1)*deltar
+
+        ! Numerov for forward
+        phi_plus_i_plus_1 = (2.0d0*phi_plus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus_i, k2, k_line2)) - &
+                             phi_plus_i_minus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus_i_minus_1, k2, k_line2))) / &
+                            (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus_i_plus_1, k2, k_line2))
+
+        phi_plus_i_minus_1 = phi_plus_i
+        phi_plus_i = phi_plus_i_plus_1
+
+        ! Numerov for backward
+        phi_minus_i_minus_1 = (2.0d0*phi_minus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus_i, k2, k_line2)) - &
+                               phi_minus_i_plus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus_i_plus_1, k2, k_line2))) / &
+                              (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus_i_minus_1, k2, k_line2))
+
+        phi_minus_i_plus_1 = phi_minus_i
+        phi_minus_i = phi_minus_i_minus_1
+
+        ! Save outputs (optionally)
+        write(n,'(F12.8,1X,F12.8)') r_plus_i, phi_plus_i
+        write(n,'(F12.8,1X,F12.8)') r_minus_i, phi_minus_i
+
+    end subroutine numerov_step
+
+end program MatchingMethod
