@@ -1,5 +1,5 @@
 !------------------------------------------------------------
-! File: P1-5255417-ex-2.f90
+! File: P1-5255417-ex-3.f90
 !
 ! Description:
 !   Solve the Schrodinger (with Lennard-Jones) equation using the Numerov algorithm in conjunction with the Matching Method
@@ -15,10 +15,11 @@
 !------------------------------------------------------------
 program MatchingMethod
 
+    !deactivate implicit typing
     implicit none
 
     !declare variables
-    integer*8 :: i, j, k, n, number_of_energies
+    integer*8 :: i, j, infinity, k, n, number_of_energies
     real*8 :: deltar, phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1
     real*8 :: r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1
     real*8 :: phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1
@@ -32,7 +33,8 @@ program MatchingMethod
 
     !initialize j
     write(*,*) "Where is infinity? (Insert j)"
-    read(*,*) j
+    read(*,*) infinity
+    j = infinity
 
     !define delta r
     write(*,*) "Insert delta r:"
@@ -50,6 +52,9 @@ program MatchingMethod
     write(*,*) "Insert the number of energies:"
     read(*,*) number_of_energies
 
+    !open file for writing results
+    open(1, file='matching-method.txt', status='replace')
+
     do k = 1, 2
 
         !initialize k_line2
@@ -57,22 +62,21 @@ program MatchingMethod
 
         do n = 1, number_of_energies
 
-            !initialize phi+(0) and phi+(delta r)
+            write(1,*) "energy number = ",n
+
+            !reinitialize variables before each numerov execution
             phi_plus_i_minus_1 = 0.0d0
-            phi_plus_i = 0.0d0
-
-            !initialize phi-(0) and phi-(delta r)
+            phi_plus_i         = 0.0d0
             phi_minus_i_plus_1 = 0.0d0
-            phi_minus_i = 0.0d0
-
-            !initialize diff_phi and diff_dphi
-            diff_phi = 1.0d0
+            phi_minus_i        = 0.0d0
+            diff_phi  = 1.0d0
             diff_dphi = 1.0d0
 
-            !open file for writing results
-            open(k, file='matching-method.txt', status='replace')
+            !reinitialize i and j before each numerov execution
+            i = 0
+            j = infinity
 
-            call numerov_step(i, j, deltar, k2, k_line2, &
+            call numerov(i, j, deltar, k2, k_line2, &
                                 phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
                                 r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
                                 phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
@@ -85,12 +89,28 @@ program MatchingMethod
             dphi_minus = (phi_minus_i_plus_1 - phi_minus_i_minus_1) / (2.0d0 * deltar)
             diff_dphi = abs(dphi_plus - dphi_minus)
 
+            write(*,*)diff_phi,diff_dphi
+
             do while (diff_phi > deltar .and. diff_dphi > deltar)
 
+                write(*,*) "I'm here!"
+
                 ! Update k2
-                k2 = k2 + deltak2
+                k2 = k2 - deltak2
+
+                !reinitialize variables before each numerov execution
+                phi_plus_i_minus_1 = 0.0d0
+                phi_plus_i         = 0.0d0
+                phi_minus_i_plus_1 = 0.0d0
+                phi_minus_i        = 0.0d0
+                diff_phi  = 1.0d0
+                diff_dphi = 1.0d0
+
+                !reinitialize i and j before each numerov execution
+                i = 0
+                j = infinity
                 
-                call numerov_step(i, j, deltar, k2, k_line2, &
+                call numerov(i, j, deltar, k2, k_line2, &
                                 phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
                                 r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
                                 phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
@@ -106,26 +126,31 @@ program MatchingMethod
             end do
 
             ! Write results to file
-            write(k, '(F12.8,1X,F12.8)') k_line2, k2
-
-            close(k)
+            write(1,*) "k'² =",k_line2,'k² =',k2
 
         end do
 
     end do
 
-    
+    close(1)
 
 contains
 
     real function f(x, k2, k_line2)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
         real*8, intent(in) :: x
         real*8, intent(in) :: k2, k_line2
-
+        
+        !compute function
         f = k_line2 * (x**(-12.0d0) - x**(-6.0d0)) - k2
+
     end function f
 
-    subroutine numerov_step(i, j, deltar, k2, k_line2, &
+    subroutine numerov(i, j, deltar, k2, k_line2, &
                             phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
                             r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
                             phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
@@ -141,39 +166,39 @@ contains
         real*8, intent(inout) :: phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1
         real*8, intent(inout) :: r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1
 
-        ! Advance i and j
-        i = i + 1
-        j = j - 1
+        do while (i.ne.j)
 
-        ! Compute positions
-        r_plus_i_minus_1 = (i-1)*deltar
-        r_plus_i = i*deltar
-        r_plus_i_plus_1 = (i+1)*deltar
+            ! Advance i and j
+            i = i + 1
+            j = j - 1
 
-        r_minus_i_minus_1 = (j-1)*deltar
-        r_minus_i = j*deltar
-        r_minus_i_plus_1 = (j+1)*deltar
+            ! Compute positions
+            r_plus_i_minus_1 = (i-1)*deltar
+            r_plus_i = i*deltar
+            r_plus_i_plus_1 = (i+1)*deltar
 
-        ! Numerov for forward
-        phi_plus_i_plus_1 = (2.0d0*phi_plus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus_i, k2, k_line2)) - &
-                             phi_plus_i_minus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus_i_minus_1, k2, k_line2))) / &
-                            (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus_i_plus_1, k2, k_line2))
+            r_minus_i_minus_1 = (j-1)*deltar
+            r_minus_i = j*deltar
+            r_minus_i_plus_1 = (j+1)*deltar
 
-        phi_plus_i_minus_1 = phi_plus_i
-        phi_plus_i = phi_plus_i_plus_1
+            ! Numerov for forward
+            phi_plus_i_plus_1 = (2.0d0*phi_plus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus_i, k2, k_line2)) - &
+                                phi_plus_i_minus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus_i_minus_1, k2, k_line2))) / &
+                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus_i_plus_1, k2, k_line2))
 
-        ! Numerov for backward
-        phi_minus_i_minus_1 = (2.0d0*phi_minus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus_i, k2, k_line2)) - &
-                               phi_minus_i_plus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus_i_plus_1, k2, k_line2))) / &
-                              (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus_i_minus_1, k2, k_line2))
+            phi_plus_i_minus_1 = phi_plus_i
+            phi_plus_i = phi_plus_i_plus_1
 
-        phi_minus_i_plus_1 = phi_minus_i
-        phi_minus_i = phi_minus_i_minus_1
+            ! Numerov for backward
+            phi_minus_i_minus_1 = (2.0d0*phi_minus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus_i, k2, k_line2)) - &
+                                phi_minus_i_plus_1*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus_i_plus_1, k2, k_line2))) / &
+                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus_i_minus_1, k2, k_line2))
 
-        ! Save outputs (optionally)
-        write(n,'(F12.8,1X,F12.8)') r_plus_i, phi_plus_i
-        write(n,'(F12.8,1X,F12.8)') r_minus_i, phi_minus_i
+            phi_minus_i_plus_1 = phi_minus_i
+            phi_minus_i = phi_minus_i_minus_1
 
-    end subroutine numerov_step
+        end do
+
+    end subroutine numerov
 
 end program MatchingMethod
