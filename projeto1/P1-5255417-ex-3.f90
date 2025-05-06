@@ -66,9 +66,9 @@ program MatchingMethod
 
             !reinitialize variables before each numerov execution
             phi_plus_i_minus_1 = 0.0d0
-            phi_plus_i         = 0.0d0
+            phi_plus_i         = deltar
             phi_minus_i_plus_1 = 0.0d0
-            phi_minus_i        = 0.0d0
+            phi_minus_i        = deltar
             diff_phi  = 1.0d0
             diff_dphi = 1.0d0
 
@@ -89,8 +89,6 @@ program MatchingMethod
             dphi_minus = (phi_minus_i_plus_1 - phi_minus_i_minus_1) / (2.0d0 * deltar)
             diff_dphi = abs(dphi_plus - dphi_minus)
 
-            write(*,*)diff_phi,diff_dphi
-
             do while (diff_phi > deltar .and. diff_dphi > deltar)
 
                 write(*,*) "I'm here!"
@@ -100,9 +98,9 @@ program MatchingMethod
 
                 !reinitialize variables before each numerov execution
                 phi_plus_i_minus_1 = 0.0d0
-                phi_plus_i         = 0.0d0
+                phi_plus_i         = deltar
                 phi_minus_i_plus_1 = 0.0d0
-                phi_minus_i        = 0.0d0
+                phi_minus_i        = deltar
                 diff_phi  = 1.0d0
                 diff_dphi = 1.0d0
 
@@ -138,15 +136,15 @@ contains
 
     real function f(x, k2, k_line2)
 
-        !deactivate implicit typing
         implicit none
-
-        !declare variables
         real*8, intent(in) :: x
         real*8, intent(in) :: k2, k_line2
-        
-        !compute function
-        f = k_line2 * (x**(-12.0d0) - x**(-6.0d0)) - k2
+
+        if (x <= 0.0d0) then
+            f = 1.0d30  ! valor grande para forçar decaimento
+        else
+            f = k_line2 * (x**(-12.0d0) - x**(-6.0d0)) - k2
+        end if
 
     end function f
 
