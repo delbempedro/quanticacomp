@@ -27,6 +27,10 @@ program MatchingMethod
     real*8 :: k2, k_line2, deltak2
     real*8 :: diff_phi, diff_dphi
     real*8 :: dphi_plus, dphi_minus
+    real*8 :: r_min, r_0
+
+    ! define r_0
+    r_0 = 2.0d0**(1.0d0/6.0d0)
 
     !initialize i
     i = 0
@@ -52,6 +56,9 @@ program MatchingMethod
     write(*,*) "Insert the number of energies:"
     read(*,*) number_of_energies
 
+    !define r min
+    r_min = 0.5d0
+
     !open file for writing results
     open(1, file='matching-method.txt', status='replace')
 
@@ -60,27 +67,31 @@ program MatchingMethod
         !initialize k_line2
         k_line2 = 1.0d0 * k
 
+        write(1,'(A,I1)') "k'² = ",k
+
+
         do n = 1, number_of_energies
 
-            write(1,*) "energy number = ",n
+            write(1,'(A,I13)') "    Energy Number = ",n
 
             !reinitialize variables before each numerov execution
             phi_plus_i_minus_1 = 0.0d0
-            phi_plus_i         = deltar
+            phi_plus_i         = 1.0d0
             phi_minus_i_plus_1 = 0.0d0
-            phi_minus_i        = deltar
+            phi_minus_i        = 1.0d0
             diff_phi  = 1.0d0
             diff_dphi = 1.0d0
 
             !reinitialize i and j before each numerov execution
             i = 0
             j = infinity
+            write(*,*) infinity
 
             call numerov(i, j, deltar, k2, k_line2, &
                                 phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
                                 r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
                                 phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
-                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
+                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1, r_0, r_min)
 
             ! Compute differences
             diff_phi = abs(phi_plus_i - phi_minus_i)
@@ -89,18 +100,24 @@ program MatchingMethod
             dphi_minus = (phi_minus_i_plus_1 - phi_minus_i_minus_1) / (2.0d0 * deltar)
             diff_dphi = abs(dphi_plus - dphi_minus)
 
+            write(*,'(A,F12.6,A,F12.6,A,F12.6,A,F12.6,A,F12.6)') &
+                " φ₊ = ", phi_plus_i, " | φ₋ = ", phi_minus_i, " | Δφ = ", diff_phi, &
+                " | Δφ' = ", diff_dphi, " | k² = ", k2
+
             do while (diff_phi > deltar .and. diff_dphi > deltar)
 
-                write(*,*) "I'm here!"
+                write(*,'(A,F12.6,A,F12.6,A,F12.6,A,F12.6,A,F12.6)') &
+                " φ₊ = ", phi_plus_i, " | φ₋ = ", phi_minus_i, " | Δφ = ", diff_phi, &
+                " | Δφ' = ", diff_dphi, " | k² = ", k2
 
                 ! Update k2
                 k2 = k2 - deltak2
 
                 !reinitialize variables before each numerov execution
                 phi_plus_i_minus_1 = 0.0d0
-                phi_plus_i         = deltar
+                phi_plus_i         = 1.0d0
                 phi_minus_i_plus_1 = 0.0d0
-                phi_minus_i        = deltar
+                phi_minus_i        = 1.0d0
                 diff_phi  = 1.0d0
                 diff_dphi = 1.0d0
 
@@ -112,7 +129,7 @@ program MatchingMethod
                                 phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
                                 r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
                                 phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
-                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
+                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1, r_0, r_min)
 
                 ! Compute differences
                 diff_phi = abs(phi_plus_i - phi_minus_i)
@@ -124,7 +141,7 @@ program MatchingMethod
             end do
 
             ! Write results to file
-            write(1,*) "k'² =",k_line2,'k² =',k2
+            write(1,'(A,F12.6)') "  k² = ", k2
 
         end do
 
@@ -149,10 +166,10 @@ contains
     end function f
 
     subroutine numerov(i, j, deltar, k2, k_line2, &
-                            phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
-                            r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
-                            phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
-                            r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1)
+                                phi_plus_i_minus_1, phi_plus_i, phi_plus_i_plus_1, &
+                                r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1, &
+                                phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1, &
+                                r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1, r_0, r_min)
 
         implicit none
 
@@ -163,21 +180,25 @@ contains
         real*8, intent(inout) :: r_plus_i_minus_1, r_plus_i, r_plus_i_plus_1
         real*8, intent(inout) :: phi_minus_i_minus_1, phi_minus_i, phi_minus_i_plus_1
         real*8, intent(inout) :: r_minus_i_minus_1, r_minus_i, r_minus_i_plus_1
+        real*8, intent(in) :: r_0, r_min
 
-        do while (i.ne.j)
+        do while (i*deltar.lt.r_min)
 
-            ! Advance i and j
             i = i + 1
-            j = j - 1
+
+        end do
+
+        do while (i*deltar.lt.r_0)
+
+            write(*,*) " φ₊ = ", phi_plus_i, " | r₊ = ", r_plus_i, " | i", i
+
+            ! Advance i
+            i = i + 1
 
             ! Compute positions
             r_plus_i_minus_1 = (i-1)*deltar
             r_plus_i = i*deltar
             r_plus_i_plus_1 = (i+1)*deltar
-
-            r_minus_i_minus_1 = (j-1)*deltar
-            r_minus_i = j*deltar
-            r_minus_i_plus_1 = (j+1)*deltar
 
             ! Numerov for forward
             phi_plus_i_plus_1 = (2.0d0*phi_plus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus_i, k2, k_line2)) - &
@@ -186,6 +207,20 @@ contains
 
             phi_plus_i_minus_1 = phi_plus_i
             phi_plus_i = phi_plus_i_plus_1
+
+        end do
+
+        do while(r_0.lt.j*deltar)
+
+            write(*,*) " φ₋ = ", phi_minus_i, " | r₋ = ", r_minus_i, " | j", j
+
+            ! Advance j
+            j = j - 1
+
+            ! Compute positions
+            r_minus_i_minus_1 = (j-1)*deltar
+            r_minus_i = j*deltar
+            r_minus_i_plus_1 = (j+1)*deltar
 
             ! Numerov for backward
             phi_minus_i_minus_1 = (2.0d0*phi_minus_i*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus_i, k2, k_line2)) - &
