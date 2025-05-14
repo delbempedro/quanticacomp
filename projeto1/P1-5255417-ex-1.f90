@@ -19,8 +19,8 @@ program Numerov
     implicit none
 
     !declare variables
-    integer*8 :: i
-    real*8 :: deltar, phi_i_minus_1, phi_i, phi_i_plus_1, r_i_minus_1, r_i, r_i_plus_1
+    integer(8) :: i
+    real(8) :: deltar, phi_i_minus_1, phi_i, phi_i_plus_1, r_i_minus_1, r_i, r_i_plus_1
 
     !initialize i
     i = 0
@@ -110,20 +110,20 @@ program Numerov
 
 contains
 
-    real function f(r)
+    real(8) function f(r)
 
         !declare parameters
-        real*8, intent(in) :: r
+        real(8), intent(in) :: r
 
         !compute function
         f = -r*exp(-r)/2.0d0
 
     end function f
 
-    real function analytic_solution(r)
+    real(8) function analytic_solution(r)
 
         !declare parameters
-        real*8, intent(in) :: r
+        real(8), intent(in) :: r
 
         !compute function
         analytic_solution = -exp(-r)*(r/2.0d0 + 1.0d0)

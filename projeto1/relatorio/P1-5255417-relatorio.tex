@@ -293,17 +293,32 @@ Professor: Attilio Cucchieri\\
                 -\frac{\hbar^{2}}{2ma^2} \frac{d^{2}\psi(x)}{dx^{2}} + 4E_{0} \left[ x^{-12} - x^{-6} \right]\psi(x) = E\psi(x)
             \end{equation*}
 
-            Note que $\frac{\hbar^{2}}{2ma^2}$ tem dimens\~ao de energia, e portanto define-se $k^2 = \frac{2Ema^2}{\hbar^{2}}$ e $k'^2 = \frac{8E_{0}ma^2}{\hbar^{2}}$. Assim, temos que:
+            Note que $\frac{\hbar^{2}}{2ma^2}$ tem dimens\~ao de energia, e portanto define-se $k = \frac{2Ema^2}{\hbar^{2}}$ e $k' = \frac{8E_{0}ma^2}{\hbar^{2}}$. Assim, temos que:
             \begin{equation*}
-                \frac{d^{2}\psi(x)}{dx^{2}} - k'^2\left[  x^{-12} - x^{-6} \right]\psi(x) = -k^2\psi(x)
+                \frac{d^{2}\psi(x)}{dx^{2}} - k'\left[  x^{-12} - x^{-6} \right]\psi(x) = -k\psi(x)
             \end{equation*}
 
             E por fim, rearranja-se a equa\c{c}\~ao:
             \begin{equation*}
-                \frac{d^{2}\psi(x)}{dx^{2}} = \left[k'^2\left( x^{-12} - x^{-6} \right) -k^2\right]\psi(x)
+                \frac{d^{2}\psi(x)}{dx^{2}} = \left[k'\left( x^{-12} - x^{-6} \right) -k\right]\psi(x)
             \end{equation*}
 
-            Para simplificar, adota-se $E_{0_{1}} = \frac{\hbar^{2}}{8ma^2}$ e $E_{0_{2}} = 2\frac{\hbar^{2}}{8ma^2}$ de modo que $k'^2_{1} = 1$ e $k'^2_{2} = 2$.
+            Para simplificar, adota-se $E_{0_{1}} = \frac{\hbar^{2}}{8ma^2}$ e $E_{0_{2}} = 2\frac{\hbar^{2}}{8ma^2}$ de modo que $k'_{1} = 1$ e $k'_{2} = 2$.
 
+            A energia mínima $E_{min}$ para que haja partícula \'e igual ao potencial em seu m\'inimo $V(r_{0}) = -2E_{0}$. Mas queremos expressar isto em termos de k' e k para representarmos no c\'odigo.
+            
+            Substituimos $E_{min}$ na expressão de k e obtemos:
+
+            \begin{equation}
+                k_{min} = \frac{2E_{min}ma^2}{\hbar^{2}} = - \frac{4E_{0}ma^2}{\hbar^{2}}
+            \end{equation}
+
+            E, utilizando a expressão para k', temos:
+
+            \begin{equation}
+                k_{min} = -\frac{k'}{2}
+            \end{equation}
+
+            E podemos partir deste m\'inimo para descobrir os k
               
 \end{document}

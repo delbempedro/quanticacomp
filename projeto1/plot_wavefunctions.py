@@ -13,78 +13,86 @@ Since:
 Authors:
 - Pedro C. Delbem. <pedrodelbem@usp.br>
 """
+import numpy as np
 import matplotlib.pyplot as plt
 
-def read_wavefunctions(filename):
+def read_wavefunctions(file_path):
     """
-    Reads wavefunction data from a file.
-
-    Each wavefunction is assumed to be separated by a line with only "----------------------------------------------".
-    Each data line must contain two floating-point numbers: amplitude and position.
-
-    Parameters:
-        filename (str): Path to the file containing wavefunction data.
-
-    Returns:
-        list of tuples: Each tuple contains two lists (positions, amplitudes).
+    Reads wavefunctions from a file.
+    Each wavefunction is separated by a line containing only dashes ("----------------------------------------------").
+    Each data point consists of two columns: value and position.
     """
-    with open(filename, 'r') as file:
-        lines = file.readlines()
-
     wavefunctions = []
-    positions = []
-    amplitudes = []
+    current_x = []
+    current_y = []
 
-    for line in lines:
-        line = line.strip()
-        if line == '----------------------------------------------':
-            if positions and amplitudes:
-                wavefunctions.append((positions, amplitudes))
-                positions, amplitudes = [], []
-        elif line:
-            try:
-                amplitude, position = map(float, line.split())
-                positions.append(position)
-                amplitudes.append(amplitude)
-            except ValueError:
-                continue  # Ignore improperly formatted lines
-
-    # Append the last wavefunction if file does not end with separator
-    if positions and amplitudes:
-        wavefunctions.append((positions, amplitudes))
+    with open(file_path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if line == "----------------------------------------------":
+                if current_x and current_y:
+                    wavefunctions.append((np.array(current_x), np.array(current_y)))
+                    current_x = []
+                    current_y = []
+            elif line:
+                try:
+                    y_str, x_str = line.split()  # File has "value position"
+                    current_x.append(float(x_str))  # position
+                    current_y.append(float(y_str))  # value
+                except ValueError:
+                    print(f"Warning: ignoring malformed line: {line}")
+        if current_x and current_y:
+            wavefunctions.append((np.array(current_x), np.array(current_y)))
 
     return wavefunctions
 
-def plot_all_wavefunctions(wavefunctions, output_file='wavefunctions.png'):
+def normalize_to_unit_interval(y):
     """
-    Plots all wavefunctions on the same graph and saves the plot to a PNG file.
+    Normalize an array to the [0, 1] interval.
+    """
+    y_min = np.min(y)
+    y_max = np.max(y)
+    if y_max == y_min:
+        return np.zeros_like(y)  # Prevent division by zero
+    return (y - y_min) / (y_max - y_min)
 
-    Parameters:
-        wavefunctions (list of tuples): Each tuple contains (positions, amplitudes).
-        output_file (str): Filename for the saved plot.
+def plot_wavefunctions(wavefunctions, output_filename='wavefunctions.png'):
+    """
+    Plots all wavefunctions on the same graph and saves the image.
+    The last wavefunction is assumed to represent the potential V(x), normalized to [0, 1].
     """
     plt.figure(figsize=(10, 6))
+    num_functions = len(wavefunctions)
 
-    for index, (positions, amplitudes) in enumerate(wavefunctions):
-        plt.plot(positions, amplitudes, label=f'Wavefunction {index + 1}')
+    for i, (x, y) in enumerate(wavefunctions):
+        if i == num_functions - 1:
+            #y = normalize_to_unit_interval(y)
+            plt.plot(x, y, label="Potential V(x) [normalized]", color="black", linestyle="--", linewidth=2)
+        else:
+            plt.plot(x, y, label=f"ψ_{i+1}")
 
-    plt.title('All Wavefunctions')
-    plt.xlabel('Position')
-    plt.ylabel('Wavefunction Amplitude')
-    plt.grid(True)
+    plt.xlabel("Position")
+    plt.ylabel("ψ(x), V(x)")
+    plt.title("Wavefunctions and Normalized Potential")
     plt.legend()
+    plt.grid(True)
     plt.tight_layout()
-    plt.savefig(output_file)
+    plt.savefig(output_filename)
+    print(f"Plot saved as: {output_filename}")
     plt.show()
 
 def main():
-    """
-    Main function to read and plot wavefunctions from a file.
-    """
-    filename = 'eigenfunctions.txt'  # Adjust if your file has a different name
-    wavefunctions = read_wavefunctions(filename)
-    plot_all_wavefunctions(wavefunctions)
+    file_name = input("Enter the path to the file containing the wavefunctions: ").strip()
+    try:
+        wavefunctions = read_wavefunctions(file_name)
+        if wavefunctions:
+            plot_wavefunctions(wavefunctions)
+        else:
+            print("No wavefunctions found in the file.")
+    except FileNotFoundError:
+        print(f"Error: file '{file_name}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

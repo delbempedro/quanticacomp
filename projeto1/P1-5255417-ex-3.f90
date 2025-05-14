@@ -19,10 +19,10 @@ program MatchingMethod
     implicit none
 
     !declare variables
-    integer*8, parameter :: max_points = 100000
-    integer*8 i, j, infinity, k, l, n, i_min!, number_of_energies
-    real*8 deltar, k2, initial_k2, k_line2, deltak2, diff_phi, diff_dphi, dphi_plus, dphi_minus, r_min, r_0, r_plus, r_minus
-    real*8, dimension(0:max_points) :: phi_plus, phi_minus
+    integer(8), parameter :: max_points = 100000
+    integer(8) i, j, infinity, e, l, n, i_min
+    real(8) deltar, k, k_line, deltak, diff_phi, diff_dphi, dphi_plus, dphi_minus, r_min, r_0, r_plus, r_minus, r, profundidade
+    real(8), dimension(0:max_points) :: phi_plus, phi_minus
 
     ! define r_0
     r_0 = 2.0d0**(1.0d0/6.0d0)
@@ -38,21 +38,13 @@ program MatchingMethod
     !define delta r
     write(*,*) "Insert delta r:"
     read(*,*) deltar
-    
-    !initialize k2
-    write(*,*) "Insert first k2:"
-    read(*,*) initial_k2
 
-    !initialize deltak2
-    write(*,*) "Insert delta k2:"
-    read(*,*) deltak2
-
-    !ask for the number of energies
-    !write(*,*) "Insert the number of energies:"
-    !read(*,*) number_of_energies
+    !initialize deltak
+    write(*,*) "Insert delta k:"
+    read(*,*) deltak
 
     !define r min
-    r_min = 0.5d0
+    r_min = 0.95d0
 
     !compute first i minimum
     i_min = 0
@@ -61,23 +53,26 @@ program MatchingMethod
     end do
 
     !open file for writing results
-    open(1, file='matching-method.txt', status='replace')
-    open(2, file='eigenfunctions.txt', status='replace')
+    open(1, file='eigenfunctions1.txt', status='replace')
+    open(2, file='eigenfunctions2.txt', status='replace')
+    open(3, file='matching-method.txt', status='replace')
 
-    do k = 1, 2
+    profundidade = 100.0d0
 
-        !initialize k2
-        k2 = initial_k2
+    do e = 1, 2
 
-        !initialize k_line2
-        k_line2 = 1.0d0 * k
+        !define k_line
+        k_line = profundidade * e
 
-        write(1,'(A,I1)') "k'² = ",k
+        !intialize k
+        k = -k_line/2.0d0
+        write(*,*) k
 
+        write(3,'(A,I1)') "k' = ",e
 
-        do n = 1, 4!number_of_energies
+        do n = 1, 4
 
-            write(1,'(A,I13)') "    Energy Number = ",n
+            write(3,'(A,I13)') "    Energy Number = ",n
 
             !reinitialize i and j before each numerov execution
             i = i_min
@@ -85,13 +80,13 @@ program MatchingMethod
 
             !reinitialize variables before each numerov execution
             phi_plus(i-1) = 0.0d0
-            phi_plus(i) = 1.0d0
+            phi_plus(i)   = 1.0d-6
             phi_minus(j+1) = 0.0d0
-            phi_minus(j) = 1.0d0
+            phi_minus(j)   = 1.0d-6
             diff_phi  = 1.0d0
             diff_dphi = 1.0d0
 
-            call numerov(i, j, deltar, k2, k_line2, phi_plus, r_plus, phi_minus, r_minus, r_0, r_min)
+            call numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
 
             ! Compute difference of phi+ and phi- in r_0 
             diff_phi = abs(phi_plus(j) - phi_minus(i))
@@ -101,19 +96,11 @@ program MatchingMethod
             dphi_minus = (phi_minus(i+1) - phi_minus(i-1)) / (2.0d0 * deltar)
             diff_dphi = abs(dphi_plus - dphi_minus)
 
-            !write(*,'(A,F12.6,A,F12.6,A,F12.6,A,F12.6,A,F12.6)') &
-            !    " φ₊ = ", phi_plus(j), " | φ₋ = ", phi_minus(i), " | Δφ = ", diff_phi, &
-            !    " | Δφ' = ", diff_dphi, " | k² = ", k2
+            do while ((diff_phi > 1.0d-5 .or. diff_dphi > 1.0d-5) .and. k < 0.0d0)
 
-            do while (diff_phi > deltar*1e-3 .and. diff_dphi > deltar*1e-3)
-
-                !write(*,'(A,F12.6,A,F12.6,A,F12.6,A,F12.6,A,F12.6)') &
-                !" φ₊ = ", phi_plus(j), " | φ₋ = ", phi_minus(i), " | Δφ = ", diff_phi, &
-                !" | Δφ' = ", diff_dphi, " | k² = ", k2
-
-                ! Update k2
-                k2 = k2 - deltak2
-
+                ! Update k
+                k = k + deltak
+                write(*,*)k
 
                 !reinitialize i and j before each numerov execution
                 i = i_min
@@ -121,13 +108,13 @@ program MatchingMethod
 
                 !reinitialize variables before each numerov execution
                 phi_plus(i-1) = 0.0d0
-                phi_plus(i) = 1.0d0
+                phi_plus(i)   = 1.0d-6
                 phi_minus(j+1) = 0.0d0
-                phi_minus(j) = 1.0d0
+                phi_minus(j)   = 1.0d-6
                 diff_phi  = 1.0d0
                 diff_dphi = 1.0d0
                 
-                call numerov(i, j, deltar, k2, k_line2, phi_plus, r_plus, phi_minus, r_minus, r_0, r_min)
+                call numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
 
                 ! Compute difference of phi+ and phi- in r_0 
                 diff_phi = abs(phi_plus(j) - phi_minus(i))
@@ -140,58 +127,79 @@ program MatchingMethod
             end do
 
             ! Write results to file
-            write(1,'(A,F12.6)') "  k² = ", k2
+            write(3,'(A,F12.6)') "  k = ", k
 
-            k2 = k2 - deltak2
+            k = k + deltak
 
             !write eingenfunction
             l = i_min
             do while (l*deltar.lt.r_0)
 
-                write(2,*) phi_plus(l), l*deltar
+                write(e,*) phi_plus(l), l*deltar
                 l = l + 1
 
             end do
             do while (l.lt.infinity)
 
-                write(2,*) phi_plus(l), l*deltar
+                write(e,*) phi_minus(l), l*deltar
                 l = l + 1
 
             end do
-            write(2,*) "----------------------------------------------"
+            write(e,*) "----------------------------------------------"
+
+        end do
+
+        ! plot V(r)
+        r = r_min
+        do while(r.lt.infinity*deltar)
+
+            write(e,*) V(r, k_line), r
+            r = r + deltar
 
         end do
 
     end do
 
-    close(1)
+    close(3)
     close(2)
+    close(1)
 
 contains
 
-    real function f(x, k2, k_line2)
-
-        implicit none
-        real*8, intent(in) :: x
-        real*8, intent(in) :: k2, k_line2
-
-        if (x <= 0.0d0) then
-            f = 1.0d30  ! valor grande para forçar decaimento
-        else
-            f = k_line2 * (x**(-12.0d0) - x**(-6.0d0)) - k2
-        end if
-
-    end function f
-
-    subroutine numerov(i, j, deltar, k2, k_line2, phi_plus, r_plus, phi_minus, r_minus, r_0, r_min)
+    real(8) function f(x, k, k_line)
 
         !deactivate implicit typing
         implicit none
 
         !declare variables
-        integer*8 :: i, j
-        real*8 :: deltar, k2, k_line2, r_min, r_0, r_plus, r_minus
-        real*8, dimension(0:max_points) :: phi_plus, phi_minus
+        real(8), intent(in) :: x
+        real(8), intent(in) :: k, k_line
+
+        f = V(x, k_line) - k
+
+    end function 
+
+    real(8) function V(x, k_line)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
+        real(8), intent(in) :: x, k_line
+
+        V = k_line * (1.0d0/x**(12.0d0) - 1.0d0/x**(6.0d0))
+
+    end function
+
+    subroutine numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
+        integer(8) :: i, j
+        real(8) :: deltar, k, k_line, r_0, r_plus, r_minus
+        real(8), dimension(0:max_points) :: phi_plus, phi_minus
 
         do while (i*deltar.lt.r_0)
 
@@ -204,9 +212,9 @@ contains
             r_plus = i*deltar
 
             ! Numerov for forward
-            phi_plus(i+1) = (2.0d0*phi_plus(i)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus, k2, k_line2)) - &
-                                phi_plus(i-1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus-deltar, k2, k_line2))) / &
-                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus+deltar, k2, k_line2))
+            phi_plus(i+1) = (2.0d0*phi_plus(i)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus, k, k_line)) - &
+                                phi_plus(i-1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus-deltar, k, k_line))) / &
+                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus+deltar, k, k_line))
 
         end do
 
@@ -221,9 +229,9 @@ contains
             r_minus = j*deltar
 
             ! Numerov for backward
-            phi_minus(j-1) = (2.0d0*phi_minus(j)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus, k2, k_line2)) - &
-                                phi_minus(j+1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus+deltar, k2, k_line2))) / &
-                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus-deltar, k2, k_line2))
+            phi_minus(j-1) = (2.0d0*phi_minus(j)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus, k, k_line)) - &
+                                phi_minus(j+1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus+deltar, k, k_line))) / &
+                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus-deltar, k, k_line))
 
         end do
 
