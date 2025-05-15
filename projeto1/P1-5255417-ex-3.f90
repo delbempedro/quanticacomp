@@ -144,7 +144,8 @@ contains
             k1 = k_trial - V(r, k_line)
             k2 = k_trial - V(r + delta_r, k_line)
             k3 = k_trial - V(r - delta_r, k_line)
-            psi_left(i) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_left(i-1) - (1.0_dp + c * k3) * psi_left(i-2)) / (1.0_dp + c * k2)
+            psi_left(i) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_left(i-1) &
+                          - (1.0_dp + c * k3) * psi_left(i-2)) / (1.0_dp + c * k2)
             r = r + delta_r
         end do
 
@@ -154,7 +155,8 @@ contains
             k1 = k_trial - V(r, k_line)
             k2 = k_trial - V(r - delta_r, k_line)
             k3 = k_trial - V(r + delta_r, k_line)
-            psi_right(j) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_right(j+1) - (1.0_dp + c * k3) * psi_right(j+2)) / (1.0_dp + c * k2)
+            psi_right(j) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_right(j+1) &
+                          - (1.0_dp + c * k3) * psi_right(j+2)) / (1.0_dp + c * k2)
             r = r - delta_r
         end do
     end subroutine compute_wavefunctions
