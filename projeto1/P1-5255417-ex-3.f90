@@ -1,240 +1,183 @@
-!------------------------------------------------------------
-! File: P1-5255417-ex-3.f90
-!
-! Description:
-!   Solve the Schrodinger (with Lennard-Jones) equation using the Numerov algorithm in conjunction with the Matching Method
-!
-! Dependencies:
-!   - None
-!
-! Since:
-!   - 03/2025
-!
-! Authors:
-!   - Pedro C. Delbem <pedrodelbem@usp.br>
-!------------------------------------------------------------
 program MatchingMethod
 
-    !deactivate implicit typing
     implicit none
 
-    !declare variables
-    integer(8), parameter :: max_points = 100000
-    integer(8) i, j, infinity, e, l, n, i_min
-    real(8) deltar, k, k_line, deltak, diff_phi, diff_dphi, dphi_plus, dphi_minus, r_min, r_0, r_plus, r_minus, r, profundidade
-    real(8), dimension(0:max_points) :: phi_plus, phi_minus
+    integer, parameter :: dp = selected_real_kind(15, 307)
 
-    ! define r_0
-    r_0 = 2.0d0**(1.0d0/6.0d0)
+    integer :: i, j
+    integer :: number_of_points, number_of_states, index_match
+    real(dp) :: r_min, r_max, delta_r, delta_k, tolerance
+    real(dp) :: k_line, r0, k_trial, delta_k_trial
+    real(dp) :: diff_dpsi, diff_dpsi_prev
+    real(dp) :: dpsi_left, dpsi_right, scaling_factor
+    logical :: sign_changed
 
-    !initialize i
-    i = 0
+    real(dp), allocatable :: psi_left(:), psi_right(:), psi_total(:)
+    real(dp), allocatable :: ks(:), potential(:)
 
-    !initialize j
-    write(*,*) "Where is infinity? (Insert j)"
-    read(*,*) infinity
-    j = infinity
+    real(dp) :: r
 
-    !define delta r
-    write(*,*) "Insert delta r:"
-    read(*,*) deltar
+    !--- Leitura dos parâmetros ---
+    print *, "Insert k_line:"
+    read(*,*) k_line
+    print *, "Insert r_min, r_max:"
+    read(*,*) r_min, r_max
+    print *, "Insert delta_k:"
+    read(*,*) delta_k
+    print *, "Insert delta_r:"
+    read(*,*) delta_r
+    print *, "Insert tolerance:"
+    read(*,*) tolerance
+    print *, "Insert number of states to find:"
+    read(*,*) number_of_states
 
-    !initialize deltak
-    write(*,*) "Insert delta k:"
-    read(*,*) deltak
+    number_of_points = int((r_max - r_min)/delta_r) + 1
+    r0 = (2.0_dp)**(1.0_dp/6.0_dp)
+    index_match = int((r0 - r_min)/delta_r) + 1
 
-    !define r min
-    r_min = 0.95d0
+    allocate(psi_left(0:number_of_points+1))
+    allocate(psi_right(0:number_of_points+1))
+    allocate(psi_total(0:number_of_points+1))
+    allocate(ks(number_of_states))
+    allocate(potential(0:number_of_points+1))
 
-    !compute first i minimum
-    i_min = 0
-    do while (i_min*deltar.lt.r_min)
-        i_min = i_min + 1
-    end do
+    open(unit=1, file="eigenfunctions_total.txt", status='replace', action='write')
 
-    !open file for writing results
-    open(1, file='eigenfunctions1.txt', status='replace')
-    open(2, file='eigenfunctions2.txt', status='replace')
-    open(3, file='matching-method.txt', status='replace')
+    k_trial = -k_line
+    delta_k_trial = delta_k
 
-    profundidade = 100.0d0
+    i = 1
+    do while (i <= number_of_states)
 
-    do e = 1, 2
+        call compute_wavefunctions(psi_left, psi_right, number_of_points, delta_r, k_trial, r_min, k_line)
 
-        !define k_line
-        k_line = profundidade * e
+        ! Escala psi_left para casar com psi_right no ponto de matching
+        scaling_factor = psi_right(index_match) / psi_left(index_match)
+        psi_left = psi_left * scaling_factor
 
-        !intialize k
-        k = -k_line/2.0d0
-        write(*,*) k
+        ! Calcula derivadas no ponto de matching
+        dpsi_left = (psi_left(index_match+1) - psi_left(index_match-1)) / (2.0_dp * delta_r)
+        dpsi_right = (psi_right(index_match+1) - psi_right(index_match-1)) / (2.0_dp * delta_r)
 
-        write(3,'(A,I1)') "k' = ",e
+        diff_dpsi = dpsi_left - dpsi_right
+        diff_dpsi_prev = diff_dpsi
 
-        do n = 1, 4
-
-            write(3,'(A,I13)') "    Energy Number = ",n
-
-            !reinitialize i and j before each numerov execution
-            i = i_min
-            j = infinity
-
-            !reinitialize variables before each numerov execution
-            phi_plus(i-1) = 0.0d0
-            phi_plus(i)   = 1.0d-6
-            phi_minus(j+1) = 0.0d0
-            phi_minus(j)   = 1.0d-6
-            diff_phi  = 1.0d0
-            diff_dphi = 1.0d0
-
-            call numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
-
-            ! Compute difference of phi+ and phi- in r_0 
-            diff_phi = abs(phi_plus(j) - phi_minus(i))
-
-            ! Compute difference of dphi+ and dphi- in r_0 
-            dphi_plus = (phi_plus(j+1) - phi_plus(j-1)) / (2.0d0 * deltar)
-            dphi_minus = (phi_minus(i+1) - phi_minus(i-1)) / (2.0d0 * deltar)
-            diff_dphi = abs(dphi_plus - dphi_minus)
-
-            do while ((diff_phi > 1.0d-5 .or. diff_dphi > 1.0d-5) .and. k < 0.0d0)
-
-                ! Update k
-                k = k + deltak
-                write(*,*)k
-
-                !reinitialize i and j before each numerov execution
-                i = i_min
-                j = infinity
-
-                !reinitialize variables before each numerov execution
-                phi_plus(i-1) = 0.0d0
-                phi_plus(i)   = 1.0d-6
-                phi_minus(j+1) = 0.0d0
-                phi_minus(j)   = 1.0d-6
-                diff_phi  = 1.0d0
-                diff_dphi = 1.0d0
-                
-                call numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
-
-                ! Compute difference of phi+ and phi- in r_0 
-                diff_phi = abs(phi_plus(j) - phi_minus(i))
-
-                ! Compute difference of dphi+ and dphi- in r_0 
-                dphi_plus = (phi_plus(j+1) - phi_plus(j-1)) / (2.0d0 * deltar)
-                dphi_minus = (phi_minus(i+1) - phi_minus(i-1)) / (2.0d0 * deltar)
-                diff_dphi = abs(dphi_plus - dphi_minus)
-
-            end do
-
-            ! Write results to file
-            write(3,'(A,F12.6)') "  k = ", k
-
-            k = k + deltak
-
-            !write eingenfunction
-            l = i_min
-            do while (l*deltar.lt.r_0)
-
-                write(e,*) phi_plus(l), l*deltar
-                l = l + 1
-
-            end do
-            do while (l.lt.infinity)
-
-                write(e,*) phi_minus(l), l*deltar
-                l = l + 1
-
-            end do
-            write(e,*) "----------------------------------------------"
-
+        do while (abs(diff_dpsi) > tolerance)
+            k_trial = k_trial + delta_k_trial
+            call compute_wavefunctions(psi_left, psi_right, number_of_points, delta_r, k_trial, r_min, k_line)
+            scaling_factor = psi_right(index_match) / psi_left(index_match)
+            psi_left = psi_left * scaling_factor
+            dpsi_left = (psi_left(index_match+1) - psi_left(index_match-1)) / (2.0_dp * delta_r)
+            dpsi_right = (psi_right(index_match+1) - psi_right(index_match-1)) / (2.0_dp * delta_r)
+            diff_dpsi_prev = diff_dpsi
+            diff_dpsi = dpsi_left - dpsi_right
+            sign_changed = (diff_dpsi * diff_dpsi_prev < 0.0_dp)
+            if (sign_changed) delta_k_trial = -delta_k_trial / 2.0_dp
+            if (abs(delta_k_trial) < 1.0e-15_dp) exit
         end do
 
-        ! plot V(r)
+        ks(i) = k_trial
+
+        ! Monta a função de onda total combinando psi_left e psi_right
+        do j = 1, index_match
+            psi_total(j) = psi_left(j)
+        end do
+        do j = index_match+1, number_of_points
+            psi_total(j) = psi_right(j)
+        end do
+
+        ! Normalização simples (opcional, só para melhor visualização)
+        call normalize_wavefunction(psi_total, number_of_points, delta_r)
+
+        ! Escreve resultados no arquivo: r, V(r), psi_total
         r = r_min
-        do while(r.lt.infinity*deltar)
-
-            write(e,*) V(r, k_line), r
-            r = r + deltar
-
+        write(1,*) "State ", i, " Energy k = ", k_trial
+        do j = 1, number_of_points
+            potential(j) = V(r, k_line)
+            write(1,'(F12.6,1X,F12.6,1X,F12.6)') r, potential(j), psi_total(j)
+            r = r + delta_r
         end do
-
+        write(1,*)
+        i = i + 1
+        k_trial = k_trial + delta_k
+        delta_k_trial = delta_k
     end do
 
-    close(3)
-    close(2)
     close(1)
 
 contains
 
-    real(8) function f(x, k, k_line)
-
-        !deactivate implicit typing
+    real(dp) function V(r, k_line)
         implicit none
+        real(dp), intent(in) :: r, k_line
+        if (r <= 1.0e-10_dp) then
+            V = 1.0e10_dp
+        else
+            V = k_line * ((1.0_dp/r)**12 - (1.0_dp/r)**6)
+        end if
+    end function V
 
-        !declare variables
-        real(8), intent(in) :: x
-        real(8), intent(in) :: k, k_line
-
-        f = V(x, k_line) - k
-
-    end function 
-
-    real(8) function V(x, k_line)
-
-        !deactivate implicit typing
+    subroutine compute_wavefunctions(psi_left, psi_right, number_of_points, delta_r, k_trial, r_min, k_line)
         implicit none
+        integer, intent(in) :: number_of_points
+        real(dp), intent(in) :: delta_r, k_trial, r_min, k_line
+        real(dp), intent(out) :: psi_left(0:number_of_points+1), psi_right(0:number_of_points+1)
 
-        !declare variables
-        real(8), intent(in) :: x, k_line
+        real(dp) :: r, k1, k2, k3, c
+        integer :: i, j
 
-        V = k_line * (1.0d0/x**(12.0d0) - 1.0d0/x**(6.0d0))
+        c = delta_r**2 / 12.0_dp
 
-    end function
+        ! Inicializa psi_left
+        psi_left = 0.0_dp
+        psi_left(0) = -delta_r**4
+        psi_left(1) = delta_r
 
-    subroutine numerov(i, j, deltar, k, k_line, phi_plus, r_plus, phi_minus, r_minus, r_0)
+        ! Inicializa psi_right
+        psi_right = 0.0_dp
+        psi_right(number_of_points+1) = -delta_r**4
+        psi_right(number_of_points) = delta_r
 
-        !deactivate implicit typing
-        implicit none
-
-        !declare variables
-        integer(8) :: i, j
-        real(8) :: deltar, k, k_line, r_0, r_plus, r_minus
-        real(8), dimension(0:max_points) :: phi_plus, phi_minus
-
-        do while (i*deltar.lt.r_0)
-
-            !write(*,*) " φ₊ = ", phi_plus(i), " | r₊ = ", r_plus, " | i", i
-
-            ! Advance i
-            i = i + 1
-
-            ! Compute r+
-            r_plus = i*deltar
-
-            ! Numerov for forward
-            phi_plus(i+1) = (2.0d0*phi_plus(i)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_plus, k, k_line)) - &
-                                phi_plus(i-1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_plus-deltar, k, k_line))) / &
-                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_plus+deltar, k, k_line))
-
+        ! Integra psi_left (r_min -> r_max)
+        r = r_min
+        do i = 2, number_of_points
+            k1 = k_trial - V(r, k_line)
+            k2 = k_trial - V(r + delta_r, k_line)
+            k3 = k_trial - V(r - delta_r, k_line)
+            psi_left(i) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_left(i-1) - (1.0_dp + c * k3) * psi_left(i-2)) / (1.0_dp + c * k2)
+            r = r + delta_r
         end do
 
-        do while(r_0.lt.j*deltar)
-
-            !write(*,*) " φ₋ = ", phi_minus(i), " | r₋ = ", r_minus, " | j", j
-
-            ! Advance j
-            j = j - 1
-
-            ! Compute r-
-            r_minus = j*deltar
-
-            ! Numerov for backward
-            phi_minus(j-1) = (2.0d0*phi_minus(j)*(1.0d0 - 5.0d0*(deltar**2.0d0)/6.0d0*f(r_minus, k, k_line)) - &
-                                phi_minus(j+1)*(1.0d0 - (deltar**2.0d0)/12.0d0*f(r_minus+deltar, k, k_line))) / &
-                                (1.0d0 + (deltar**2.0d0)/12.0d0*f(r_minus-deltar, k, k_line))
-
+        ! Integra psi_right (r_max -> r_min)
+        r = r_min + delta_r * real(number_of_points, dp)
+        do j = number_of_points - 1, 1, -1
+            k1 = k_trial - V(r, k_line)
+            k2 = k_trial - V(r - delta_r, k_line)
+            k3 = k_trial - V(r + delta_r, k_line)
+            psi_right(j) = (2.0_dp * (1.0_dp - 5.0_dp * c * k1) * psi_right(j+1) - (1.0_dp + c * k3) * psi_right(j+2)) / (1.0_dp + c * k2)
+            r = r - delta_r
         end do
+    end subroutine compute_wavefunctions
 
-    end subroutine numerov
+    subroutine normalize_wavefunction(psi, npoints, delta_r)
+        implicit none
+        integer, intent(in) :: npoints
+        real(dp), intent(in) :: delta_r
+        real(dp), intent(inout) :: psi(0:npoints+1)
+        integer :: i
+        real(dp) :: norm
+
+        norm = 0.0_dp
+        do i = 1, npoints
+            norm = norm + psi(i)**2 * delta_r
+        end do
+        norm = sqrt(norm)
+
+        if (norm > 1.0e-15_dp) then
+            do i = 1, npoints
+                psi(i) = psi(i) / norm
+            end do
+        end if
+    end subroutine normalize_wavefunction
 
 end program MatchingMethod
