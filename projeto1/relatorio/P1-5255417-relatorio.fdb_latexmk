@@ -1,12 +1,16 @@
 # Fdb version 4
-["pdflatex"] 1747228979.81579 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1747228982.36337 0
+["pdflatex"] 1747339286.44295 "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" "P1-5255417-relatorio.pdf" "P1-5255417-relatorio" 1747339289.28624 0
   "../images/all-plots-0.0001.png" 1745692536.00033 82087 68c0c0487c2dda262da008573199ddd6 ""
   "../images/all-plots-0.001.png" 1745692562.53533 94786 b1530d3fc01af2a57aeb91793d80d336 ""
   "../images/all-plots-0.01.png" 1745692616.46831 118094 4fb5fb06ff88a7db312fcb479bcb87ef ""
   "../images/all-plots-0.1.png" 1745692639.11329 153372 9f658a45b6e41418be0fb8b027eacd8d ""
   "../images/all-plots-0.5.png" 1745692702.64425 101908 9e8ea3cb301622204ffac134de92b925 ""
   "../images/all-plots-1e-05.png" 1745692429.1374 77708 a48ee173e0bf48006886c924db0161c2 ""
-  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1747228979.57588 14248 9d332ae527ebbb42b33348e4ad1ac476 ""
+  "../images/ex3-1000-parameters.png" 1747337392.71667 14622 482cf0df210e3faebdb569908ae50b51 ""
+  "../images/ex3-750-parameters.png" 1747338206.97702 14859 fff1e7b770ac88004c3fb4017c5597cd ""
+  "../images/ex3-results-1000.png" 1747337284.82447 190392 dd611b49dae200f654cd7b3b948bad97 ""
+  "../images/ex3-results-750.png" 1747338141.88343 197039 5afdcef1227de7f506daf3f8fa85d192 ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/projeto1/relatorio/P1-5255417-relatorio.tex" 1747339283.27234 15967 6f5f9d955d0f1df5fa9396b655f1a24e ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -109,10 +113,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "P1-5255417-relatorio.aux" 1747228981.85387 2588 75440d613fc2a91f4225a0826d50a219 "pdflatex"
-  "P1-5255417-relatorio.out" 1747228981.86487 826 ea05bd6ca36cda7369d021a6b89661ed "pdflatex"
-  "P1-5255417-relatorio.tex" 1747228979.57588 14248 9d332ae527ebbb42b33348e4ad1ac476 ""
-  "P1-5255417-relatorio.toc" 1747228981.86487 525 42f59a7621b06667a12cc04c782f5d68 "pdflatex"
+  "P1-5255417-relatorio.aux" 1747339289.20132 3294 978d544157a04786bc2f76a8156350e7 "pdflatex"
+  "P1-5255417-relatorio.out" 1747339289.20232 944 9b855a6f3d6e3eaeac49d3a4e6c68465 "pdflatex"
+  "P1-5255417-relatorio.tex" 1747339283.27234 15967 6f5f9d955d0f1df5fa9396b655f1a24e ""
+  "P1-5255417-relatorio.toc" 1747339289.20232 605 0f625f23fb0e4dd8dca049afbf7a73e4 "pdflatex"
   (generated)
   "P1-5255417-relatorio.aux"
   "P1-5255417-relatorio.log"

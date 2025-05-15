@@ -63,7 +63,7 @@ def normalize_potential_range(V, new_min=-25.0, new_max=25.0):
         return V
     return (V - V_min) / (V_max - V_min) * (new_max - new_min) + new_min
 
-def plot_all_together(states, psi_scale=5.0):
+def plot_all_together(states, psi_scale=5.0, save_path="autofuncoes_potencial.png"):
     plt.figure(figsize=(10, 6))
 
     r = states[0]['r']
@@ -87,11 +87,17 @@ def plot_all_together(states, psi_scale=5.0):
     # Legenda fora do gráfico (lateral direita)
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.tight_layout()
+
+    # Salvar figura
+    plt.savefig(save_path, dpi=300)
+    print(f"Figura salva como '{save_path}'")
+
     plt.show()
 
 if __name__ == "__main__":
     filename = "eigenfunctions_total.txt"
     states = read_eigenfunctions(filename)
     plot_all_together(states, psi_scale=5.0)
+
 
 
