@@ -68,9 +68,9 @@ def plot_all_together(states, psi_scale=5.0, save_path="autofuncoes_potencial.pn
 
     r = states[0]['r']
     V_raw = states[0]['V']
-    V_norm = normalize_potential_range(V_raw, -25, 25)
+    V_norm = normalize_potential_range(V_raw, -120, 120)
 
-    plt.plot(r, V_norm, 'k--', label='Potencial V(r) normalizado [-25, 25]', linewidth=2)
+    plt.plot(r, V_norm, 'k--', label='Potencial V(r) normalizado', linewidth=2)
 
     colors = plt.cm.viridis(np.linspace(0, 1, len(states)))
 
@@ -81,7 +81,7 @@ def plot_all_together(states, psi_scale=5.0, save_path="autofuncoes_potencial.pn
 
     plt.xlabel('r')
     plt.ylabel('ψ(r) ampliado + energia')
-    plt.title('Autofunções amplificadas e Potencial Lennard-Jones (normalizado entre -25 e 25)')
+    plt.title('Autofunções amplificadas e Potencial Lennard-Jones')
     plt.grid(True)
 
     # Legenda fora do gráfico (lateral direita)
