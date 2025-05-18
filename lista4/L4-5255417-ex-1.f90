@@ -21,7 +21,6 @@ program Eigenvalues
     !define double precision kind
     integer, parameter :: dp = selected_real_kind(15, 307)
 
-
     !define parameters
     real(dp), parameter :: pi = 4.0_dp*atan(1.0_dp)
 
@@ -31,7 +30,7 @@ program Eigenvalues
     real(dp) :: Pn, dPn, tolerance, real_lambda, lambda_initial
     real(dp), allocatable :: lambda(:)
 
-    !define n
+    !define matrix dimension
     write(*,*) "Insert matrix dimension:"
     read(*,*) matrix_dimension
 

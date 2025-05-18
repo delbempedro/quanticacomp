@@ -1,68 +1,108 @@
 !------------------------------------------------------------
-! File: L4-5255417-ex-1.f90
+! File: L4-5255417-ex-2.f90
 !
 ! Description:
-!   Solve second order differential equation using Runge-Kutta method
+!   Finds the eigenvector of the matrix discretization of the second derivative
 !
 ! Dependencies:
 !   - None
 !
 ! Since:
-!   - 03/2025
+!   - 05/2025
 !
 ! Authors:
 !   - Pedro C. Delbem <pedrodelbem@usp.br>
 !------------------------------------------------------------
-program Runge_Kutta
+program Eingenvector
 
     !deactivate implicit typing
     implicit none
 
-    !declare parameters
-    integer, parameter :: n = 100
-    real, parameter :: lambda = -4.0*(2.0*atan(1.0))**2.0
+    !define double precision kind
+    integer, parameter :: dp = selected_real_kind(15, 307)
 
     !declare variables
-    integer :: i
-    real y(0:n), v(0:n), k1, k2, k3, k4, l1, l2, l3, l4, h
+    integer :: matrix_dimension, j, i
+    real(dp), allocatable :: d(:), c_line(:), d_line(:), x(:), r(:)
+    real(dp) :: a, b, c, denominator, random_variable
 
-    !define h
-    write(*,*) "Insert h:"
-    read(*,*) h
+    !define matrix dimension
+    write(*,*) "Insert matrix dimension:"
+    read(*,*) matrix_dimension
 
-    !initialize y and v
-    y(0) = 1.0
-    v(0) = 0.0
+    !define j randomly
+    call random_seed()
+    call random_number(random_variable)
+    j = int(random_variable * matrix_dimension) + 1
 
-    !open file for writing results
-    open(1, file='results.txt', status='replace')
-    
-    !compute Runge-Kutta method
-    do i = 0, n-1
+    !allocate vectors
+    allocate(d(1:matrix_dimension), c_line(1:matrix_dimension), d_line(1:matrix_dimension), x(1:matrix_dimension), r(1:matrix_dimension))
 
-        !print current step
-        write(1,*) i, y(i), v(i)
+    !initialize diagonals
+    a = 1.0_dp
+    b = -2.0_dp
+    c = 1.0_dp
 
-        !compute coefficients
-        k1 = v(i)
-        l1 = h*y(i)
-        k2 = v(i) + h*l1/2.0
-        l2 = lambda*(y(i) + h*k1/2.0)
-        k3 = v(i) + h*l2/2.0
-        l3 = lambda*(y(i) + h*k2/2.0)
-        k4 = v(i) + h*l3
-        l4 = lambda*(y(i) + h*k3)
+    !initialize d vector
+    d = 0.0_dp
+    d(j) = 1.0_dp
 
-        !update y and v
-        y(i+1) = y(i) + h*(k1 + 2.0*k2 + 2.0*k3 + k4)/6.0
-        v(i+1) = v(i) + h*(l1 + 2.0*l2 + 2.0*l3 + l4)/6.0
+    !foward step
+    c_line(1) = c / b
+    d_line(1) = d(1) / b
+
+    !compute c' and d'
+    do i = 2, matrix_dimension-1
+
+        denominator = b - a * c_line(i-1)
+        c_line(i) = c / denominator
+        d_line(i) = (d(i) - a * d_line(i-1)) / denominator
 
     end do
 
-    !print last step
-    write(1,*) n, y(n), v(n)
+    !compute d' last element
+    denominator = b - a * c_line(matrix_dimension-1)
+    d_line(matrix_dimension) = (d(matrix_dimension) - a * d_line(matrix_dimension-1)) / denominator
 
-    !close file
-    close(1)
+    !back substitution
+    x(matrix_dimension) = d_line(matrix_dimension)
+    do i = matrix_dimension-1, 1, -1
+        x(i) = d_line(i) - c_line(i) * x(i+1)
+    end do
 
-end program Runge_Kutta
+    !compute residue vector
+    r(1) = b*x(1) + c*x(2) - d(1) !first term
+    do i = 2, matrix_dimension-1
+        r(i) = a*x(i-1) + b*x(i) + c*x(i+1) - d(i)
+    end do
+    r(matrix_dimension) = a*x(matrix_dimension-1) + b*x(matrix_dimension) - d(matrix_dimension)
+
+    !print results
+    write(*,'(A,I0,A)') "The solution x of Ax = d (with j = ", j, ") and the residue vector are:"
+    do i = 1, matrix_dimension
+        write(*,'(I3,2X,F12.6,2X,F12.6)') i, clean_zero(x(i)), clean_zero(r(i))
+    end do
+
+    deallocate(d, c_line, d_line, x, r)
+
+contains
+
+    pure function clean_zero(x) result(y)
+
+        !deactivate impliciting typing
+        implicit none
+
+        !define precisions
+        real(selected_real_kind(15, 307)), intent(in) :: x
+        real(selected_real_kind(15, 307)) :: y
+
+        !eliminate -0
+        if (abs(x) < 1.0e-12) then
+            y = 0.0
+        else
+            y = x
+        end if
+
+    end function clean_zero
+
+end program Eingenvector

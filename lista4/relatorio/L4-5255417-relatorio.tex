@@ -16,7 +16,7 @@
 \usepackage{booktabs} 
 \usepackage{hyperref} %para poder adicionar links e hiperlinks
 \usepackage{float} %para poder posicionar as imagens
-
+\usepackage{subfig} %para colocar duas imagens juntas
 
 \usepackage{listings} %para poder incluir códigos
 \usepackage{xcolor}
@@ -217,27 +217,30 @@ Professor: Attilio Cucchieri\\
         \end{verbatim}
 
         Resultados:
-        % \begin{figure}[H]
-        %     \centering
-        %     \includegraphics[width=0.8\textwidth]{../images/results-ex-2-2.png}
-        %     \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.01}
-        % \end{figure}
-        % \begin{figure}[H]
-        %     \centering
-        %     \includegraphics[width=0.8\textwidth]{../images/results-ex-2-4.png}
-        %     \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.05}
-        % \end{figure}
-        % \begin{figure}[H]
-        %     \centering
-        %     \includegraphics[width=0.8\textwidth]{../images/results-ex-2-1.png}
-        %     \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.1}
-        % \end{figure}
-        % \begin{figure}[H]
-        %     \centering
-        %     \includegraphics[width=0.8\textwidth]{../images/results-ex-2-3.png}
-        %     \caption{Gr\'aficos de $y(x)$ e $y'(x)$ com h = 0.5}
-        % \end{figure}
 
-        Nota-se que para os valores de h = 0.1, h = 0.01 e h = 0.05, o resultado obtido s\~ao fun\c{c}\~oes cossenoidais que oscilam de -1 a 1 o que corresponde ao comportamento esperado para a solu\c{c}\~ao da equa\c{c}\~ao diferencial dada. Al\'em disso, as derivadas s\~ao fun\c{c}\~oes senoidais que oscilam de -2$\pi$ a 2$\pi$ o que tamb\'em corresponde ao resultado esperado. Para o valor de h = 0.5, o resultado obtido n\~ao \'e satisfat\'orio, pois a fun\c{c}\~ao n\~ao \'e cossenoidal e a derivada n\~ao \'e senoidal, o que indica que o valor de h = 0.5 \'e muito grande para o algoritmo de Runge-Kutta.
+        Testou-se os seguintes casos:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/ex2-results-8.png}
+            \caption{Testes para matriz de dimensão 8}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/ex2-results-10.png}
+            \caption{Testes para matriz de dimensão 10}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \subfloat[]{
+                \includegraphics[width=0.8\textwidth]{../images/ex2-results-20.png}
+            }
+            \hfill
+            \subfloat[]{
+                \includegraphics[width=0.8\textwidth]{../images/ex2-results-20-2.png}
+            }
+            \caption{Teste para matriz de dimensão 20}
+        \end{figure}
 
+        Como todos os vetores res\'iduo obtidos foram nulos, sabemos que o c\'odigo funciona de acordo com o esperado - obtendo o autovetor x corretamente.
+        
 \end{document}
