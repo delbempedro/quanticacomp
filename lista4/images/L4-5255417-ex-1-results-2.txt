@@ -1,0 +1,2 @@
+eigenvalue:   -1.000000000000 real eigenvalue:   -1.000000000000 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -3.000000000000 real eigenvalue:   -3.000000000000 difference: 0.000000000000 +/-  1.00E-10

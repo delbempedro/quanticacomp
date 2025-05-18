@@ -1,0 +1,10 @@
+eigenvalue:   -0.081014052771 real eigenvalue:   -0.081014052771 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -0.317492934338 real eigenvalue:   -0.317492934338 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -0.690278532109 real eigenvalue:   -0.690278532109 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -1.169169973996 real eigenvalue:   -1.169169973996 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -1.715370323453 real eigenvalue:   -1.715370323453 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -2.284629676547 real eigenvalue:   -2.284629676547 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -2.830830026004 real eigenvalue:   -2.830830026004 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -3.309721467891 real eigenvalue:   -3.309721467891 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -3.682507065662 real eigenvalue:   -3.682507065662 difference: 0.000000000000 +/-  1.00E-10
+eigenvalue:   -3.918985947229 real eigenvalue:   -3.918985947229 difference: 0.000000000000 +/-  1.00E-10
