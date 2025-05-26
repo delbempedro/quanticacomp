@@ -27,7 +27,7 @@ program Eigenvalues
     !declare variables
     integer :: matrix_dimension, n, number_of_intervals
     real(dp), allocatable :: sign_change_intervals(:,:)
-    real(dp) :: Pn, dPn, tolerance, real_lambda, lambda_initial
+    real(dp) :: Pn, dPn, tolerance, real_lambda, lambda_initial, mean_error, error, max_error
     real(dp), allocatable :: lambda(:)
 
     !define matrix dimension
@@ -73,21 +73,41 @@ program Eigenvalues
     !open results file
     open(unit=1, file="L4-5255417-ex-1-results.txt", status="replace")
 
-
+    !initialize mean_error and max_error
+    mean_error = 0.0_dp
+    max_error = 0.0_dp
 
     do n = 1, matrix_dimension
     
         !compute real lambda
         real_lambda = -4.0_dp*( sin( n*pi/(2.0_dp*(matrix_dimension+1.0_dp) ) ) )**2.0_dp
 
+        !compute error
+        error = abs(lambda(n)-real_lambda)
+
+        !update max_error
+        if (max_error < error) max_error = error
+
+        !update mean_error
+        mean_error = mean_error + error
+
         !write results
-        write(1,'(A,F18.12,1X,A,F18.12,1X,A,F15.12,1X,A,ES10.2)') &
+        write(1,'(A,F18.12,1X,A,F18.12,1X,A,F18.12,1X,A,ES10.2)') &
         "eigenvalue:", lambda(n), &
         "real eigenvalue:", real_lambda, &
-        "difference:", abs(lambda(n)-real_lambda), &
+        "difference:", error, &
         "+/-", tolerance
         
     end do
+
+    !normalize
+    mean_error = mean_error/matrix_dimension
+
+    !write mean_error, max_error and tolerance
+    write(*,'(A,F18.12,1X,A,F18.12,1X,A,ES10.2)') &
+    "Mean Error: ",mean_error, &
+    "Max Error:",max_error, &
+    "+/-", tolerance
 
     !close file
     close(1)
