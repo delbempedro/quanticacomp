@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  26 MAY 2025 10:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/nixos.org) (preloaded format=pdflatex 1980.1.1)  26 MAY 2025 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -538,7 +538,7 @@ Overfull \hbox (5.38777pt too wide) in paragraph at lines 148--149
 File: ../images/ex1-input.png Graphic file (type png)
 <use ../images/ex1-input.png>
 Package pdftex.def Info: ../images/ex1-input.png  used on input line 155.
-(pdftex.def)             Requested size: 170.71393pt x 153.93181pt.
+(pdftex.def)             Requested size: 256.07741pt x 230.90077pt.
 
 
 [3 <../images/ex1-input.png>]
@@ -551,14 +551,14 @@ File: ../images/ex2-results-8.png Graphic file (type png)
 <use ../images/ex2-results-8.png>
 Package pdftex.def Info: ../images/ex2-results-8.png  used on input line 200.
 (pdftex.def)             Requested size: 341.43437pt x 300.38708pt.
-<../images/ex2-results-10.png, id=50, 394.47375pt x 395.97937pt>
+
+
+[4]
+<../images/ex2-results-10.png, id=55, 394.47375pt x 395.97937pt>
 File: ../images/ex2-results-10.png Graphic file (type png)
 <use ../images/ex2-results-10.png>
 Package pdftex.def Info: ../images/ex2-results-10.png  used on input line 205.
 (pdftex.def)             Requested size: 341.43437pt x 342.74101pt.
-
-
-[4]
 <../images/ex2-results-20.png, id=56, 395.97937pt x 319.94531pt>
 File: ../images/ex2-results-20.png Graphic file (type png)
 <use ../images/ex2-results-20.png>
@@ -592,7 +592,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  75i,10n,79p,489b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr17.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on L4-5255417-relatorio.pdf (8 pages, 253692 bytes).
+Output written on L4-5255417-relatorio.pdf (8 pages, 253722 bytes).
 PDF statistics:
  134 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
