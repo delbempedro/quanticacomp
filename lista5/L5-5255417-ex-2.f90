@@ -91,6 +91,13 @@ program InfinitePotentialWell
     !open results file
     open(unit=1, file="L5-5255417-ex-2-results.txt", status="replace")
 
+    !SIGN CONVENTION:
+    !ensures that the wave function is always positive, as expected for the ground state.
+    !if the first component is negative, it reverses the sign of the entire vector
+    if (v(1) < 0.0_dp) then
+        v = -v
+    end if
+
     !print phi(n=0)
     write(1,*)0.0_dp,0.0_dp
 

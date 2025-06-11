@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1749656747.1001 "/home/pedro/Documentos/GitHub/quanticacomp/lista5/relatorio/L5-5255417-relatorio.tex" "L5-5255417-relatorio.pdf" "L5-5255417-relatorio" 1749656748.70518 0
+["pdflatex"] 1749657713.27331 "/home/pedro/Documentos/GitHub/quanticacomp/lista5/relatorio/L5-5255417-relatorio.tex" "L5-5255417-relatorio.pdf" "L5-5255417-relatorio" 1749657714.88234 0
   "../images/ex1-100.png" 1749655367.69435 57896 6531a0116f50a20150760a67b538998f ""
   "../images/ex1-20.png" 1749656744.87665 57740 1b2c32c06cf68c2582afb5e69983738b ""
-  "../images/ex2.png" 1749656013.59726 9712 5fae4b714dd575c577057446488b4b62 ""
-  "../images/wavefunction_plot.png" 1749655982.36031 178115 47d7b9c74a4572582a7ad0aadedb25f5 ""
-  "/home/pedro/Documentos/GitHub/quanticacomp/lista5/relatorio/L5-5255417-relatorio.tex" 1749655660.85683 10670 cc373d98b629e40e19a43d9738c5f4a0 ""
+  "../images/ex2.png" 1749657648.62057 14893 0f52ec22dda03245d617dba2d5d9285c ""
+  "../images/wavefunction_plot.png" 1749657671.41254 175136 69498c8c0a1ecad4eec47067a5a6c72b ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/lista5/relatorio/L5-5255417-relatorio.tex" 1749657713.00349 10669 37ed919b0a10add43060e09c4065f69e ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -104,10 +104,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "L5-5255417-relatorio.aux" 1749656748.58164 1217 5bc190cbb0847aa65503283bf5fb447d "pdflatex"
-  "L5-5255417-relatorio.out" 1749656748.58264 839 9afc38fd3944c7918e033745a487aaf0 "pdflatex"
-  "L5-5255417-relatorio.tex" 1749655660.85683 10670 cc373d98b629e40e19a43d9738c5f4a0 ""
-  "L5-5255417-relatorio.toc" 1749656748.58264 495 ff456ab9124826baf26059b770e0967f "pdflatex"
+  "L5-5255417-relatorio.aux" 1749657714.76749 1217 5bc190cbb0847aa65503283bf5fb447d "pdflatex"
+  "L5-5255417-relatorio.out" 1749657714.76849 839 9afc38fd3944c7918e033745a487aaf0 "pdflatex"
+  "L5-5255417-relatorio.tex" 1749657713.00349 10669 37ed919b0a10add43060e09c4065f69e ""
+  "L5-5255417-relatorio.toc" 1749657714.76949 495 ff456ab9124826baf26059b770e0967f "pdflatex"
   (generated)
   "L5-5255417-relatorio.aux"
   "L5-5255417-relatorio.log"
