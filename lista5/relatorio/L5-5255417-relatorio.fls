@@ -198,10 +198,6 @@ INPUT ../images/ex1-100.png
 INPUT ../images/ex1-100.png
 INPUT ../images/ex1-100.png
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/jknappen/ec/tcrm1200.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmmi12.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmsy10.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmex10.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ../images/ex2.png
 INPUT ../images/ex2.png
@@ -218,7 +214,6 @@ INPUT ./L5-5255417-relatorio.out
 INPUT ./L5-5255417-relatorio.out
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/type1/public/amsfonts/cm/cmr12.pfb

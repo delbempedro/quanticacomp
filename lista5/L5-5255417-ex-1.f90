@@ -34,10 +34,6 @@ program PowerMethod
     read(*,*) matrix_dimension
 
     !define tolerance
-    write(*,*) "Insert tolerance"
-    read(*,*) tolerance
-
-    !define tolerance
     write(*,*) "Insert Capital Lambda^2"
     read(*,*) capital_lambda_squared
 
@@ -49,13 +45,22 @@ program PowerMethod
     A_main_diagonal = -2.0_dp
     A_other_diagonals = 1.0_dp
 
+    !define tolerance
+    tolerance = 1.0e-12
+
+    !open file
+    open(unit=1, file="eingenvalues.txt", status="replace")
+
     !A
 
-    !initialize v vector (v = 1/sqrt(dimension) * (1 ... 1)^T)
-    do n = 1,matrix_dimension
+    !initialize v vector with random numbers
+    call random_number(v)
 
-        v(n) = 1.0_dp / sqrt(real(matrix_dimension, dp))
-
+    !normalize the initial vector
+    call vTw(difference, v, v, matrix_dimension)
+    difference = sqrt(real(difference, dp))
+    do n = 1, matrix_dimension
+        v(n) = v(n) / difference
     end do
 
     !initialize old_lambda
@@ -81,6 +86,12 @@ program PowerMethod
 
     end do
 
+    !save eingenvector of max absolute eingenvalue
+    write(1, *) "Eigenvector of max absolute eingenvalue:"
+    do n = 1, matrix_dimension
+        write(1, '(F8.4, 1X)') v(n)
+    end do
+
     !compute real lambda
     real_lambda = -4.0_dp*( dsin( matrix_dimension*pi/(2.0_dp*(matrix_dimension+1.0_dp) ) ) )**2.0_dp
 
@@ -88,11 +99,14 @@ program PowerMethod
 
     !A^-1
 
-    !initialize v vector (v = 1/sqrt(dimension) * (1 ... 1)^T)
-    do n = 1,matrix_dimension
+    !initialize v vector with random numbers
+    call random_number(v)
 
-        v(n) = 1.0_dp / sqrt(real(matrix_dimension, dp))
-
+    !normalize the initial vector
+    call vTw(difference, v, v, matrix_dimension)
+    difference = sqrt(real(difference, dp))
+    do n = 1, matrix_dimension
+        v(n) = v(n) / difference
     end do
 
     !initialize old_under_lambda
@@ -116,7 +130,13 @@ program PowerMethod
         !compute difference
         call compute_difference(v, difference, under_lambda, A_main_diagonal, A_other_diagonals, matrix_dimension, capital_lambda_squared, control)
 
-    end do 
+    end do
+
+    !save eingenvector of min absolute eingenvalue
+    write(1, *) "Eigenvector of min absolute eingenvalue:"
+    do n = 1, matrix_dimension
+        write(1, '(F8.4, 1X)') v(n)
+    end do
 
     !compute real under_lambda
     real_lambda = -4.0_dp*( dsin( pi/(2.0_dp*(matrix_dimension+1.0_dp) ) ) )**2.0_dp
@@ -125,11 +145,14 @@ program PowerMethod
 
     !B = (I*capital_lambda^2 - A^2)
 
-    !initialize v vector (v = 1/sqrt(dimension) * (1 ... 1)^T)
-    do n = 1,matrix_dimension
+    !initialize v vector with random numbers
+    call random_number(v)
 
-        v(n) = 1.0_dp / sqrt(real(matrix_dimension, dp))
-
+    !normalize the initial vector
+    call vTw(difference, v, v, matrix_dimension)
+    difference = sqrt(real(difference, dp))
+    do n = 1, matrix_dimension
+        v(n) = v(n) / difference
     end do
 
     !initialize old_lambda
@@ -155,14 +178,23 @@ program PowerMethod
 
     end do
 
+    !save eingenvector of last case
+    write(1, *) "Eigenvector of last case:"
+    do n = 1, matrix_dimension
+        write(1, '(F8.4, 1X)') v(n)
+    end do
+
     !compute lambda
     lambda = -sqrt(real(capital_lambda_squared-lambdaB, dp))
 
-    write(*,*) "absolut eingenvalue: ",lambda
+    write(*,*) "eingenvalue of last case: ",lambda
 
     !deallocate arrays
     deallocate(v)
     deallocate(w)
+
+    !close file
+    close(1)
 
 contains
 

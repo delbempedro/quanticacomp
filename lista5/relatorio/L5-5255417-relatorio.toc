@@ -1,5 +1,6 @@
 \babel@toc {brazilian}{}\relax 
 \contentsline {section}{\numberline {1}Matrix Approach}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Exerc\'icio 1}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Demonstra\c {c}\~ao Anal\'itica}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Demonstração da Relação entre $\phi (x)$ e $v_i$}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.2}Exercício 2}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Demonstra\c {c}\~ao Anal\'itica}{4}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Demonstração da Relação entre $\phi (x)$ e $v_i$}{4}{subsubsection.1.2.2}%

@@ -527,7 +527,17 @@ contains
         allocate(v(matrix_dimension), w(matrix_dimension))
 
         ! --- Max Eigenvalue ---
-        v = 1.0_dp / sqrt(real(matrix_dimension, dp))
+
+            !initialize v vector with random numbers
+        call random_number(v)
+
+        !normalize the initial vector
+        call vTw(difference, v, v, matrix_dimension)
+        difference = sqrt(real(difference, dp))
+        do n = 1, matrix_dimension
+            v(n) = v(n) / difference
+        end do
+
         old_lambda = 0.0_dp
         iter = 0
         do while(iter < 1000)
@@ -544,7 +554,17 @@ contains
         vector_max = v
 
         ! --- Min Eigenvalue ---
-        v = 1.0_dp / sqrt(real(matrix_dimension, dp))
+
+        !initialize v vector with random numbers
+        call random_number(v)
+
+        !normalize the initial vector
+        call vTw(difference, v, v, matrix_dimension)
+        difference = sqrt(real(difference, dp))
+        do n = 1, matrix_dimension
+            v(n) = v(n) / difference
+        end do
+        
         old_under_lambda = 0.0_dp
         iter = 0
         do while(iter < 1000)

@@ -26,7 +26,7 @@ program InfinitePotentialWell
 
     !declare variables
     integer :: matrix_dimension, n
-    real(kind=dp) :: tolerance, old_under_lambda, under_lambda, computed_E1, real_E1, A_main_diagonal, A_other_diagonals, difference, delta_x
+    real(kind=dp) :: tolerance, old_under_lambda, under_lambda, computed_E0, real_E0, A_main_diagonal, A_other_diagonals, difference, delta_x
     real(kind=dp), allocatable :: v(:), w(:)
 
     !define n
@@ -50,11 +50,14 @@ program InfinitePotentialWell
 
     !A^-1
 
-    !initialize v vector (v = 1/sqrt(dimension) * (1 ... 1)^T)
-    do n = 1,matrix_dimension
+    !initialize v vector with random numbers
+    call random_number(v)
 
-        v(n) = 1.0_dp / sqrt(real(matrix_dimension, dp))
-
+    !normalize the initial vector
+    call vTw(difference, v, v, matrix_dimension)
+    difference = sqrt(real(difference, dp))
+    do n = 1, matrix_dimension
+        v(n) = v(n) / difference
     end do
 
     !initialize old_under_lambda
@@ -77,13 +80,13 @@ program InfinitePotentialWell
 
     end do 
 
-    !real E1
-    real_E1 = pi**2.0_dp
+    !real E0
+    real_E0 = pi**2.0_dp
 
-    !computed E1
-    computed_E1 = -under_lambda**(-1.0_dp)/(delta_x**2.0_dp)
+    !computed E0
+    computed_E0 = -under_lambda**(-1.0_dp)/(delta_x**2.0_dp)
 
-    write(*,'(A, F12.4, A, F12.4)') "computed E1: ",computed_E1, " real E1: ",real_E1
+    write(*,'(A, F12.7, A, F12.7)') "computed E0: ",computed_E0, " real E0: ",real_E0
 
     !open results file
     open(unit=1, file="L5-5255417-ex-2-results.txt", status="replace")
@@ -176,7 +179,7 @@ contains
 
     end subroutine vTw
 
-    subroutine compute1UnderLambda(lambda, v, A_main_diagonal, A_other_diagonals, matrix_dimension)
+    subroutine computE0UnderLambda(lambda, v, A_main_diagonal, A_other_diagonals, matrix_dimension)
 
         !deactivate implicit typing
         implicit none
@@ -191,7 +194,7 @@ contains
         call vTw(lambda, v, w, matrix_dimension)
 
 
-    end subroutine compute1UnderLambda
+    end subroutine computE0UnderLambda
 
     subroutine lambdav(v, w, lambda, matrix_dimension)
 
@@ -254,7 +257,7 @@ contains
         real(kind=dp) :: aux1(matrix_dimension), aux2(matrix_dimension), residual(matrix_dimension)
 
         !compute difference
-        call compute1UnderLambda(lambda, v, A_main_diagonal, A_other_diagonals, matrix_dimension)
+        call computE0UnderLambda(lambda, v, A_main_diagonal, A_other_diagonals, matrix_dimension)
         call solve_Aw(v, aux1, matrix_dimension, A_main_diagonal, A_other_diagonals)
         call lambdav(v, aux2, lambda, matrix_dimension)
 

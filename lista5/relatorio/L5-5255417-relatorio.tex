@@ -107,9 +107,10 @@ Professor: Attilio Cucchieri\\
             \caption{N=100}
         \end{figure}
 
-        Nota-se que o método funcionou, para todos os casos, de acordo com esperado. Em particular, para o caso $\Lambda^2 I - A^2$ v\^e que ao escolher $\Lambda$ adequadamente, recupera-se o melhor e o maior autovalores absolutos.
+        Nota-se que o método funcionou, para todos os casos, de acordo com esperado. Em particular, para o caso $\Lambda^2 I - A^2$ v\^e-se que ao escolher $\Lambda$ adequadamente, recupera-se o melhor e o maior autovalores absolutos.
+        (O c\'odigo gera um arquivo com os autovetores de cada caso que n\~ao foram colocados no terminal para n\~ao poluir a vizualiza\c{c}\~ao dos resultados)
 
-        \section*{Exercício 2}
+    \subsection{Exercício 2}
 
         Considere o poço de potencial infinito para uma partícula de massa $m$, i.e. a equação
         % PDF has \nabla, using \nabla^2 for the Laplacian as is standard.
@@ -148,7 +149,7 @@ Professor: Attilio Cucchieri\\
 
     gfortran L5-5255417-ex-2.f90 -Wall -Wextra -pedantic -ffree-form -o L5-5255417-ex-2.exe
 
-            \subsection{Demonstra\c{c}\~ao Anal\'itica}
+            \subsubsection{Demonstra\c{c}\~ao Anal\'itica}
 
                 \textbf{Verificar que:}
                 $$-\frac{2mE_j}{\hbar^2}\delta x^2 = -4\sin^2\left[\frac{j\pi}{2(n+1)}\right]$$
@@ -174,7 +175,7 @@ Professor: Attilio Cucchieri\\
                 \end{align*}
                 \textbf{Logo,} a relação é válida no limite $n \rightarrow \infty$.
 
-            \subsection{Demonstração da Relação entre $\phi(x)$ e $v_i$}
+            \subsubsection{Demonstração da Relação entre $\phi(x)$ e $v_i$}
 
                 O objetivo é encontrar a constante de proporcionalidade que relaciona o autovetor discreto $v_i$, obtido numericamente, com a autofunção contínua $\phi(x)$.
 
@@ -235,7 +236,6 @@ Professor: Attilio Cucchieri\\
         \end{figure}
 
     De modo que corresponde perfeitamente à fun\c{c}\~ao conhecida
-
         
 
 \end{document}
