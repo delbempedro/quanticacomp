@@ -26,7 +26,7 @@ program PowerMethod
 
     !declare variables
     integer :: matrix_dimension, n, control
-    real(kind=dp) :: tolerance, old_lambda, lambda, old_under_lambda, under_lambda, old_lambdaB, lambdaB, capital_lambda_squared, real_lambda, A_main_diagonal, A_other_diagonals, difference
+    real(kind=dp) :: tolerance, old_lambda, lambda, old_under_lambda, under_lambda, old_lambdaB, lambdaB, capital_lambda_squared, real_lambda, A_main_diagonal, A_other_diagonals, difference, norm
     real(kind=dp), allocatable :: v(:), w(:)
 
     !define n
@@ -57,10 +57,10 @@ program PowerMethod
     call random_number(v)
 
     !normalize the initial vector
-    call vTw(difference, v, v, matrix_dimension)
-    difference = sqrt(real(difference, dp))
+    call vTw(norm, v, v, matrix_dimension)
+    norm = sqrt(real(norm, dp))
     do n = 1, matrix_dimension
-        v(n) = v(n) / difference
+        v(n) = v(n) / norm
     end do
 
     !initialize old_lambda
@@ -103,10 +103,10 @@ program PowerMethod
     call random_number(v)
 
     !normalize the initial vector
-    call vTw(difference, v, v, matrix_dimension)
-    difference = sqrt(real(difference, dp))
+    call vTw(norm, v, v, matrix_dimension)
+    norm = sqrt(real(norm, dp))
     do n = 1, matrix_dimension
-        v(n) = v(n) / difference
+        v(n) = v(n) / norm
     end do
 
     !initialize old_under_lambda
@@ -149,10 +149,10 @@ program PowerMethod
     call random_number(v)
 
     !normalize the initial vector
-    call vTw(difference, v, v, matrix_dimension)
-    difference = sqrt(real(difference, dp))
+    call vTw(norm, v, v, matrix_dimension)
+    norm = sqrt(real(norm, dp))
     do n = 1, matrix_dimension
-        v(n) = v(n) / difference
+        v(n) = v(n) / norm
     end do
 
     !initialize old_lambda

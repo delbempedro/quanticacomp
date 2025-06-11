@@ -517,8 +517,8 @@ contains
         real(dp), intent(out) :: vector_max(matrix_dimension), lambda_max, vector_min(matrix_dimension), lambda_min
         
         real(dp), allocatable :: v(:), w(:)
-        real(dp) :: tolerance, old_lambda, lambda, old_under_lambda, under_lambda
-        integer :: iter
+        real(dp) :: tolerance, old_lambda, lambda, old_under_lambda, under_lambda, norm
+        integer :: iter, n
         
         !define tolerance
         tolerance = 1.0e-12_dp
@@ -532,10 +532,9 @@ contains
         call random_number(v)
 
         !normalize the initial vector
-        call vTw(difference, v, v, matrix_dimension)
-        difference = sqrt(real(difference, dp))
+        norm = dot_product(v,v)
         do n = 1, matrix_dimension
-            v(n) = v(n) / difference
+            v(n) = v(n) / norm
         end do
 
         old_lambda = 0.0_dp
@@ -559,12 +558,11 @@ contains
         call random_number(v)
 
         !normalize the initial vector
-        call vTw(difference, v, v, matrix_dimension)
-        difference = sqrt(real(difference, dp))
+        norm = dot_product(v,v)
         do n = 1, matrix_dimension
-            v(n) = v(n) / difference
+            v(n) = v(n) / norm
         end do
-        
+
         old_under_lambda = 0.0_dp
         iter = 0
         do while(iter < 1000)
