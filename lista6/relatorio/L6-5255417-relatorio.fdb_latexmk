@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1749650822.19197 "/home/pedro/Documentos/GitHub/quanticacomp/lista6/relatorio/L6-5255417-relatorio.tex" "L6-5255417-relatorio.pdf" "L6-5255417-relatorio" 1749650823.38241 0
+["pdflatex"] 1749650958.7499 "/home/pedro/Documentos/GitHub/quanticacomp/lista6/relatorio/L6-5255417-relatorio.tex" "L6-5255417-relatorio.pdf" "L6-5255417-relatorio" 1749650959.97142 0
   "../images/ex1-10.png" 1749650479.76588 59205 48441ff2026c5fbff721304c3023fb11 ""
   "../images/ex1-20.png" 1749650511.32468 61601 7a875c967e8ccbfbe1eb17cbc2c093b7 ""
-  "/home/pedro/Documentos/GitHub/quanticacomp/lista6/relatorio/L6-5255417-relatorio.tex" 1749650821.90514 4492 e969ebc30aafe7dc355ae50d8ca9f7c2 ""
+  "/home/pedro/Documentos/GitHub/quanticacomp/lista6/relatorio/L6-5255417-relatorio.tex" 1749650958.51964 4503 c2bfafbf676bf345607884b690fdcae9 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1 5475591 eb11ed3587e589f3f1b3bc88e82cac41 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1 3326170 79d3a032a85b260f6299df810badd0e7 ""
   "/nix/store/5dm6aqic0wy847ly9l1ag6h5v0rf9d7h-texlive-2024-env/share/texmf-var/web2c/texmf.cnf" 1 43655 26b3ce848be7a4d9decb9b7c0f40cd25 ""
@@ -99,10 +99,10 @@
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/tools/multicol.sty" 1 32621 00e86c03dbf6e71d7ea7ebac2bd4fcaf ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/url/url.sty" 1 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/tex/latex/xcolor/xcolor.sty" 1 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "L6-5255417-relatorio.aux" 1749650823.26814 536 2321812158156414fbc2db3954515572 "pdflatex"
-  "L6-5255417-relatorio.out" 1749650823.26914 249 4e21b865f8a863bc4b4fbf80b2a06a3b "pdflatex"
-  "L6-5255417-relatorio.tex" 1749650821.90514 4492 e969ebc30aafe7dc355ae50d8ca9f7c2 ""
-  "L6-5255417-relatorio.toc" 1749650823.26914 184 211d52a2b8f0ea243118224a373ecc25 "pdflatex"
+  "L6-5255417-relatorio.aux" 1749650959.85364 536 2321812158156414fbc2db3954515572 "pdflatex"
+  "L6-5255417-relatorio.out" 1749650959.85464 249 4e21b865f8a863bc4b4fbf80b2a06a3b "pdflatex"
+  "L6-5255417-relatorio.tex" 1749650958.51964 4503 c2bfafbf676bf345607884b690fdcae9 ""
+  "L6-5255417-relatorio.toc" 1749650959.85564 184 211d52a2b8f0ea243118224a373ecc25 "pdflatex"
   (generated)
   "L6-5255417-relatorio.aux"
   "L6-5255417-relatorio.log"
