@@ -49,7 +49,7 @@ program PowerMethod
     tolerance = 1.0e-12
 
     !open file
-    open(unit=1, file="eingenvalues.txt", status="replace")
+    open(unit=1, file="eingenvectors.txt", status="replace")
 
     !A
 

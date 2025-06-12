@@ -92,7 +92,7 @@ Professor: Attilio Cucchieri\\
 
         O c\'odigo foi compilado com o comando:
 
-    gfortran L5-5255417-ex-1.f90 -Wall -Wextra -pedantic -ffree-form -o L5-5255417-ex-1.exe  
+gfortran -ffree-form -ffree-line-length-none L5-5255417-ex-1.f90 -Wall -Wextra -pedantic -o L5-5255417-ex-1.exe
 
         Resultados:
 
@@ -108,7 +108,7 @@ Professor: Attilio Cucchieri\\
         \end{figure}
 
         Nota-se que o método funcionou, para todos os casos, de acordo com esperado. Em particular, para o caso $\Lambda^2 I - A^2$ v\^e-se que ao escolher $\Lambda$ adequadamente, recupera-se o melhor e o maior autovalores absolutos.
-        (O c\'odigo gera um arquivo com os autovetores de cada caso que n\~ao foram colocados no terminal para n\~ao poluir a vizualiza\c{c}\~ao dos resultados)
+        (O c\'odigo gera o arquivo "eigenvectors.txt" com os autovetores de cada caso que n\~ao foram colocados no terminal para n\~ao poluir a vizualiza\c{c}\~ao dos resultados)
 
     \subsection{Exercício 2}
 
@@ -147,7 +147,7 @@ Professor: Attilio Cucchieri\\
 
         O c\'odigo foi compilado com o comando:
 
-    gfortran L5-5255417-ex-2.f90 -Wall -Wextra -pedantic -ffree-form -o L5-5255417-ex-2.exe
+gfortran -ffree-form -ffree-line-length-none L5-5255417-ex-2.f90 -Wall -Wextra -pedantic -o L5-5255417-ex-2.exe
 
             \subsubsection{Demonstra\c{c}\~ao Anal\'itica}
 
@@ -235,7 +235,7 @@ Professor: Attilio Cucchieri\\
             \includegraphics[width=0.8\textwidth]{../images/wavefunction_plot.png}
         \end{figure}
 
-    De modo que corresponde perfeitamente à fun\c{c}\~ao conhecida
+    V\^e-se que a fun\c{c}\~ao anal\'itica e a num\'erica se sobrep\~oe totalmente, de modo que o m\'etodo num\'erico corresponde perfeitamente à fun\c{c}\~ao anal\'itica conhecida. (O autovetor resultante foi salvo no arquivo "L5-5255417-ex-2-results.txt")
         
 
 \end{document}

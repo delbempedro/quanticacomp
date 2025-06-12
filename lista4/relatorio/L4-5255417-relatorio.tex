@@ -145,7 +145,7 @@ Professor: Attilio Cucchieri\\
 
         O c\'odigo foi compilado com o comando:
 
-    gfortran L4-5255417-ex-1.f90 -Wall -Wextra -pedantic -ffree-form -o L4-5255417-ex-1.exe  
+gfortran -ffree-form -ffree-line-length-none L4-5255417-ex-1.f90 -Wall -Wextra -pedantic -o L4-5255417-ex-1.exe 
 
         Resultados:
 
@@ -153,10 +153,9 @@ Professor: Attilio Cucchieri\\
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.6\textwidth]{../images/ex1-input.png}
-            \caption{Dimens\~ao da Matriz = 1000}
         \end{figure}
 
-        Percebe-se que a diferen\c{c}a - tanto m\'edia quanto para o maior caso - se manteve dentro da toler\^ancia em todos os casos mostrando a efici\^ancia do m\'etodo empregado.
+        Percebe-se que a diferen\c{c}a - tanto m\'edia quanto para o maior caso - se manteve dentro da toler\^ancia em todos os casos mostrando a efici\^ancia do m\'etodo empregado. (O arquivo "L4-5255417-ex-1-results.txt" contém todos os autovalores encontrados)
 
     \subsection{Exerc\'icio 2}
 
@@ -188,9 +187,8 @@ Professor: Attilio Cucchieri\\
         Esse vetor deve ser pr\'oximo de zero (em norma) se a solu\c{c}\~ao num\'erica estiver correta.        
 
         O c\'odigo foi compilado com o comando:
-        \begin{verbatim}
-            gfortran L4-5255417-ex-2.f90 -Wall -Wextra -pedantic -ffree-form -o L4-5255417-ex-2.exe  
-        \end{verbatim}
+
+gfortran -ffree-form -ffree-line-length-none L4-5255417-ex-2.f90 -Wall -Wextra -pedantic -o L4-5255417-ex-2.exe
 
         Resultados:
 

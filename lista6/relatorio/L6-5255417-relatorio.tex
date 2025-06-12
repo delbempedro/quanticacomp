@@ -114,7 +114,7 @@ Professor: Attilio Cucchieri\\
         
         O c\'odigo foi compilado com o comando:
 
-    gfortran L6-5255417-ex-1.f90 -Wall -Wextra -pedantic -ffree-form -o L6-5255417-ex-1.exe
+gfortran -ffree-form -ffree-line-length-none L6-5255417-ex-1.f90 -Wall -Wextra -pedantic -o L6-5255417-ex-1.exe
 
         Resultados:
 
@@ -129,7 +129,7 @@ Professor: Attilio Cucchieri\\
         \end{figure}
 
         Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, mostrando que o m\'etodo funcionou bem para ambos os casos.
-        (O c\'odigo gera dois arquivos com os autovetores de $A_t$ e A que n\~ao foram colocados no terminal para n\~ao poluir a vizualiza\c{c}\~ao dos resultados)
+        (O c\'odigo gera dois arquivos - "At\_eingenvalues.txt" e "A\_eingenvalues.txt" - com os autovetores de $A_t$ e A - respectivamente - que n\~ao foram colocados no terminal para n\~ao poluir a vizualiza\c{c}\~ao dos resultados)
 
 
 \end{document}
