@@ -1,8 +1,8 @@
 !------------------------------------------------------------
-! File: P2-5255417-ex-3a.f90
+! File: P2-5255417-ex-4.f90
 !
 ! Description:
-!   Use the Householder method to tridiagonalize a matrix, find its largest and lowest eigenvalue/eigenvector using the Power Method, and check the solution.
+!   Use the Householder (with optimized memory) method to tridiagonalize a matrix, find its largest and lowest eigenvalue/eigenvector using the Power Method, and check the solution.
 !
 ! Dependencies:
 !   - None
@@ -26,6 +26,7 @@ program Tridiagonalization
     real(dp), allocatable :: A(:,:), At(:,:), O(:,:), d(:), e(:)
     real(dp), allocatable :: yt_min(:), yt_max(:), y_min(:), y_max(:)
     real(dp) :: lambda_min, lambda_max
+    real(dp), allocatable :: betas(:), u1_storage(:)
 
     !define matrix dimension
     write(*,*) "Insert matrix dimension:"
@@ -38,6 +39,7 @@ program Tridiagonalization
     allocate(d(matrix_dimension), e(matrix_dimension))
     allocate(yt_min(matrix_dimension), yt_max(matrix_dimension))
     allocate(y_min(matrix_dimension), y_max(matrix_dimension))
+    allocate(betas(matrix_dimension), u1_storage(matrix_dimension))
 
     write(*, '(/A, I0, A)') "-------> N = ", matrix_dimension, " <-------"
 
@@ -48,7 +50,7 @@ program Tridiagonalization
     call print_matrix(A, matrix_dimension, min(matrix_dimension, 5))
 
     !tridiagonalize At with Householder, saving the transformation matrix in O
-    call householder_reduction(At, O, matrix_dimension)
+    call householder_reduction(At, betas, u1_storage, matrix_dimension)
     write(*,*) "Tridiagonal Matrix T (first 5x5):"
     call print_matrix(At, matrix_dimension, min(matrix_dimension, 5))
 
@@ -59,7 +61,8 @@ program Tridiagonalization
     call get_tridiagonal_elements(At, d, e, matrix_dimension)
 
     !find the smallest and largest eigenvalues and the corresponding eigenvectors of At
-    call PowerMethod(yt_max, lambda_max, yt_min, lambda_min, d, e, matrix_dimension)
+    call backward_transformation(At, betas, u1_storage, yt_max, y_max, matrix_dimension)
+    call backward_transformation(At, betas, u1_storage, yt_min, y_min, matrix_dimension)
 
     !save yt max and min
     open(unit=1, file="At_eingenvector-a.txt", status="replace")
@@ -135,34 +138,30 @@ contains
 
     end subroutine initialize_A
 
-    subroutine householder_reduction(A, O, matrix_dimension)
+    subroutine householder_reduction(A, betas, u1_storage, matrix_dimension)
 
         !deactivate implicit typing
         implicit none
 
         !declare variables
         integer, intent(in) :: matrix_dimension
-        real(dp), intent(inout) :: A(matrix_dimension,matrix_dimension)
-        real(dp), intent(out) :: O(matrix_dimension,matrix_dimension)
+        real(dp), intent(inout) :: A(matrix_dimension, matrix_dimension)
+        real(dp), intent(out) :: betas(matrix_dimension), u1_storage(matrix_dimension)
         integer :: i, j
 
-        real(dp) :: sigma, beta, mu
-        real(dp), allocatable :: u(:), p(:), q(:), aux(:)
+        real(dp) :: sigma, mu
+        real(dp), allocatable :: u(:), p(:), q(:)
 
         !allocate vectors
-        allocate(u(matrix_dimension), p(matrix_dimension), q(matrix_dimension), aux(matrix_dimension))
-
-        !initialize O as the identity matrix
-        O = 0.0_dp
-        do i = 1, matrix_dimension
-            O(i,i) = 1.0_dp
-        end do
+        allocate(u(matrix_dimension), p(matrix_dimension), q(matrix_dimension))
 
         !Householder reduction loop
         do i = 1, matrix_dimension - 2
 
-            !calculate sigma
+            !compute sigma
             sigma = norm2(A(i+1:matrix_dimension, i))
+            betas(i) = 0.0_dp !initialize
+            u1_storage(i) = 0.0_dp !initialize
 
             if (sigma > 1.0e-15_dp) then
                 if (A(i + 1, i) < 0.0_dp) then
@@ -172,22 +171,21 @@ contains
                 !calculate Householder vector u
                 u = 0.0_dp
                 u(i + 1) = A(i + 1, i) + sigma
-                do j = i + 2, matrix_dimension
-                    u(j) = A(j, i)
-                end do
+                u(i + 2:matrix_dimension) = A(i + 2:matrix_dimension, i)
 
-                !calculate beta
-                beta = 1.0_dp / (sigma * u(i + 1))
+                !store necessary info
+                betas(i) = 1.0_dp / (sigma * u(i + 1))
+                u1_storage(i) = u(i+1)
 
                 !update matrix A using similarity transformation A = P*A*P
                 p = matmul(A, u)
-                p = beta * p 
-                mu = beta * dot_product(p, u) / 2.0_dp
+                p = betas(i) * p 
+                mu = betas(i) * dot_product(p, u) / 2.0_dp
                 q = p - mu * u
                 A = A - outer_product(u, q) - outer_product(q, u)
 
-                !update transformation matrix O = O*P
-                O = O - beta * matmul(O, outer_product(u, u))
+                !stores the essential part of the u-vector at the bottom of the A matrix
+                A(i+2:matrix_dimension, i) = u(i+2:matrix_dimension)
 
             end if
 
@@ -197,6 +195,49 @@ contains
         deallocate(u, p, q)
 
     end subroutine householder_reduction
+
+    subroutine backward_transformation(A_stored, betas, u1_storage, yt, y, matrix_dimension)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
+        integer, intent(in) :: matrix_dimension
+        real(dp), intent(in) :: A_stored(matrix_dimension, matrix_dimension)
+        real(dp), intent(in) :: betas(matrix_dimension), u1_storage(matrix_dimension)
+        real(dp), intent(in) :: yt(matrix_dimension)
+        real(dp), intent(out) :: y(matrix_dimension)
+        integer :: i
+        real(dp) :: s
+        real(dp), allocatable :: u(:)
+
+        !allocate vector
+        allocate(u(matrix_dimension))
+
+        !initialize with y equal to yt
+        y = yt
+        
+        !aply P_n-2, ..., P_1 transformations
+        do i = matrix_dimension - 2, 1, -1
+            if (abs(betas(i)) > 1.0e-15_dp) then
+
+                !rebuild vector u
+                u = 0.0_dp
+                u(i+1) = u1_storage(i)
+                u(i+2:matrix_dimension) = A_stored(i+2:matrix_dimension, i)
+
+                !aply P*y = y - beta * u * (u' * y) transformation
+                s = dot_product(u(i+1:matrix_dimension), y(i+1:matrix_dimension))
+                y(i+1:matrix_dimension) = y(i+1:matrix_dimension) - betas(i) * s * u(i+1:matrix_dimension)
+
+            end if
+
+        end do
+        
+        !deallocate vector
+        deallocate(u)
+
+    end subroutine backward_transformation
 
     function outer_product(v1, v2) result(res)
 
