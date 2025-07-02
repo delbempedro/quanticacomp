@@ -196,7 +196,7 @@ Professor: Attilio Cucchieri\\
 
         Nota-se que todas as verifica\c{c}\~oes - em ambos os c\'odigos - resultaram em valores pequenos, mostrando que o m\'etodo funcionou bem para ambos os c\'odigos.
             
-        Entretando, ao comparar os arquivos que cont\^em os autovetores resultantes ("At\_eingenvectors-a.txt" e "A\_eingenvectors-a.txt" para o sinal original e "At\_eingenvectors-b.txt" e "A\_eingenvectors-b.txt" para o sinal modificado) - al\'em de comparar as matrizes impressas como resultado dos c\'odigos -  percebe-se que há uma diferen\c{c}a de sinal em alguns elementos da matriz (al\'em de uma pequena diferen\c{c}a no valor absoluto de alguns elementos), enquanto os autovetores apresentam - al\'em da diferen\c{c}a de sinal - uma invers\~ao da "ordem" dos elementos (apesar de serem os mesmos).
+        Entretando, ao comparar os arquivos que cont\^em os autovetores resultantes ("At\_eingenvector-a.txt" e "A\_eingenvector-a.txt" para o sinal original e "At\_eingenvector-b.txt" e "A\_eingenvector-b.txt" para o sinal modificado) - al\'em de comparar as matrizes impressas como resultado dos c\'odigos -  percebe-se que há uma diferen\c{c}a de sinal em alguns elementos da matriz (al\'em de uma pequena diferen\c{c}a no valor absoluto de alguns elementos), enquanto os autovetores apresentam - al\'em da diferen\c{c}a de sinal - uma invers\~ao da "ordem" dos elementos (apesar de serem os mesmos).
         
         Deste modo, percebe-se que o m\'etodo funcionou bem para ambos os sinais - encontrando, para cada sinal, uma das duas solu\c{c}\~oes poss\'iveis. O erro esperado - devido ao erro de subtra\c{c}\~ao num\'erica - n\~ao foi um problema devido a um "bom comportamento" da matriz.
 
@@ -254,7 +254,7 @@ Professor: Attilio Cucchieri\\
             \subsubsection*{Total de Mem\'oria de Pico (Vers\~ao Antiga)}
             A mem\'oria total de pico \'e a soma das vari\'aveis globais mais o pico de aloca\c{c}\~ao local.
             \[
-            M_{\text{antigo}}(n) = \underbrace{(3n^2 + 6n)}_{\text{Globais}} + \underbrace{2n^2}_{\text{Pico Local}} = 5n^2 + 6n
+            M_{\text{antiga}}(n) = \underbrace{(3n^2 + 6n)}_{\text{Globais}} + \underbrace{2n^2}_{\text{Pico Local}} = 5n^2 + 6n
             \]
             Em bytes (assumindo 8 bytes por \texttt{real(dp)}):
             \[
@@ -286,7 +286,7 @@ Professor: Attilio Cucchieri\\
             \subsubsection*{Total de Mem\'oria de Pico (Vers\~ao Otimizada)}
             A mem\'oria total de pico \'e a soma das novas vari\'aveis globais mais o novo pico de aloca\c{c}\~ao local.
             \[
-            M_{\text{otimizado}}(n) = \underbrace{(n^2 + 8n)}_{\text{Globais}} + \underbrace{3n}_{\text{Pico Local}} = n^2 + 11n
+            M_{\text{otimizada}}(n) = \underbrace{(n^2 + 8n)}_{\text{Globais}} + \underbrace{3n}_{\text{Pico Local}} = n^2 + 11n
             \]
             Em bytes:
             \[
