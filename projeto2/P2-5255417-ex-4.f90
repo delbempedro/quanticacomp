@@ -154,7 +154,7 @@ contains
             u1_storage(i) = 0.0_dp
 
             if (sigma > 1.0e-15_dp) then
-                if (A(i + 1, i) > 0.0_dp) then
+                if (A(i + 1, i) < 0.0_dp) then
                     sigma = -sigma
                 end if
 

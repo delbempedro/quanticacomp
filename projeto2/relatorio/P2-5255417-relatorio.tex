@@ -195,9 +195,126 @@ Professor: Attilio Cucchieri\\
         \end{figure}
 
         Nota-se que todas as verifica\c{c}\~oes - em ambos os c\'odigos - resultaram em valores pequenos, mostrando que o m\'etodo funcionou bem para ambos os c\'odigos.
-        Entretando, ao comparar os arquivos que cont\^em os autovetores resultantes ("At\_eingenvectors-a.txt" e "A\_eingenvectors-a.txt" para o sinal original e "At\_eingenvectors-b.txt" e "A\_eingenvectors-b.txt" para o sinal modificado) - al\'em de comparar as matrizes impressas como resultado dos c\'odigos -  percebe-se que há uma diferen\c{c}a de sinal em alguns elementos da matriz, enquanto os autovetores apresentam - al\'em da diferen\c{c}a de sinal - uma invers\~ao da "ordem" dos elementos (apesar de serem os mesmos).
-        Deste modo, percebe-se que o m\'etodo funcionou bem para ambos os sinais - encontrando, para cada sinal, uma das duas solu\c{c}\~oes poss\'iveis. O erro esperado - devido ao erro de subtra\c{c}\~ao num\'erica - n\~ao foi um problema devido a utiliza\c{c}\~ao de dupla preciss\~ao nas contas.
+            
+        Entretando, ao comparar os arquivos que cont\^em os autovetores resultantes ("At\_eingenvectors-a.txt" e "A\_eingenvectors-a.txt" para o sinal original e "At\_eingenvectors-b.txt" e "A\_eingenvectors-b.txt" para o sinal modificado) - al\'em de comparar as matrizes impressas como resultado dos c\'odigos -  percebe-se que há uma diferen\c{c}a de sinal em alguns elementos da matriz (al\'em de uma pequena diferen\c{c}a no valor absoluto de alguns elementos), enquanto os autovetores apresentam - al\'em da diferen\c{c}a de sinal - uma invers\~ao da "ordem" dos elementos (apesar de serem os mesmos).
+        
+        Deste modo, percebe-se que o m\'etodo funcionou bem para ambos os sinais - encontrando, para cada sinal, uma das duas solu\c{c}\~oes poss\'iveis. O erro esperado - devido ao erro de subtra\c{c}\~ao num\'erica - n\~ao foi um problema devido a um "bom comportamento" da matriz.
 
+    \section{Exerc\'icio 4}
 
+        Tarefa: Considere novamente o problema da lista 6. Tente resolv\^e-lo usando a menor quantidade poss\'ivel de mem \'oria. Indique, em fun\c{c}\~ao do tamanho n da matriz, qual \'e a quantidade de espa\c{c}o de mem\'oria utilizado pelas vari\'aveis (do tipo real) no programa 3
+
+        O c\'odigo foi compilado com o comando:
+
+    gfortran -ffree-form -ffree-line-length-none P2-5255417-ex-4.f90 -Wall -Wextra -pedantic -o P2-5255417-ex-4.exe
+
+        \subsection*{Modifica\c{c}\~oes Feitas no Algoritmo}
+
+        As seguintes altera\c{c}\~oes foram implementadas para passar de uma abordagem com alto consumo de mem\'oria para uma otimizada:
+
+        \begin{enumerate}
+            \item \textbf{Elimina\c{c}\~ao da Matriz de Transforma\c{c}\~ao (\texttt{O}):} A mudan\c{c}a mais significativa foi deixar de construir e armazenar a matriz de transforma\c{c}\~ao ortogonal expl\'icita $O$ (de tamanho $n \times n$).
+
+            \item \textbf{Elimina\c{c}\~ao da C\'opia da Matriz Original (\texttt{A}):} A c\'opia da matriz original, que era mantida para verifica\c{c}\~oes, foi removida. O algoritmo agora opera ``in-place'' em uma \'unica matriz (\texttt{At}).
+
+            \item \textbf{Armazenamento Impl\'icito dos Vetores de Householder:} Em vez de descartar os vetores de Householder $u_k$ a cada passo, suas informa\c{c}\~oes essenciais s\~ao agora armazenadas:
+            \begin{itemize}
+                \item Uma parte do vetor $u_k$ (os elementos de $u_{k+2}$ em diante) \'e guardada na parte triangular inferior da matriz \texttt{At}, aproveitando o espa\c{c}o que \'e zerado pelo pr\'oprio algoritmo.
+                \item O primeiro elemento de cada vetor $u_k$ (\texttt{u1\_storage}) e o escalar de transforma\c{c}\~ao $\beta_k$ (\texttt{betas}) s\~ao guardados em dois novos vetores auxiliares de dimens\~ao $n$.
+            \end{itemize}
+
+            \item \textbf{Cria\c{c}\~ao da Sub-rotina \texttt{backward\_transformation}:} Uma nova sub-rotina foi criada com a finalidade de aplicar as transforma\c{c}\~oes de Householder em ordem inversa ($P_{n-2}, \dots, P_1$) diretamente no autovetor \texttt{yt}. Ela reconstr\'oi cada transforma\c{c}\~ao a partir das informa\c{c}\~oes salvas e substitui a opera\c{c}\~ao \texttt{matmul(O, yt)}.
+        \end{enumerate}
+
+        \subsection*{Compara\c{c}\~ao do Uso de Mem\'oria}
+
+            \subsection*{Vers\~ao Antiga (N\~ao Otimizada)}
+
+            Nesta vers\~ao, o programa mant\'em m\'ultiplas c\'opias da matriz e constr\'oi explicitamente a matriz de transforma\c{c}\~ao $O$.
+
+            \subsubsection*{1. Vari\'aveis Alocadas no Programa Principal (Globais)}
+            Estas vari\'aveis existem durante toda a execu\c{c}\~ao do programa.
+            \begin{itemize}
+                \item Matriz Original \texttt{A}: $n^2$ elementos
+                \item Matriz de Trabalho \texttt{At}: $n^2$ elementos
+                \item Matriz de Transforma\c{c}\~ao \texttt{O}: $n^2$ elementos
+                \item Vetores de Diagonais \texttt{d}, \texttt{e}: $2n$ elementos
+                \item Vetores de Autovetores \texttt{yt\_min/max}, \texttt{y\_min/max}: $4n$ elementos
+            \end{itemize}
+            \textbf{Subtotal (Globais):} $3n^2 + 6n$ elementos.
+
+            \subsubsection*{2. Pico de Mem\'oria Local (Dentro de Sub-rotinas)}
+            A mem\'oria de pico ocorre quando o programa principal chama a sub-rotina que mais aloca mem\'oria localmente, neste caso, a \texttt{verify\_transformation}.
+            \begin{itemize}
+                \item Matriz \texttt{C}: $n^2$ elementos
+                \item Matriz \texttt{TEMP}: $n^2$ elementos
+            \end{itemize}
+            \textbf{Pico Local:} $2n^2$ elementos.
+
+            \subsubsection*{Total de Mem\'oria de Pico (Vers\~ao Antiga)}
+            A mem\'oria total de pico \'e a soma das vari\'aveis globais mais o pico de aloca\c{c}\~ao local.
+            \[
+            M_{\text{antigo}}(n) = \underbrace{(3n^2 + 6n)}_{\text{Globais}} + \underbrace{2n^2}_{\text{Pico Local}} = 5n^2 + 6n
+            \]
+            Em bytes (assumindo 8 bytes por \texttt{real(dp)}):
+            \[
+            \text{Mem\'oria}_{\text{antiga}} = (5n^2 + 6n) \times 8 \text{ bytes}
+            \]
+
+            \subsection*{Vers\~ao Nova (Otimizada)}
+
+            Nesta vers\~ao, as matrizes \texttt{A} e \texttt{O} s\~ao eliminadas. A informa\c{c}\~ao da transforma\c{c}\~ao \'e guardada em vetores.
+
+            \subsubsection*{1. Vari\'aveis Alocadas no Programa Principal (Globais)}
+            \begin{itemize}
+                \item Matriz de Trabalho \texttt{At}: $n^2$ elementos
+                \item Vetores de Diagonais \texttt{d}, \texttt{e}: $2n$ elementos
+                \item Vetores de Autovetores \texttt{yt\_min/max}, \texttt{y\_min/max}: $4n$ elementos
+                \item Vetores Auxiliares \texttt{betas}, \texttt{u1\_storage}: $2n$ elementos
+            \end{itemize}
+            \textbf{Subtotal (Globais):} $n^2 + 8n$ elementos.
+
+            \subsubsection*{2. Pico de Mem\'oria Local (Dentro de Sub-rotinas)}
+            A sub-rotina \texttt{verify\_transformation} foi eliminada. O pico de aloca\c{c}\~ao local agora ocorre na \texttt{householder\_reduction}.
+            \begin{itemize}
+                \item Vetor \texttt{u}: $n$ elementos
+                \item Vetor \texttt{p}: $n$ elementos
+                \item Vetor \texttt{q}: $n$ elementos
+            \end{itemize}
+            \textbf{Pico Local:} $3n$ elementos.
+
+            \subsubsection*{Total de Mem\'oria de Pico (Vers\~ao Otimizada)}
+            A mem\'oria total de pico \'e a soma das novas vari\'aveis globais mais o novo pico de aloca\c{c}\~ao local.
+            \[
+            M_{\text{otimizado}}(n) = \underbrace{(n^2 + 8n)}_{\text{Globais}} + \underbrace{3n}_{\text{Pico Local}} = n^2 + 11n
+            \]
+            Em bytes:
+            \[
+            \text{Mem\'oria}_{\text{otimizada}} = (n^2 + 11n) \times 8 \text{ bytes}
+            \]
+
+            \subsection*{Conclus\~ao Comparativa}
+
+            \begin{table}[h!]
+            \centering
+            \begin{tabular}{|l|c|c|}
+            \hline
+            \textbf{Vers\~ao} & \textbf{F\'ormula de Mem\'oria (elementos)} & \textbf{Termo Dominante} \\
+            \hline
+            Antiga & $5n^2 + 6n$ & $5n^2$ \\
+            Otimizada & $n^2 + 11n$ & $n^2$ \\
+            \hline
+            \end{tabular}
+            \end{table}
+
+            A otimiza\c{c}\~ao reduziu o uso de mem\'oria que escala com o quadrado da dimens\~ao da matriz de $5n^2$ para $n^2$. Isso representa uma \textbf{redu\c{c}\~ao de 80\%} no termo dominante, que \'e a principal fonte de consumo de mem\'oria para matrizes grandes.
+
+        Resultados:
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{../images/ex4.png}
+        \end{figure}
+
+        Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, comprovando que o c\'odigo permanece funcional. Al\'em disso, a pequena diferen\c{c}a em um elemento do vetor final pode ser atribu\'ida a problemas de aproxima\c{c}\~ao que ocorrem em ambos os c\'odigos --- n\~ao afetando a validade do resultado.
 
 \end{document}

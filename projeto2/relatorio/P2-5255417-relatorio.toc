@@ -2,3 +2,4 @@
 \contentsline {section}{\numberline {1}Exerc\'icio 1}{2}{section.1}%
 \contentsline {section}{\numberline {2}Exercício 2}{3}{section.2}%
 \contentsline {section}{\numberline {3}Exerc\'icio 3}{4}{section.3}%
+\contentsline {section}{\numberline {4}Exerc\'icio 4}{9}{section.4}%
