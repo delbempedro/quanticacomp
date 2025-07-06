@@ -124,14 +124,14 @@ Professor: Attilio Cucchieri\\
         \begin{equation}
             \psi_0 = \psi_1
         \end{equation}
-        Substituindo isto na discretiza\c{c}\~ao de diferen\c{c}as finitas para a segunda derivada - no ponto $x_i$, temos:
+        Substituindo isto na discretiza\c{c}\~ao de diferen\c{c}as finitas para a segunda derivada - no ponto $x_1$, temos:
         \begin{equation}
             \frac{d^2\psi}{dx^2} \bigg|_{x=x_1} \approx \frac{\psi_2 - 2\psi_1 + (\psi_1)}{h^2} = \frac{\psi_2 - \psi_1}{h^2}
         \end{equation}
         Que resulta em dois termos, justamente com os coeficientes -1 e 1, que temos na matriz dada.
         Logo, espera-se que a solu\c{c}\~ao seja tal que obede\c{c}a a condi\c{c}\~ao de contorno de Neumann e portanto o resultado ser\'a:
         \begin{equation*}
-            \psi_{j}(x) \propto \cos\left(\frac{j\pi x}{2L}\right)
+            \psi_{j}(x) \propto \cos\left(\frac{(2j-1)\pi x}{2L}\right)
         \end{equation*}
 
     \section{Exercício 2}
@@ -348,6 +348,6 @@ Professor: Attilio Cucchieri\\
             \includegraphics[width=0.8\textwidth]{../images/ex4.png}
         \end{figure}
 
-        Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, comprovando que o c\'odigo permanece funcional , comprovando que o c\'odigo permanece funcional ---  mas utilizando significativamente menos mem\'oria. Al\'em disso, a pequena diferen\c{c}a em um elemento do vetor final pode ser atribu\'ida a problemas de aproxima\c{c}\~ao que ocorrem em ambos os c\'odigos --- n\~ao afetando a validade do resultado.
+        Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, comprovando que o c\'odigo permanece funcional ---  mas utilizando significativamente menos mem\'oria. Al\'em disso, a pequena diferen\c{c}a em um elemento do vetor final pode ser atribu\'ida a problemas de aproxima\c{c}\~ao que ocorrem em ambos os c\'odigos --- n\~ao afetando a validade do resultado.
 
 \end{document}
