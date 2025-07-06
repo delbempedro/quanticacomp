@@ -50,6 +50,9 @@ program Tridiagonalization
     !tridiagonalize At with Householder
     call householder_reduction(At, betas, u1_storage, matrix_dimension)
 
+    !verify transformation T = O' * A * O
+    call verify_transformation(At, betas, u1_storage, matrix_dimension)
+
     !extract the main (d) and off-diagonal (e) elements from the modified At matrix.
     call get_tridiagonal_elements(At, d, e, matrix_dimension)
 
@@ -196,7 +199,7 @@ contains
 
     end subroutine householder_reduction
 
-    subroutine verify_transformation_min_memory(A_original_parameters, tridiagonal_matrix_stored, beta_values, u1_vector_storage, matrix_dimension)
+    subroutine verify_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, matrix_dimension)
 
         !deactivate implicit typing
         implicit none
@@ -205,7 +208,6 @@ contains
         integer, intent(in) :: matrix_dimension
         real(dp), intent(in) :: tridiagonal_matrix_stored(matrix_dimension, matrix_dimension)
         real(dp), intent(in) :: beta_values(matrix_dimension), u1_vector_storage(matrix_dimension)
-        character(len=1), intent(in) :: A_original_parameters
         integer :: j
 
         !temporary variables
@@ -236,47 +238,93 @@ contains
         
         previous_O_column = 0.0_dp
 
-        !loop through each column j to check if (A*O)_j == (O*At)_j
-        do j = 1, matrix_dimension
+        !first column
+        if (matrix_dimension > 0) then
 
-            !compute the j-th column of the right-hand side (RHS = A * O)
+            !pre-calculate the first column of O
+            basis_vector = 0.0_dp
+            basis_vector(1) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, current_O_column, matrix_dimension)
+
+            !RHS = A * O_1
             call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
 
-            !compute the j-th column of the left-hand side (LHS = O * At) since At is tridiagonal, (At)_j has at most 3 non-zero elements.
-            left_hand_side_column = tridiagonal_matrix_stored(j,j) * current_O_column
-            if (j > 1) then
-                left_hand_side_column = left_hand_side_column + tridiagonal_matrix_stored(j-1,j) * previous_O_column
-            end if
-            if (j < matrix_dimension) then
-                left_hand_side_column = left_hand_side_column + tridiagonal_matrix_stored(j+1,j) * next_O_column
-            end if
+            !LHS = At(1,1)*O_1 + At(1,2)*O_2
+            if (matrix_dimension > 1) then
 
-            !accumulate the squared difference between the columns
+                basis_vector = 0.0_dp
+                basis_vector(2) = 1.0_dp
+                call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+                left_hand_side_column = tridiagonal_matrix_stored(1,1) * current_O_column + tridiagonal_matrix_stored(1,2) * next_O_column
+
+            else
+
+                next_O_column = 0.0_dp ! Not needed if n=1
+                left_hand_side_column = tridiagonal_matrix_stored(1,1) * current_O_column
+
+            end if
+            
+            !accumulate the squared difference
             total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
 
-            !slide the window of O columns for the next iteration
+        end if
+
+        !loop for the middle part (j=2 to n-1)
+        do j = 2, matrix_dimension - 1
+
+            !slide the window of O columns
             previous_O_column = current_O_column
             current_O_column = next_O_column
-            if (j < matrix_dimension - 1) then
-                basis_vector = 0.0_dp
-                basis_vector(j + 2) = 1.0_dp
-                call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
-            else
-                next_O_column = 0.0_dp
-            end if
+            
+            !calculate the next column of O needed for this iteration
+            basis_vector = 0.0_dp
+            basis_vector(j + 1) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+
+            !RHS = A * O_j
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+
+            !LHS = At(j,j-1)*O_{j-1} + At(j,j)*O_j + At(j,j+1)*O_{j+1}
+            left_hand_side_column = tridiagonal_matrix_stored(j,j-1) * previous_O_column + &
+                                    tridiagonal_matrix_stored(j,j)   * current_O_column  + &
+                                    tridiagonal_matrix_stored(j,j+1) * next_O_column
+
+            !accumulate the squared difference
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
         end do
+
+        !last column
+        if (matrix_dimension > 1) then
+
+            !slide the window for the last time
+            previous_O_column = current_O_column
+            current_O_column = next_O_column
+
+            !RHS = A * O_n
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+            
+            !LHS = At(n,n-1)*O_{n-1} + At(n,n)*O_n
+            left_hand_side_column = tridiagonal_matrix_stored(matrix_dimension, matrix_dimension-1) * previous_O_column + &
+                                    tridiagonal_matrix_stored(matrix_dimension, matrix_dimension)   * current_O_column
+            
+            !accumulate the squared difference
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
+        end if
 
         !sqrt value
         difference_norm = sqrt(total_difference_squared)
         
+        !write results
         write(*,*)
-        write(*,*) "--- Transformation Verification (min memory) ||A*O - O*At|| ---"
-        write(*, '(A, E12.5)') "Difference norm: ", difference_norm
+        write(*,*) "--- Transformation Verification O^T A O = At ---"
+        write(*, '(A, E12.5)') "Difference norm ||At - O^T A O||: ", difference_norm
 
         !deallocate all temporary memory
         deallocate(previous_O_column, current_O_column, next_O_column, left_hand_side_column, right_hand_side_column, basis_vector)
 
-    end subroutine verify_transformation_min_memory
+    end subroutine verify_transformation
 
     subroutine backward_transformation(A_stored, betas, u1_storage, yt, y, matrix_dimension)
 

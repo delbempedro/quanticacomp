@@ -232,6 +232,8 @@ Professor: Attilio Cucchieri\\
             \item \textbf{Cria\c{c}\~ao da Sub-rotina \texttt{backward\_transformation}:} Uma nova sub-rotina foi criada com a finalidade de aplicar as transforma\c{c}\~oes de Householder em ordem inversa ($P_{n-2}, \dots, P_1$) diretamente no autovetor \texttt{yt}. Ela reconstr\'oi cada transforma\c{c}\~ao a partir das informa\c{c}\~oes salvas e substitui a opera\c{c}\~ao \texttt{matmul(O, yt)}.
             
             \item \textbf{Elimina\c{c}\~ao de Matrizes e Vetores Tempor\'arios:} Para a otimiza\c{c}\~ao m\'axima de mem\'oria, a fun\c{c}\~ao \texttt{outer\_product} foi removida. A atualiza\c{c}\~ao da matriz na sub-rotina de Householder foi reescrita com um la\c{c}o expl\'icito, evitando a aloca\c{c}\~ao de matrizes tempor\'arias de tamanho $n \times n$. Adicionalmente, o vetor de trabalho \texttt{q} foi eliminado, reutilizando-se o vetor \texttt{p} para os c\'alculos.
+            
+            \item \textbf{Adapta\c{c}\~ao da Verifica\c{c}\~ao:} Para cumprir o requisito de verificar a transforma\c{c}\~ao, a sub-rotina (\texttt{verify\_transformation}) foi modificada. Em vez de reconstruir a matriz \texttt{O} e usar $O(n^2)$ de mem\'oria, esta rotina verifica a identidade matem\'atica equivalente $A \cdot O = O \cdot A_t$ coluna por coluna, utilizando apenas vetores tempor\'arios de tamanho $O(n)$.
 
         \end{enumerate}
 
@@ -284,22 +286,45 @@ Professor: Attilio Cucchieri\\
             \textbf{Subtotal (Globais):} $n^2 + 8n$ elementos.
 
             \subsubsection*{2. Pico de Mem\'oria Local (Dentro de Sub-rotinas)}
-            A sub-rotina \texttt{verify\_transformation} foi eliminada. O pico de aloca\c{c}\~ao local agora ocorre na \texttt{householder\_reduction}.
+            O pico de aloca\c{c}\~ao local agora ocorre na nova sub-rotina de verifica\c{c}\~ao, \texttt{verify\_transformation\_min\_memory}.
             \begin{itemize}
-                \item Vetor \texttt{u}: $n$ elementos
-                \item Vetor \texttt{p}: $n$ elementos
+                \item Vetor \texttt{previous\_O\_column}: $n$ elementos
+                \item Vetor \texttt{current\_O\_column}: $n$ elementos
+                \item Vetor \texttt{next\_O\_column}: $n$ elementos
+                \item Vetor \texttt{left\_hand\_side\_column}: $n$ elementos
+                \item Vetor \texttt{right\_hand\_side\_column}: $n$ elementos
+                \item Vetor \texttt{basis\_vector}: $n$ elementos
             \end{itemize}
-            \textbf{Pico Local:} $2n$ elementos.
+            \textbf{Pico Local:} $6n$ elementos.
 
             \subsubsection*{Total de Mem\'oria de Pico (Vers\~ao Otimizada)}
             A mem\'oria total de pico \'e a soma das novas vari\'aveis globais mais o novo pico de aloca\c{c}\~ao local.
             \[
-            M_{\text{otimizada}}(n) = \underbrace{(n^2 + 8n)}_{\text{Globais}} + \underbrace{2n}_{\text{Pico Local}} = n^2 + 10n
+            M_{\text{otimizada}}(n) = \underbrace{(n^2 + 8n)}_{\text{Globais}} + \underbrace{6n}_{\text{Pico Local}} = n^2 + 14n
             \]
             Em bytes:
             \[
-            \text{Mem\'oria}_{\text{otimizada}} = (n^2 + 10n) \times 8 \text{ bytes}
+            \text{Mem\'oria}_{\text{otimizada}} = (n^2 + 14n) \times 8 \text{ bytes}
             \]
+
+            \subsubsection*{An\'alise Focada na Sub-rotina \texttt{householder\_reduction}}
+
+                Para isolar o impacto direto da otimiza\c{c}\~ao, podemos comparar a mem\'oria total (argumentos + vari\'aveis locais) utilizada apenas pela sub-rotina de Householder em cada vers\~ao.
+
+                \begin{table}[H]
+                \centering
+                \caption{Compara\c{c}\~ao de Mem\'oria - Apenas Sub-rotina Householder}
+                \begin{tabular}{|l|c|}
+                \hline
+                \textbf{Vers\~ao da Sub-rotina} & \textbf{F\'ormula de Mem\'oria (elementos)} \\
+                \hline
+                Antiga (n\~ao otimizada) & $2n^2 + 4n$ \\
+                Otimizada & $n^2 + 4n$ \\
+                \hline
+                \end{tabular}
+                \end{table}
+
+                Esta tabela mostra que a otimiza\c{c}\~ao reduziu o consumo de mem\'oria quadr\'atico da pr\'opria sub-rotina em 50\%, ao eliminar a necessidade de passar a matriz de transforma\c{c}\~ao \texttt{O} como argumento.
 
             \subsection*{Conclus\~ao Comparativa}
 
@@ -310,7 +335,7 @@ Professor: Attilio Cucchieri\\
             \textbf{Vers\~ao} & \textbf{F\'ormula de Mem\'oria (elementos)} & \textbf{Termo Dominante} \\
             \hline
             Antiga & $5n^2 + 6n$ & $5n^2$ \\
-            Otimizada & $n^2 + 10n$ & $n^2$ \\
+            Otimizada & $n^2 + 14n$ & $n^2$ \\
             \hline
             \end{tabular}
             \end{table}
@@ -323,6 +348,6 @@ Professor: Attilio Cucchieri\\
             \includegraphics[width=0.8\textwidth]{../images/ex4.png}
         \end{figure}
 
-        Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, comprovando que o c\'odigo permanece funcional ---  mas utilizando significativamente menos mem\'oria.
+        Nota-se que todas as verifica\c{c}\~oes resultaram em valores pequenos, comprovando que o c\'odigo permanece funcional , comprovando que o c\'odigo permanece funcional ---  mas utilizando significativamente menos mem\'oria. Al\'em disso, a pequena diferen\c{c}a em um elemento do vetor final pode ser atribu\'ida a problemas de aproxima\c{c}\~ao que ocorrem em ambos os c\'odigos --- n\~ao afetando a validade do resultado.
 
 \end{document}
