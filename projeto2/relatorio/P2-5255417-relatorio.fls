@@ -198,6 +198,7 @@ INPUT ../images/wavefunction_plot.png
 INPUT ../images/wavefunction_plot.png
 INPUT ../images/wavefunction_plot.png
 INPUT ../images/wavefunction_plot.png
+INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT ../images/ex3a-10.png
 INPUT ../images/ex3a-10.png
 INPUT ../images/ex3a-10.png
@@ -208,6 +209,7 @@ INPUT ../images/ex3b-10.png
 INPUT ../images/ex3b-10.png
 INPUT ../images/ex3b-10.png
 INPUT ../images/ex3b-10.png
+INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ../images/diffA10.png
 INPUT ../images/diffA10.png
 INPUT ../images/diffA10.png
@@ -219,8 +221,6 @@ INPUT ../images/diffAt10.png
 INPUT ../images/diffAt10.png
 INPUT ../images/diffAt10.png
 INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/public/cm/cmtt12.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/tfm/jknappen/ec/tcrm1200.tfm
-INPUT /nix/store/sc5p4q3ajvk3586nnrj1iw87698zpgwl-texlive-2024-env-texmfdist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ../images/ex4.png
 INPUT ../images/ex4.png
 INPUT ../images/ex4.png
