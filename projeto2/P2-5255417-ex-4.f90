@@ -196,6 +196,88 @@ contains
 
     end subroutine householder_reduction
 
+    subroutine verify_transformation_min_memory(A_original_parameters, tridiagonal_matrix_stored, beta_values, u1_vector_storage, matrix_dimension)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
+        integer, intent(in) :: matrix_dimension
+        real(dp), intent(in) :: tridiagonal_matrix_stored(matrix_dimension, matrix_dimension)
+        real(dp), intent(in) :: beta_values(matrix_dimension), u1_vector_storage(matrix_dimension)
+        character(len=1), intent(in) :: A_original_parameters
+        integer :: j
+
+        !temporary variables
+        real(dp), allocatable :: previous_O_column(:), current_O_column(:), next_O_column(:)
+        real(dp), allocatable :: left_hand_side_column(:), right_hand_side_column(:)
+        real(dp), allocatable :: basis_vector(:)
+        real(dp) :: total_difference_squared, difference_norm
+
+        !allocate vectors
+        allocate(previous_O_column(matrix_dimension), current_O_column(matrix_dimension), next_O_column(matrix_dimension))
+        allocate(left_hand_side_column(matrix_dimension), right_hand_side_column(matrix_dimension))
+        allocate(basis_vector(matrix_dimension))
+
+        total_difference_squared = 0.0_dp
+
+        !pre-calculate the first and second columns of O to start the "sliding window"
+        basis_vector = 0.0_dp
+        basis_vector(1) = 1.0_dp
+        call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, current_O_column, matrix_dimension)
+
+        if (matrix_dimension > 1) then
+            basis_vector = 0.0_dp
+            basis_vector(2) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+        else
+            next_O_column = 0.0_dp
+        end if
+        
+        previous_O_column = 0.0_dp
+
+        !loop through each column j to check if (A*O)_j == (O*At)_j
+        do j = 1, matrix_dimension
+
+            !compute the j-th column of the right-hand side (RHS = A * O)
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+
+            !compute the j-th column of the left-hand side (LHS = O * At) since At is tridiagonal, (At)_j has at most 3 non-zero elements.
+            left_hand_side_column = tridiagonal_matrix_stored(j,j) * current_O_column
+            if (j > 1) then
+                left_hand_side_column = left_hand_side_column + tridiagonal_matrix_stored(j-1,j) * previous_O_column
+            end if
+            if (j < matrix_dimension) then
+                left_hand_side_column = left_hand_side_column + tridiagonal_matrix_stored(j+1,j) * next_O_column
+            end if
+
+            !accumulate the squared difference between the columns
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
+            !slide the window of O columns for the next iteration
+            previous_O_column = current_O_column
+            current_O_column = next_O_column
+            if (j < matrix_dimension - 1) then
+                basis_vector = 0.0_dp
+                basis_vector(j + 2) = 1.0_dp
+                call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+            else
+                next_O_column = 0.0_dp
+            end if
+        end do
+
+        !sqrt value
+        difference_norm = sqrt(total_difference_squared)
+        
+        write(*,*)
+        write(*,*) "--- Transformation Verification (min memory) ||A*O - O*At|| ---"
+        write(*, '(A, E12.5)') "Difference norm: ", difference_norm
+
+        !deallocate all temporary memory
+        deallocate(previous_O_column, current_O_column, next_O_column, left_hand_side_column, right_hand_side_column, basis_vector)
+
+    end subroutine verify_transformation_min_memory
+
     subroutine backward_transformation(A_stored, betas, u1_storage, yt, y, matrix_dimension)
 
         !deactivate implicit typing
