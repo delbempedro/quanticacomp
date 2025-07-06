@@ -50,6 +50,9 @@ program Tridiagonalization
     !tridiagonalize At with Householder
     call householder_reduction(At, betas, u1_storage, matrix_dimension)
 
+    !verify transformation T = O' * A * O
+    call verify_transformation(At, betas, u1_storage, matrix_dimension)
+
     !extract the main (d) and off-diagonal (e) elements from the modified At matrix.
     call get_tridiagonal_elements(At, d, e, matrix_dimension)
 
@@ -139,12 +142,12 @@ contains
         integer, intent(in) :: matrix_dimension
         real(dp), intent(inout) :: A(matrix_dimension, matrix_dimension)
         real(dp), intent(out) :: betas(matrix_dimension), u1_storage(matrix_dimension)
-        integer :: i
+        integer :: i,j,k
         real(dp) :: sigma, mu
-        real(dp), allocatable :: u(:), p(:), q(:)
+        real(dp), allocatable :: u(:), p(:)
 
         !allocate variables
-        allocate(u(matrix_dimension), p(matrix_dimension), q(matrix_dimension))
+        allocate(u(matrix_dimension), p(matrix_dimension))
 
         do i = 1, matrix_dimension - 2
 
@@ -175,8 +178,13 @@ contains
                 p = matmul(A, u)
                 p = betas(i) * p 
                 mu = betas(i) * dot_product(p, u) / 2.0_dp
-                q = p - mu * u
-                A = A - outer_product(u, q) - outer_product(q, u)
+                p = p - mu * u
+
+                do j = 1, matrix_dimension
+                    do k = 1, matrix_dimension
+                        A(j, k) = A(j, k) - u(j) * p(k) - p(j) * u(k)
+                    end do
+                end do
 
 
                 !store the "tail" of the u vector in the lower part of matrix A, 
@@ -187,9 +195,136 @@ contains
         end do
 
         !deallocate vectors
-        deallocate(u, p, q)
+        deallocate(u, p)
 
     end subroutine householder_reduction
+
+    subroutine verify_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, matrix_dimension)
+
+        !deactivate implicit typing
+        implicit none
+
+        !declare variables
+        integer, intent(in) :: matrix_dimension
+        real(dp), intent(in) :: tridiagonal_matrix_stored(matrix_dimension, matrix_dimension)
+        real(dp), intent(in) :: beta_values(matrix_dimension), u1_vector_storage(matrix_dimension)
+        integer :: j
+
+        !temporary variables
+        real(dp), allocatable :: previous_O_column(:), current_O_column(:), next_O_column(:)
+        real(dp), allocatable :: left_hand_side_column(:), right_hand_side_column(:)
+        real(dp), allocatable :: basis_vector(:)
+        real(dp) :: total_difference_squared, difference_norm
+
+        !allocate vectors
+        allocate(previous_O_column(matrix_dimension), current_O_column(matrix_dimension), next_O_column(matrix_dimension))
+        allocate(left_hand_side_column(matrix_dimension), right_hand_side_column(matrix_dimension))
+        allocate(basis_vector(matrix_dimension))
+
+        total_difference_squared = 0.0_dp
+
+        !pre-calculate the first and second columns of O to start the "sliding window"
+        basis_vector = 0.0_dp
+        basis_vector(1) = 1.0_dp
+        call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, current_O_column, matrix_dimension)
+
+        if (matrix_dimension > 1) then
+            basis_vector = 0.0_dp
+            basis_vector(2) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+        else
+            next_O_column = 0.0_dp
+        end if
+        
+        previous_O_column = 0.0_dp
+
+        !first column
+        if (matrix_dimension > 0) then
+
+            !pre-calculate the first column of O
+            basis_vector = 0.0_dp
+            basis_vector(1) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, current_O_column, matrix_dimension)
+
+            !RHS = A * O_1
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+
+            !LHS = At(1,1)*O_1 + At(1,2)*O_2
+            if (matrix_dimension > 1) then
+
+                basis_vector = 0.0_dp
+                basis_vector(2) = 1.0_dp
+                call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+                left_hand_side_column = tridiagonal_matrix_stored(1,1) * current_O_column + tridiagonal_matrix_stored(1,2) * next_O_column
+
+            else
+
+                next_O_column = 0.0_dp ! Not needed if n=1
+                left_hand_side_column = tridiagonal_matrix_stored(1,1) * current_O_column
+
+            end if
+            
+            !accumulate the squared difference
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
+        end if
+
+        !loop for the middle part (j=2 to n-1)
+        do j = 2, matrix_dimension - 1
+
+            !slide the window of O columns
+            previous_O_column = current_O_column
+            current_O_column = next_O_column
+            
+            !calculate the next column of O needed for this iteration
+            basis_vector = 0.0_dp
+            basis_vector(j + 1) = 1.0_dp
+            call backward_transformation(tridiagonal_matrix_stored, beta_values, u1_vector_storage, basis_vector, next_O_column, matrix_dimension)
+
+            !RHS = A * O_j
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+
+            !LHS = At(j,j-1)*O_{j-1} + At(j,j)*O_j + At(j,j+1)*O_{j+1}
+            left_hand_side_column = tridiagonal_matrix_stored(j,j-1) * previous_O_column + &
+                                    tridiagonal_matrix_stored(j,j)   * current_O_column  + &
+                                    tridiagonal_matrix_stored(j,j+1) * next_O_column
+
+            !accumulate the squared difference
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
+        end do
+
+        !last column
+        if (matrix_dimension > 1) then
+
+            !slide the window for the last time
+            previous_O_column = current_O_column
+            current_O_column = next_O_column
+
+            !RHS = A * O_n
+            call compute_Ay(current_O_column, right_hand_side_column, matrix_dimension)
+            
+            !LHS = At(n,n-1)*O_{n-1} + At(n,n)*O_n
+            left_hand_side_column = tridiagonal_matrix_stored(matrix_dimension, matrix_dimension-1) * previous_O_column + &
+                                    tridiagonal_matrix_stored(matrix_dimension, matrix_dimension)   * current_O_column
+            
+            !accumulate the squared difference
+            total_difference_squared = total_difference_squared + norm2(left_hand_side_column - right_hand_side_column)**2
+
+        end if
+
+        !sqrt value
+        difference_norm = sqrt(total_difference_squared)
+        
+        !write results
+        write(*,*)
+        write(*,*) "--- Transformation Verification O^T A O = At ---"
+        write(*, '(A, E12.5)') "Difference norm ||At - O^T A O||: ", difference_norm
+
+        !deallocate all temporary memory
+        deallocate(previous_O_column, current_O_column, next_O_column, left_hand_side_column, right_hand_side_column, basis_vector)
+
+    end subroutine verify_transformation
 
     subroutine backward_transformation(A_stored, betas, u1_storage, yt, y, matrix_dimension)
 
@@ -235,28 +370,6 @@ contains
         deallocate(u)
 
     end subroutine backward_transformation
-
-    function outer_product(v1, v2) result(res)
-
-        !deactivate implicit typing
-        implicit none
-
-        !declare variables
-        real(dp), intent(in) :: v1(:), v2(:)
-
-        integer :: matrix_dimension
-        real(dp), allocatable :: res(:,:)
-
-        !define matrix_dimension
-        matrix_dimension = size(v1)
-
-        !allocate vector
-        allocate(res(matrix_dimension, matrix_dimension))
-
-        !do outer product
-        res = spread(v1, dim=2, ncopies=matrix_dimension) * spread(v2, dim=1, ncopies=matrix_dimension)
-
-    end function outer_product
 
     subroutine get_tridiagonal_elements(At, d, e, matrix_dimension)
 
