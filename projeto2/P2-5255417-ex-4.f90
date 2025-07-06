@@ -139,12 +139,12 @@ contains
         integer, intent(in) :: matrix_dimension
         real(dp), intent(inout) :: A(matrix_dimension, matrix_dimension)
         real(dp), intent(out) :: betas(matrix_dimension), u1_storage(matrix_dimension)
-        integer :: i
+        integer :: i,j,k
         real(dp) :: sigma, mu
-        real(dp), allocatable :: u(:), p(:), q(:)
+        real(dp), allocatable :: u(:), p(:)
 
         !allocate variables
-        allocate(u(matrix_dimension), p(matrix_dimension), q(matrix_dimension))
+        allocate(u(matrix_dimension), p(matrix_dimension))
 
         do i = 1, matrix_dimension - 2
 
@@ -175,8 +175,13 @@ contains
                 p = matmul(A, u)
                 p = betas(i) * p 
                 mu = betas(i) * dot_product(p, u) / 2.0_dp
-                q = p - mu * u
-                A = A - outer_product(u, q) - outer_product(q, u)
+                p = p - mu * u
+
+                do j = 1, matrix_dimension
+                    do k = 1, matrix_dimension
+                        A(j, k) = A(j, k) - u(j) * p(k) - p(j) * u(k)
+                    end do
+                end do
 
 
                 !store the "tail" of the u vector in the lower part of matrix A, 
@@ -187,7 +192,7 @@ contains
         end do
 
         !deallocate vectors
-        deallocate(u, p, q)
+        deallocate(u, p)
 
     end subroutine householder_reduction
 
@@ -235,28 +240,6 @@ contains
         deallocate(u)
 
     end subroutine backward_transformation
-
-    function outer_product(v1, v2) result(res)
-
-        !deactivate implicit typing
-        implicit none
-
-        !declare variables
-        real(dp), intent(in) :: v1(:), v2(:)
-
-        integer :: matrix_dimension
-        real(dp), allocatable :: res(:,:)
-
-        !define matrix_dimension
-        matrix_dimension = size(v1)
-
-        !allocate vector
-        allocate(res(matrix_dimension, matrix_dimension))
-
-        !do outer product
-        res = spread(v1, dim=2, ncopies=matrix_dimension) * spread(v2, dim=1, ncopies=matrix_dimension)
-
-    end function outer_product
 
     subroutine get_tridiagonal_elements(At, d, e, matrix_dimension)
 
